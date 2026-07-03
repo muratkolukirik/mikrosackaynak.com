@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="og-title og-desc">
+  <title id="og-title">Mikro Kaynak Sa&#231; Rehberi</title>
+  <desc id="og-desc">Do&#287;ru y&#246;ntemi anlamak i&#231;in sakin ve net bir rehber</desc>
+
+  <rect width="1200" height="630" fill="#faf8f5"/>
+  <rect x="80" y="80" width="1040" height="470" rx="8" fill="#fffcf9" stroke="#e3dcd2" stroke-width="1"/>
+
+  <rect x="120" y="200" width="48" height="2" fill="#7a6b58"/>
+
+  <text x="120" y="280" fill="#2c2825" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="500" letter-spacing="-0.5">
+    Mikro Kaynak Sa&#231; Rehberi
+  </text>
+
+  <text x="120" y="340" fill="#6b6560" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">
+    Do&#287;ru y&#246;ntemi anlamak i&#231;in sakin ve net bir rehber
+  </text>
+
+  <path d="M920 180c40 80 60 160 40 260" stroke="#7a6b58" stroke-width="1.5" fill="none" opacity="0.35" stroke-linecap="round"/>
+  <path d="M960 160c30 100 50 200 20 300" stroke="#7a6b58" stroke-width="1" fill="none" opacity="0.25" stroke-linecap="round"/>
+  <path d="M1000 190c25 70 45 150 30 250" stroke="#7a6b58" stroke-width="1" fill="none" opacity="0.2" stroke-linecap="round"/>
+
+  <text x="120" y="480" fill="#8a837b" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="0.08em">
+    mikrosackaynak.com
+  </text>
+</svg>

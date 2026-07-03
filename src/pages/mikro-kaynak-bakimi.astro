@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
+import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { guideLinks } from '../data/navigation';
+import { breadcrumbSchema, articleSchema } from '../utils/schema';
+
+const path = '/mikro-kaynak-bakimi/';
+const title = 'Mikro Kaynak Bakımı';
+const description =
+  'Mikro kaynak saç bakımı: günlük rutin, yıkama, fırçalama, uyku ve yenileme aralıkları. Bağlantı ömrünü uzatmak için pratik öneriler.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Mikro Kaynak Bakımı', path },
+];
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Mikro Kaynak Bakımı"
+    lead="İyi bir uygulama kadar önemli olan düzenli bakımdır. Günlük alışkanlıklarınız bağlantı ömrünü ve görünümü doğrudan etkiler."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <h2>İlk günler</h2>
+      <p>
+        Uygulama sonrası ilk 24–48 saat, bağlantı noktalarının oturması için
+        kritik kabul edilir. Uzmanınızın önerdiği süre boyunca saçınızı
+        yıkamaktan, aşırı ısıdan ve sıkı topuzdan kaçının. Her uygulayıcı farklı
+        talimat verebilir; size özel planı takip edin.
+      </p>
+
+      <h2>Yıkama rutini</h2>
+      <ul>
+        <li>Ilık su kullanın; bağlantı bölgesine agresif masaj yapmayın</li>
+        <li>Sülfatsız veya hafif formüllü şampuan tercih edin</li>
+        <li>Şampuanı köklerde değil, teller arasında dağıtarak uygulayın</li>
+        <li>Kremsi ürünleri bağlantı noktasına yığmayın</li>
+        <li>Nazikçe havluyla sıkarak kurulayın; sert ovuşturmayın</li>
+      </ul>
+
+      <h2>Fırçalama ve tarak</h2>
+      <p>
+        Geniş dişli tarak veya özel kaynak fırçası kullanın. Bağlantı noktasından
+        başlayarak uçlara doğru açın; zorlanan düğümleri çekerek değil, parça
+        parça çözerek giderin. Islak saçta daha dikkatli olun.
+      </p>
+
+      <h2>Isı ve kimyasal işlemler</h2>
+      <p>
+        Düzenli fön, maşa veya düzleştirici kullanımı telleri yorar. Isı koruyucu
+        ürün kullanın ve sıcaklığı düşük–orta aralıkta tutun. Röve, balyaj veya
+        açıcı işlemler bağlantı bölgesini etkileyebilir; işlem öncesi uzmanınıza
+        danışın.
+      </p>
+
+      <h2>Uyku alışkanlıkları</h2>
+      <p>
+        Sıkı at kuyruğu, sıkı örgü ve sert tokalar bağlantılara baskı uygular.
+        Mümkünse gevşek bir topuz veya düşük at kuyruğu tercih edin. İpek veya
+        saten yastık kılıfı sürtünmeyi azaltabilir.
+      </p>
+
+      <h2>Yenileme ve kontrol seansları</h2>
+      <p>
+        Mikro kaynak kalıcı değildir. Doğal saç büyüdükçe bağlantı noktaları aşağı
+        iner; periyodik düzeltme gerekir. Kontrol aralığı; saç büyüme hızınıza,
+        bakım disiplininize ve kullanılan yönteme göre değişir — genellikle birkaç
+        hafta ile birkaç ay arasında. Düzenli kontrol, kopma ve mat görünümü
+        önlemeye yardımcı olur.
+      </p>
+
+      <div class="callout">
+        <p>
+          Bakım planınız uygulama öncesinde netleştirilmelidir. Uzun vadeli
+          maliyet hesabı yaparken yenileme aralıklarını da
+          <a href="/mikro-kaynak-fiyatlari/">fiyatlandırma rehberimizdeki</a>
+          gibi değerlendirin.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <CTAWhatsApp
+    title="Bakım planınız hakkında sorularınız mı var?"
+    message="Merhaba, mikro kaynak bakımı hakkında bilgi almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

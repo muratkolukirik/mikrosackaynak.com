@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
+import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { guideLinks } from '../data/navigation';
+import { breadcrumbSchema, articleSchema } from '../utils/schema';
+
+const path = '/ince-sacta-mikro-kaynak/';
+const title = 'İnce Saçta Mikro Kaynak';
+const description =
+  'İnce saça mikro kaynak uygulamasında yoğunluk, tellerin ağırlığı ve yerleştirme stratejisi. Hacim artışı ile saç sağlığı arasında denge.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'İnce Saçta Mikro Kaynak', path },
+];
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="İnce Saçta Mikro Kaynak"
+    lead="İnce telli saçlarda hacim ve uzunluk hedefi mümkün olabilir; ancak ağırlık kontrolü ve yerleştirme stratejisi belirleyicidir."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <h2>İnce saç neden farklı değerlendirilir?</h2>
+      <p>
+        İnce saç telleri, aynı görünür hacme kıyasla daha az taşıyıcı kapasiteye
+        sahip olabilir. Ek tellerin ağırlığı kök bölgesinde hissedilebilir veya
+        bağlantı noktaları daha erken yorulabilir. Bu nedenle ince saçta mikro
+        kaynak planlanırken “ne kadar çok o kadar iyi” mantığı geçerli değildir.
+      </p>
+
+      <h2>Yoğunluk ve ağırlık dengesi</h2>
+      <p>
+        Hedef sadece uzunluk değilse, kontrollü bir yoğunluk artışı daha doğal
+        sonuç verebilir. İnce teller için daha hafif ek saç seçimi, daha küçük
+        bağlantı grupları ve stratejik yerleştirme — özellikle yan ve arka
+        bölgelerde — önem taşır. Aşırı yükleme, hem konforu hem de görünümü
+        olumsuz etkileyebilir.
+      </p>
+
+      <h3>Bağlantı konumu</h3>
+      <p>
+        İnce saçta bağlantıların üst katmanlara yakın yerleştirilmesi görünürlük
+        riskini artırır. Deneyimli bir uygulayıcı, tellerin doğal düşüş yönünü
+        takip ederek bağlantıları gizler. Mikro kapsül kaynak profili bu açıdan
+        avantaj sağlayabilir; fakat yöntem seçimi tek başına yeterli değildir.
+      </p>
+
+      <h2>Keratin ve nanofilament alternatifleri</h2>
+      <p>
+        Bazı ince saç profillerinde keratin kaynak veya nanofilament kaynak daha
+        uygun olabilir. Bağlantı malzemesinin profili, saçın taşıyabileceği yük
+        ile uyumlu olmalıdır.
+        <a href="/mikro-kaynak-keratin-nanofilament-farki/">Yöntem farkları</a>
+        rehberimizde karşılaştırmayı bulabilirsiniz.
+      </p>
+
+      <h2>Bakım alışkanlıkları</h2>
+      <p>
+        İnce saç genellikle daha hızlı yağlanabilir veya kolay karışabilir.
+        Düğüm açma, uyku pozisyonu ve ürün seçimi ince saçta mikro kaynak ömrünü
+        doğrudan etkiler. Detaylı bakım önerileri için
+        <a href="/mikro-kaynak-bakimi/">bakım rehberimize</a> bakın.
+      </p>
+
+      <div class="callout">
+        <p>
+          İnce saçta abartılı hacim vaatlerinden kaçının. Doğal görünüm ve saç
+          bütünlüğü, tek seferde maksimum uzunluktan genellikle daha değerlidir.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <CTAWhatsApp
+    title="İnce saç profiliniz için ön değerlendirme"
+    message="Merhaba, ince saçım için mikro kaynak uygunluğu hakkında bilgi almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

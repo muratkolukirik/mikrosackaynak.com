@@ -1,0 +1,38 @@
+---
+import type { NavItem } from '../data/navigation';
+
+interface Props {
+  title?: string;
+  links: NavItem[];
+  exclude?: string;
+}
+
+const { title = 'İlgili rehber sayfaları', links, exclude } = Astro.props;
+const filtered = exclude ? links.filter((l) => l.href !== exclude) : links;
+---
+
+{
+  filtered.length > 0 && (
+    <section class="related">
+      <div class="container container--narrow">
+        <h2>{title}</h2>
+        <div class="card-grid">
+          {filtered.slice(0, 4).map((link) => (
+            <article class="card">
+              <h3 class="card__title">
+                <a href={link.href}>{link.label}</a>
+              </h3>
+              {link.description && <p class="card__desc">{link.description}</p>}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .related {
+    padding-block: var(--space-xl);
+  }
+</style>

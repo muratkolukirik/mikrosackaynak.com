@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
+import FethiyeContactBlock from '../components/FethiyeContactBlock.astro';
+import { SITE, CONTACT_GENERAL, CONTACT_ISTANBUL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
+import { guideLinks } from '../data/navigation';
+import { breadcrumbSchema } from '../utils/schema';
+
+const path = '/iletisim/';
+const title = 'İletişim — WhatsApp Danışmanlık';
+const description =
+  'Mikro kaynak saç hakkında WhatsApp danışmanlık. Fethiye ve Türkiye geneli: 0532 592 88 42. İstanbul profesyonel uygulama için ayrı iletişim kanalı.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'İletişim', path },
+];
+const schemas = [breadcrumbSchema(breadcrumbs)];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="İletişim / WhatsApp Danışmanlık"
+    lead="Fethiye, Ölüdeniz ve Türkiye geneli ön danışmanlık için aşağıdaki numarayı kullanın. İstanbul'da yüz yüze uygulama arayanlar için ayrı bir kanal bulunmaktadır."
+  />
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <p class="contact-card__label">{CONTACT_FETHIYE.regionNote} · {CONTACT_GENERAL.regionNote}</p>
+          <h2>Fethiye / Türkiye Geneli Danışmanlık</h2>
+          <p>
+            Fethiye, Ölüdeniz çevresi ve Türkiye genelinde mikro kaynak saç
+            hakkında ön analiz ve danışmanlık için bu hat kullanılır. Mevcut saç
+            uzunluğunuz, hedeflediğiniz görünüm ve bakım rutininiz hakkında kısa
+            bir mesaj göndermeniz yeterlidir.
+          </p>
+          <FethiyeContactBlock compact showActions={false} />
+          <div class="contact-card__actions">
+            <a
+              href={whatsappUrl(CONTACT_FETHIYE.whatsappDefaultMessage)}
+              class="btn btn--whatsapp"
+              rel="noopener noreferrer"
+            >
+              WhatsApp ile Yazın
+            </a>
+            <a href={telUrl(CONTACT_GENERAL.phoneE164)} class="btn btn--secondary">
+              Telefon Et
+            </a>
+            <a href={CONTACT_FETHIYE.pagePath} class="btn btn--secondary">
+              Fethiye rehber sayfası
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-card contact-card--muted">
+          <h2>Ön görüşmede neleri paylaşmalısınız?</h2>
+          <ul>
+            <li>Mevcut saç uzunluğu ve yoğunluk hissi (ince / normal / yoğun)</li>
+            <li>Hedeflediğiniz uzunluk veya hacim</li>
+            <li>Daha önce kaynak deneyiminiz var mı?</li>
+            <li>Günlük bakım alışkanlıklarınız (spor, yüzme, fön vb.)</li>
+            <li>Mümkünse güncel saç fotoğrafları (doğal ışıkta)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-card contact-card--istanbul">
+        <p class="contact-card__label">İstanbul — profesyonel uygulama</p>
+        <h2>İstanbul'da uygulama mı arıyorsunuz?</h2>
+        <p>
+          Şehirde mikro saç kaynak, mikro kapsül kaynak ve ihtiyaca göre keratin
+          kaynak gibi yöntemlerle yüz yüze profesyonel uygulama talepleri
+          {CONTACT_ISTANBUL.name} üzerinden ayrı bir hat ile yönetilir. Genel
+          bilgilendirme numarası ({CONTACT_GENERAL.phoneDisplay}) ile
+          karıştırılmaz.
+        </p>
+        <p class="contact-card__istanbul-phone">
+          <strong>{CONTACT_ISTANBUL.name}</strong><br />
+          <a href={telUrl(CONTACT_ISTANBUL.phoneE164)}>
+            {CONTACT_ISTANBUL.phoneDisplay}
+          </a>
+          <span> — Telefon ve WhatsApp</span>
+        </p>
+        <div class="contact-card__actions">
+          <a href={CONTACT_ISTANBUL.pagePath} class="btn btn--secondary">
+            İstanbul rehber sayfası
+          </a>
+          <a
+            href={whatsappUrl(undefined, 'istanbul')}
+            class="btn btn--whatsapp"
+            rel="noopener noreferrer"
+          >
+            WhatsApp ile Yazın
+          </a>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top: var(--space-xl);">
+        <h2>Rehber sayfaları</h2>
+        <p>
+          Danışmanlık öncesinde aşağıdaki rehberleri okumanız, görüşmeyi daha
+          verimli kılar:
+        </p>
+        <ul>
+          {
+            guideLinks.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="callout" style="margin-top: var(--space-lg);">
+        <p>
+          <strong>Not:</strong> {SITE.name} bilgilendirme amaçlı bir rehberdir.
+          WhatsApp danışmanlığı ön değerlendirme niteliğindedir; nihai uygulama
+          kararı yüz yüze muayene ile verilmelidir.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+
+  .contact-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+  }
+
+  .contact-card--muted {
+    background: var(--color-bg-muted);
+  }
+
+  .contact-card--istanbul {
+    margin-top: var(--space-md);
+    border-color: var(--color-border);
+  }
+
+  .contact-card__label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .contact-card h2 {
+    margin-top: 0;
+    font-size: 1.35rem;
+  }
+
+  .contact-card p {
+    color: var(--color-text-muted);
+  }
+
+  .contact-card__phone {
+    margin: var(--space-md) 0 !important;
+  }
+
+  .contact-card__phone a {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .contact-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .contact-card ul {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  .contact-card--istanbul .btn {
+    margin-top: var(--space-md);
+  }
+
+  .contact-card__istanbul-phone {
+    margin: var(--space-md) 0 0 !important;
+    font-size: 0.9375rem;
+  }
+
+  .contact-card__istanbul-phone a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .contact-card__istanbul-phone span {
+    color: var(--color-text-light);
+  }
+</style>

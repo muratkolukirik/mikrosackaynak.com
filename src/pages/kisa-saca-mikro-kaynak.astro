@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
+import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { guideLinks } from '../data/navigation';
+import { breadcrumbSchema, articleSchema } from '../utils/schema';
+
+const path = '/kisa-saca-mikro-kaynak/';
+const title = 'Kısa Saça Mikro Kaynak';
+const description =
+  'Kısa saça mikro kaynak uygulaması: harmanlama, katman planlaması, işçilik süresi ve gerçekçi beklentiler. Gram hesabının ötesinde neler belirler?';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Kısa Saça Mikro Kaynak', path },
+];
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Kısa Saça Mikro Kaynak"
+    lead="Kısa saçta dönüşüm mümkün olabilir; ancak planlama, harmanlama ve işçilik maliyeti uzun saça kıyasla genellikle daha belirleyicidir."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <h2>Kısa saçta farklı bir planlama gerekir</h2>
+      <p>
+        Kısa saç, ek tellerin nereden başlayacağını ve geçiş hattının nerede
+        gizleneceğini belirleyen kritik bir faktördür. Uzun saçta katmanlar doğal
+        bir örtü sağlarken, kısa saçta her bağlantı noktası görünürlük açısından
+        daha hassastır. Bu nedenle kısa saça mikro kaynak uygulaması, sadece gram
+        eklemekten ibaret değildir.
+      </p>
+
+      <h2>Harmanlama ve katman stratejisi</h2>
+      <p>
+        Başarılı bir sonuç için ek tellerin mevcut kesimle uyumlu katmanlara
+        yerleştirilmesi gerekir. Yanlış uzunlukta veya ağırlıkta teller, omuz
+        hizasında beklenmedik bir “step” oluşturabilir. Profesyonel bir planlama;
+        hedef uzunluğu, tellerin inceliği ve bağlantı konumunu birlikte ele alır.
+      </p>
+
+      <h3>İşçilik süresi neden artar?</h3>
+      <p>
+        Kısa saçta daha fazla bölgesel ayar, daha sık kontrol ve daha dikkatli
+        harmanlama gerekebilir. Bu da uygulama süresini ve dolayısıyla maliyeti
+        artırır — yalnızca kullanılan gram miktarı değil, emek yoğunluğu fiyatı
+        belirler. <a href="/mikro-kaynak-fiyatlari/">Fiyatlandırma rehberimizde</a>
+        bu konuyu ayrıntılı ele aldık.
+      </p>
+
+      <h2>Gerçekçi beklenti oluşturmak</h2>
+      <p>
+        Çok kısa bir kesimden tek seansta dramatik bir uzunluğa geçmek her zaman
+        mümkün veya sağlıklı olmayabilir. Aşamalı bir plan — önce orta uzunluk,
+        ardından hedefe yaklaşma — bazı durumlarda daha doğal ve sürdürülebilir
+        sonuç verir. Uzmanınız mevcut saç uzunluğunuza göre en uygun yol haritasını
+        önerebilir.
+      </p>
+
+      <h2>Kısa saç + ince telli yapı</h2>
+      <p>
+        Hem kısa hem ince saç kombinasyonunda tellerin ağırlığı ve yoğunluğu ekstra
+        dikkat gerektirir. Bu profilde
+        <a href="/ince-sacta-mikro-kaynak/">ince saç rehberimizdeki</a> yoğunluk
+        ve ağırlık dengesi önerilerini de göz önünde bulundurun.
+      </p>
+
+      <div class="callout">
+        <p>
+          Kısa saç dönüşümünde fotoğraflarla ön değerlendirme yapılması, hem sizin
+          hem de uygulayıcının aynı sonucu hayal etmesini sağlar. Karar vermeden
+          önce referans çalışmaları ve bakım planını birlikte konuşun.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <CTAWhatsApp
+    title="Kısa saç planınızı birlikte değerlendirelim"
+    message="Merhaba, kısa saçım için mikro kaynak planlaması hakkında bilgi almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

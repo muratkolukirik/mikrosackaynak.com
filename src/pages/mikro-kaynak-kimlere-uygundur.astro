@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
+import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { guideLinks } from '../data/navigation';
+import { breadcrumbSchema, articleSchema } from '../utils/schema';
+
+const path = '/mikro-kaynak-kimlere-uygundur/';
+const title = 'Mikro Kaynak Kimlere Uygundur?';
+const description =
+  'Mikro kaynak saç yöntemi kimler için uygun, kimler için riskli olabilir? Saç yoğunluğu, saç derisi durumu ve yaşam tarzı kriterleri.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Kimlere Uygundur?', path },
+];
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Mikro Kaynak Kimlere Uygundur?"
+    lead="Her saç yapısı mikro kaynak için ideal değildir. Uygunluk; saçın mevcut durumu, hedeflenen sonuç ve bakım alışkanlıklarınıza göre değerlendirilmelidir."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <h2>Genel uygunluk kriterleri</h2>
+      <p>
+        Mikro kaynak genellikle orta yoğunlukta ve sağlıklı görünen saç tellerine
+        sahip kişilerde daha öngörülebilir sonuç verir. Bağlantı noktalarının
+        doğal saçla uyumlu taşınabilmesi için yeterli destekleyici tellerin
+        bulunması önemlidir. Çok ince veya aşırı seyrek saçlarda farklı bir
+        yöntem veya daha hafif bir planlama gerekebilir.
+      </p>
+
+      <h3>Olumlu göstergeler</h3>
+      <ul>
+        <li>Orta ila iyi saç yoğunluğu (bölgesel değerlendirme ile)</li>
+        <li>Kopma veya aşırı incelme belirtisi olmaması</li>
+        <li>Düzenli bakım rutinine uyum sağlayabilecek bir yaşam tarzı</li>
+        <li>Isı, kimyasal işlem ve sıkı topuz gibi stres faktörlerini yönetebilme</li>
+        <li>Gerçekçi beklenti: doğal geçiş, kontrollü hacim artışı</li>
+      </ul>
+
+      <h2>Dikkatle değerlendirilmesi gereken durumlar</h2>
+      <p>
+        Aktif saç dökülmesi, saç derisinde irritasyon, son dönemde yoğun kimyasal
+        işlem veya medikal tedavi süreçleri varsa mikro kaynak ertelenebilir veya
+        alternatif yöntemler düşünülebilir. Bu site tıbbi teşhis koymaz; şüpheli
+        bir durumda dermatolog veya saç uzmanına danışılması gerekir.
+      </p>
+
+      <h3>Herkes için uygun değildir</h3>
+      <p>
+        “Her saça mikro kaynak yapılır” ifadesi yanıltıcıdır. Özellikle çok kısa
+        veya çok ince saçlarda, hedeflenen dönüşüm büyükse, ek tellerin ağırlığı
+        ve yerleştirme stratejisi daha dikkatli planlanmalıdır. Bu konuları
+        ayrıntılı ele aldığımız
+        <a href="/kisa-saca-mikro-kaynak/">kısa saç</a> ve
+        <a href="/ince-sacta-mikro-kaynak/">ince saç</a> rehberlerine göz
+        atabilirsiniz.
+      </p>
+
+      <h2>Yaşam tarzı ve bakım uyumu</h2>
+      <p>
+        Sık yüzme, yoğun spor, düzenli buharlı ortamlar veya agresif fırçalama
+        alışkanlıkları bağlantı ömrünü kısaltabilir. Mikro kaynak düşünüyorsanız,
+        günlük rutininizi uygulama öncesinde paylaşmak, daha sürdürülebilir bir
+        plan oluşturmanıza yardımcı olur.
+      </p>
+
+      <div class="callout">
+        <p>
+          Uygunluk değerlendirmesi yüz yüze veya detaylı fotoğraflarla yapılabilir.
+          WhatsApp üzerinden ön bilgi almak, zaman kazandırır ancak nihai kararı
+          profesyonel muayene belirler. Fethiye ve Ölüdeniz çevresinde danışmanlık
+          arayanlar
+          <a href="/fethiye-mikro-kaynak-sac-merkezi/">Fethiye rehber sayfamıza</a>
+          bakabilir.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <CTAWhatsApp
+    title="Uygunluk değerlendirmesi için yazın"
+    message="Merhaba, mikro kaynak için uygun olup olmadığımı değerlendirmek istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

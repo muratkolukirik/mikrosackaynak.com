@@ -1,0 +1,83 @@
+---
+import { whatsappUrl } from '../data/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+  message?: string;
+  variant?: 'default' | 'subtle';
+}
+
+const {
+  title = 'Profesyonel danışmanlık',
+  text = 'Saç yapınıza en uygun yöntemi birlikte değerlendirmek için WhatsApp üzerinden sorularınızı iletebilirsiniz. Karar vermeden önce net bir plan oluşturmak, hem sonuç hem de bakım süreci açısından önem taşır.',
+  message,
+  variant = 'default',
+} = Astro.props;
+---
+
+<aside class:list={['cta', { 'cta--subtle': variant === 'subtle' }]}>
+  <div class="container container--narrow">
+    <div class="cta__inner">
+      <div class="cta__content">
+        <p class="cta__label">Ücretsiz ön görüşme</p>
+        <h2 class="cta__title">{title}</h2>
+        <p class="cta__text">{text}</p>
+      </div>
+      <div class="cta__action">
+        <a
+          href={whatsappUrl(message)}
+          class="btn btn--whatsapp"
+          rel="noopener noreferrer"
+        >
+          WhatsApp ile Yazın
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .cta {
+    padding-block: var(--space-xl);
+    background: var(--color-bg-muted);
+    border-block: 1px solid var(--color-border-subtle);
+  }
+
+  .cta--subtle {
+    background: transparent;
+    border-block: none;
+    padding-block: var(--space-lg);
+  }
+
+  .cta__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .cta__label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-xs);
+  }
+
+  .cta__title {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .cta__text {
+    color: var(--color-text-muted);
+    margin: 0;
+    max-width: 36rem;
+  }
+
+  .cta__action {
+    flex-shrink: 0;
+  }
+</style>

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
+import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { guideLinks } from '../data/navigation';
+import { breadcrumbSchema, articleSchema } from '../utils/schema';
+
+const path = '/mikro-kaynak-nedir/';
+const title = 'Mikro Kaynak Nedir?';
+const description =
+  'Mikro kaynak saç yöntemi nasıl çalışır, mikro kapsül kaynak ile diğer yöntemlerden farkı nedir? Bağlantı mantığı, avantajlar ve sınırlar.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Mikro Kaynak Nedir?', path },
+];
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Mikro Kaynak Nedir?"
+    lead="Küçük bağlantı noktalarıyla uygulanan saç uzatma yönteminin temel prensiplerini, beklentileri ve sınırlarını anlatıyoruz."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <h2>Temel tanım</h2>
+      <p>
+        Mikro kaynak, doğal saç tellerine tek tek veya küçük gruplar halinde
+        bağlanan ek saç tellerinin kullanıldığı bir uzatma yöntemidir. Bağlantı
+        noktası genellikle mikro kapsül veya benzeri küçük bir bağ ile
+        gerçekleştirilir. Amaç, eklenen tellerin kendi saçınızla uyumlu ve
+        doğal görünmesidir.
+      </p>
+
+      <h2>Nasıl uygulanır?</h2>
+      <p>
+        Uygulama öncesinde mevcut saç uzunluğu, yoğunluğu ve hedeflenen sonuç
+        değerlendirilir. Ardından ek teller, belirlenen bölgelere kontrollü bir
+        yerleştirme stratejisiyle bağlanır. İşlem süresi; tellerin sayısı, saçın
+        kısalığı ve harmanlama ihtiyacına göre değişir. Kısa saçta geçiş hattının
+        doğal görünmesi için ek planlama ve işçilik gerekebilir.
+      </p>
+
+      <h3>Bağlantı noktasının önemi</h3>
+      <p>
+        Bağlantının boyutu, konumu ve tellerin ağırlığı; hem konforu hem de
+        görünümü doğrudan etkiler. Çok ağır veya yanlış konumlandırılmış teller,
+        kök bölgesinde gereksiz gerilim yaratabilir. Bu nedenle mikro kaynak
+        uygulamasında deneyimli bir uzman tercih edilmelidir.
+      </p>
+
+      <h2>Kimler tercih eder?</h2>
+      <p>
+        İnce bağlantı profili arayan, düzenli bir görünüm isteyen ve bakım
+        disiplinine sahip kişiler mikro kaynak yöntemini değerlendirebilir. Ancak
+        her saç tipi ve yaşam tarzı bu yönteme uygun değildir. Detaylı uygunluk
+        kriterleri için
+        <a href="/mikro-kaynak-kimlere-uygundur/">kimlere uygundur</a> sayfamıza
+        bakabilirsiniz.
+      </p>
+
+      <h2>Diğer yöntemlerden farkı</h2>
+      <p>
+        Keratin kaynak ve nanofilament kaynak farklı bağlantı malzemeleri ve
+        profilleri kullanır. Mikro kaynak genellikle daha küçük bağlantı noktası
+        hedefler; fakat “daha iyi” demek her durumda doğru olmaz. Yöntem
+        karşılaştırması için
+        <a href="/mikro-kaynak-keratin-nanofilament-farki/">farklar rehberimizi</a>
+        inceleyebilirsiniz.
+      </p>
+
+      <div class="callout">
+        <p>
+          Mikro kaynak kalıcı bir çözüm değildir; periyodik bakım ve yenileme
+          gerektirir. Bakım süreci hakkında bilgi almak için
+          <a href="/mikro-kaynak-bakimi/">bakım rehberimize</a> göz atın.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <CTAWhatsApp
+    message="Merhaba, mikro kaynak yöntemi hakkında bilgi almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

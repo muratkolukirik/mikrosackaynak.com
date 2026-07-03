@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
+import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { guideLinks } from '../data/navigation';
+import { websiteSchema, breadcrumbSchema } from '../utils/schema';
+
+const path = '/';
+const title = 'Mikro Kaynak Saç Rehberi';
+const description =
+  'Mikro kaynak saç yöntemi, uygunluk kriterleri, fiyatlandırma mantığı ve bakım süreci hakkında sakin ve net bir bilgilendirme rehberi.';
+
+const breadcrumbs = [{ name: 'Ana Sayfa', path: '/' }];
+const schemas = [websiteSchema(), breadcrumbSchema(breadcrumbs)];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Mikro Kaynak Saç Rehberi"
+    lead="Doğru yöntemi seçmeden önce bilmeniz gerekenleri — teknik detayları sade bir dille, abartısız ve kullanıcı odaklı anlatıyoruz."
+  />
+
+  <section class="section">
+    <div class="container container--narrow prose">
+      <p>
+        Mikro kaynak, doğal saç tellerine küçük bağlantı noktalarıyla eklenen saç
+        uzatma yöntemlerinden biridir. Görünüm açısından ince ve düzenli bir
+        bağlantı profili sunabilir; ancak her saç yapısı ve her hedef için aynı
+        sonucu vermez. Bu rehber, karar vermeden önce yöntemi anlamanıza yardımcı
+        olmak için hazırlandı.
+      </p>
+
+      <h2>Neden sadece gram fiyatına bakmak yeterli değil?</h2>
+      <p>
+        Saç kaynak fiyatları çoğu zaman gram başına hesaplanır; bu da karşılaştırmayı
+        kolaylaştırır. Oysa nihai maliyet; saçın mevcut uzunluğu, hedeflenen hacim,
+        harmanlama ihtiyacı, tellerin ağırlığı, uygulama süresi ve bakım planı gibi
+        birçok faktöre bağlıdır. Özellikle kısa saç dönüşümlerinde işçilik payı,
+        malzeme miktarından daha belirleyici olabilir.
+      </p>
+
+      <h2>Doğru yöntem nasıl seçilir?</h2>
+      <p>
+        Mikro kapsül kaynak, keratin kaynak ve nanofilament kaynak farklı bağlantı
+        mantıklarına sahiptir. Seçim; doğal saç yoğunluğu, kesim şekli, hedef uzunluk,
+        tellerin inceliği, yerleştirme stratejisi ve günlük bakım alışkanlıklarınıza
+        göre yapılmalıdır. Herkes için tek bir “en iyi yöntem” yoktur — profesyonel
+        bir değerlendirme, gereksiz yük veya erken kopma riskini azaltır.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>Önemli:</strong> Bu site tıbbi tavsiye vermez ve her bireyin mikro
+          kaynak için uygun olduğunu iddia etmez. Saç derisi hassasiyeti, aşırı incelme
+          veya aktif tedavi süreçleri gibi durumlarda mutlaka uzman görüşü alınmalıdır.
+        </p>
+      </div>
+
+      <p>
+        Fethiye ve Ölüdeniz çevresinde ikamet eden veya bölgeye gelen ziyaretçiler
+        için ön danışmanlık rehberimiz
+        <a href="/fethiye-mikro-kaynak-sac-merkezi/">Fethiye mikro kaynak saç merkezi</a>
+        sayfasında ayrıntılı bilgi bulabilirsiniz.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container">
+      <h2 class="section-title">Rehber içeriği</h2>
+      <div class="card-grid">
+        {
+          guideLinks.map((link) => (
+            <article class="card">
+              <h3 class="card__title">
+                <a href={link.href}>{link.label}</a>
+              </h3>
+              {link.description && <p class="card__desc">{link.description}</p>}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTAWhatsApp
+    title="Karar vermeden önce sorularınızı netleştirin"
+    text="Saç yapınız, hedeflediğiniz uzunluk ve bakım rutininiz hakkında kısa bir ön görüşme, doğru yöntemi seçmenize yardımcı olur."
+  />
+
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>
+
+<style>
+  .section-title {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+</style>

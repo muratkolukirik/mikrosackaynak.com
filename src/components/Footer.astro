@@ -1,0 +1,201 @@
+---
+import { SITE, CONTACT_GENERAL, CONTACT_ISTANBUL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
+import { guideLinks, localGuides } from '../data/navigation';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <p class="footer__name">{SITE.name}</p>
+        <p class="footer__desc">
+          Mikro kaynak saç yöntemleri hakkında bağımsız bilgilendirme rehberi.
+          Karar vermeden önce doğru yöntemi anlamanıza yardımcı olmak için
+          hazırlandı.
+        </p>
+        <p class="footer__phone">
+          <a href={telUrl(CONTACT_GENERAL.phoneE164)}>
+            {CONTACT_GENERAL.phoneDisplay}
+          </a>
+          <span> — {CONTACT_GENERAL.regionNote}</span>
+        </p>
+        <p class="footer__location">
+          <a href={CONTACT_FETHIYE.pagePath}>Fethiye, Muğla</a>
+          · <a href="/iletisim/">İletişim</a>
+        </p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Rehber bağlantıları">
+        <p class="footer__nav-title">Rehber</p>
+        <ul>
+          {
+            guideLinks.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="footer__nav-title footer__nav-title--secondary">Lokal rehber</p>
+        <ul>
+          {
+            localGuides.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <p class="footer__nav-title">Danışmanlık</p>
+        <p class="footer__contact-text">
+          Saç yapınıza uygun yöntemi birlikte değerlendirmek için WhatsApp
+          üzerinden iletişime geçebilirsiniz.
+        </p>
+        <a href={whatsappUrl()} class="btn btn--whatsapp" rel="noopener noreferrer">
+          WhatsApp Danışmanlık
+        </a>
+        <p class="footer__istanbul">
+          Fethiye danışmanlık:
+          <a href={CONTACT_FETHIYE.pagePath}>rehber sayfası</a>
+          · İstanbul uygulama:
+          <a href={CONTACT_ISTANBUL.pagePath}>profesyonel rehber</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {new Date().getFullYear()} {SITE.name}. Tüm hakları saklıdır.</p>
+      <p class="footer__note">
+        Bu site bilgilendirme amaçlıdır; uygulama kararı için profesyonel
+        değerlendirme önerilir.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-bg-muted);
+    border-top: 1px solid var(--color-border-subtle);
+    padding-block: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .footer__grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+
+  .footer__name {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .footer__desc,
+  .footer__contact-text {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  .footer__phone {
+    margin: var(--space-sm) 0 0;
+    font-size: 0.9375rem;
+  }
+
+  .footer__phone a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .footer__phone span {
+    color: var(--color-text-light);
+  }
+
+  .footer__location {
+    margin: var(--space-xs) 0 0;
+    font-size: 0.8125rem;
+  }
+
+  .footer__location a {
+    text-decoration: none;
+    color: var(--color-text-light);
+  }
+
+  .footer__location a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__nav-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-sm);
+  }
+
+  .footer__nav-title--secondary {
+    margin-top: var(--space-md);
+  }
+
+  .footer__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer__nav li + li {
+    margin-top: 0.5rem;
+  }
+
+  .footer__nav a {
+    text-decoration: none;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer__nav a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__contact .btn {
+    margin-top: var(--space-md);
+  }
+
+  .footer__istanbul {
+    margin: var(--space-sm) 0 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+  }
+
+  .footer__istanbul a {
+    text-decoration: none;
+  }
+
+  .footer__bottom {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border-subtle);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+  }
+
+  .footer__bottom p {
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

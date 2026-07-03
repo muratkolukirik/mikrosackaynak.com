@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
+import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import FAQList from '../components/FAQList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { guideLinks } from '../data/navigation';
+import { breadcrumbSchema, faqSchema, type FAQEntry } from '../utils/schema';
+
+const path = '/sik-sorulan-sorular/';
+const title = 'Sık Sorulan Sorular';
+const description =
+  'Mikro kaynak saç hakkında en çok sorulan sorular: acı verir mi, ne kadar sürer, kaç ay kalır, fiyat nasıl hesaplanır? Abartısız yanıtlar.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Sık Sorulan Sorular', path },
+];
+
+const faqs: FAQEntry[] = [
+  {
+    question: 'Mikro kaynak acı verir mi?',
+    answer:
+      'Uygulama sırasında hafif bir gerilim hissedilebilir; şiddetli ağrı normal değildir. Bağlantı noktaları çok sıkıysa veya teller ağırla fazlaysa rahatsızlık artabilir. Uygulama sonrası birkaç gün alışma süreci olabilir. Dayanılmaz ağrı durumunda uygulayıcınıza başvurun.',
+  },
+  {
+    question: 'Mikro kaynak ne kadar süre dayanır?',
+    answer:
+      'Bağlantı ömrü; bakım disiplininize, saç büyüme hızınıza, kullanılan saç kalitesine ve günlük alışkanlıklarınıza bağlıdır. Kesin bir ay garantisi vermek doğru değildir. Düzenli kontrol seansları ile daha uzun ve düzenli bir görünüm elde edilebilir.',
+  },
+  {
+    question: 'Uygulama ne kadar sürer?',
+    answer:
+      'Tam kapsamlı bir uygulama genellikle birkaç saat sürebilir. Süre; eklenen tellerin miktarına, saçın kısalığına ve harmanlama ihtiyacına göre değişir. Kısa saç dönüşümlerinde süre ve işçilik daha belirleyici olabilir.',
+  },
+  {
+    question: 'Fiyat neden kişiden kişiye değişir?',
+    answer:
+      'Gram fiyatı tek başına yeterli değildir. Mevcut saç uzunluğu, hedeflenen sonuç, yoğunluk, saç kalitesi, uygulama süresi ve bakım planı maliyeti birlikte belirler. Detaylı açıklama için fiyatlandırma rehberimize bakabilirsiniz.',
+  },
+  {
+    question: 'Herkes mikro kaynak yaptırabilir mi?',
+    answer:
+      'Hayır. Saç yoğunluğu, saç derisi durumu, aktif dökülme veya medikal tedavi süreçleri uygunluğu etkileyebilir. Profesyonel değerlendirme olmadan karar vermek riskli olabilir.',
+  },
+  {
+    question: 'Mikro kaynak mı keratin kaynak mı daha iyi?',
+    answer:
+      '“Daha iyi” kavramı kişiseldir. Mikro kaynak ince profil hedefler; keratin kaynak farklı bir bağlantı mantığı kullanır. Saç profilinize, bakım alışkanlıklarınıza ve hedefinize göre seçim yapılmalıdır.',
+  },
+  {
+    question: 'Yüzerken veya spor yaparken sorun olur mu?',
+    answer:
+      'Klor, tuzlu su ve sık yıkama bağlantı ömrünü kısaltabilir. Spor sonrası saçı nazikçe kurulamak ve sıkı topuzdan kaçınmak faydalıdır. Yoğun yüzme veya spor rutininiz varsa uygulama öncesinde uzmanınızla paylaşın.',
+  },
+  {
+    question: 'Saçlarımı evde çıkarabilir miyim?',
+    answer:
+      'Bağlantıları kendiniz çıkarmak doğal saçınıza zarar verebilir. Profesyonel söküm önerilir. Acil bir durumda uygulayıcınıza danışın.',
+  },
+];
+
+const schemas = [breadcrumbSchema(breadcrumbs), faqSchema(faqs)];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Sık Sorulan Sorular"
+    lead="Mikro kaynak hakkında en çok merak edilen konulara abartısız, net yanıtlar."
+  />
+
+  <section class="section">
+    <div class="container container--narrow">
+      <FAQList faqs={faqs} />
+
+      <div class="prose" style="margin-top: var(--space-xl);">
+        <p>
+          Sorunuz listede yoksa rehber sayfalarımıza göz atabilir veya WhatsApp
+          üzerinden doğrudan yazabilirsiniz. Daha ayrıntılı bilgi için
+          <a href="/mikro-kaynak-nedir/">mikro kaynak nedir</a>,
+          <a href="/mikro-kaynak-fiyatlari/">fiyatlandırma</a> ve
+          <a href="/mikro-kaynak-bakimi/">bakım</a> sayfalarını inceleyin.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTAWhatsApp
+    title="Başka sorularınız mı var?"
+    message="Merhaba, mikro kaynak hakkında bir sorum var."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>
