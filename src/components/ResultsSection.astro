@@ -1,0 +1,21 @@
+---
+import ImageGallery from './ImageGallery.astro';
+import type { SiteImage } from '../data/images';
+
+interface Props {
+  images: SiteImage[];
+  title?: string;
+}
+
+const {
+  images,
+  title = 'Gerçek Uygulama Görselleri',
+} = Astro.props;
+---
+
+<ImageGallery
+  {title}
+  intro="Aşağıdaki görseller Sach & Vogue Hair'in gerçek model çekimlerinden alınmıştır; AI üretimi değildir. Yöntem iddiası olmadan saç kalitesi, renk uyumu ve doğal görünüm referansı sunar."
+  {images}
+  columns={2}
+/>

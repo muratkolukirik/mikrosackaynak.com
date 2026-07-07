@@ -4,66 +4,66 @@ export interface NavItem {
   description?: string;
 }
 
+/** İlk canlı sürüm — ana navigasyon */
 export const primaryNav: NavItem[] = [
-  { label: 'Mikro Kaynak Nedir?', href: '/mikro-kaynak-nedir/' },
-  { label: 'Kimlere Uygundur?', href: '/mikro-kaynak-kimlere-uygundur/' },
+  { label: 'Mikro Saç Kaynak', href: '/mikro-sac-kaynak/' },
+  { label: 'Fiyatlar', href: '/mikro-sac-kaynak-fiyatlari/' },
   { label: 'Kısa Saç', href: '/kisa-saca-mikro-kaynak/' },
-  { label: 'İnce Saç', href: '/ince-sacta-mikro-kaynak/' },
-  { label: 'Fiyatlar', href: '/mikro-kaynak-fiyatlari/' },
-  { label: 'Yöntem Farkları', href: '/mikro-kaynak-keratin-nanofilament-farki/' },
+  { label: 'İnce Saç', href: '/ince-saca-mikro-kaynak/' },
+  { label: 'Keratin mi?', href: '/mikro-kaynak-mi-keratin-kaynak-mi/' },
   { label: 'Bakım', href: '/mikro-kaynak-bakimi/' },
-  { label: 'SSS', href: '/sik-sorulan-sorular/' },
+  { label: 'Fethiye', href: '/fethiye-mikro-sac-kaynak/' },
   { label: 'İletişim', href: '/iletisim/' },
 ];
 
+/** Cluster rehber bağlantıları — pillar etrafında */
 export const guideLinks: NavItem[] = [
   {
-    label: 'Mikro Kaynak Nedir?',
-    href: '/mikro-kaynak-nedir/',
-    description: 'Mikro kapsül kaynak yönteminin temel prensipleri',
+    label: 'Mikro Saç Kaynak',
+    href: '/mikro-sac-kaynak/',
+    description: 'Pillar rehber: yöntem, uygunluk ve uzmanlık mesajı',
   },
   {
-    label: 'Kimlere Uygundur?',
-    href: '/mikro-kaynak-kimlere-uygundur/',
-    description: 'Uygunluk kriterleri ve dikkat edilmesi gerekenler',
+    label: 'Mikro Saç Kaynak Fiyatları',
+    href: '/mikro-sac-kaynak-fiyatlari/',
+    description: 'Gram dışı fiyatlandırma faktörleri',
   },
   {
     label: 'Kısa Saça Mikro Kaynak',
     href: '/kisa-saca-mikro-kaynak/',
-    description: 'Kısa saçta planlama, harmanlama ve işçilik',
+    description: 'Kısa saçta dönüşüm planlaması',
   },
   {
-    label: 'İnce Saçta Mikro Kaynak',
-    href: '/ince-sacta-mikro-kaynak/',
-    description: 'İnce telli saçlarda yoğunluk ve ağırlık dengesi',
+    label: 'İnce Saça Mikro Kaynak',
+    href: '/ince-saca-mikro-kaynak/',
+    description: 'İnce telli saçlarda yoğunluk dengesi',
   },
   {
-    label: 'Fiyatlar Neye Göre Değişir?',
-    href: '/mikro-kaynak-fiyatlari/',
-    description: 'Gram dışındaki fiyatlandırma faktörleri',
-  },
-  {
-    label: 'Keratin ve Nanofilament Farkı',
-    href: '/mikro-kaynak-keratin-nanofilament-farki/',
+    label: 'Mikro Kaynak mı Keratin mi?',
+    href: '/mikro-kaynak-mi-keratin-kaynak-mi/',
     description: 'Yöntem karşılaştırması ve seçim kriterleri',
   },
   {
     label: 'Mikro Kaynak Bakımı',
     href: '/mikro-kaynak-bakimi/',
-    description: 'Günlük rutin ve uzun ömürlü sonuç için ipuçları',
+    description: 'Günlük rutin ve yenileme döngüsü',
+  },
+  {
+    label: 'Fethiye Mikro Saç Kaynak',
+    href: '/fethiye-mikro-sac-kaynak/',
+    description: 'Fethiye / Ölüdeniz hizmet merkezi danışmanlık',
   },
 ];
 
-/** Ana menüde gösterilmeyen lokal rehber sayfaları */
 export const localGuides: NavItem[] = [
   {
-    label: 'Fethiye Mikro Kaynak Saç',
-    href: '/fethiye-mikro-kaynak-sac-merkezi/',
-    description: 'Fethiye ve Ölüdeniz için ön danışmanlık rehberi',
+    label: 'Fethiye Mikro Saç Kaynak',
+    href: '/fethiye-mikro-sac-kaynak/',
+    description: 'Fethiye ve Ölüdeniz için ön danışmanlık',
   },
-  {
-    label: 'İstanbul Mikro Saç Kaynak',
-    href: '/istanbul-mikro-sac-kaynak/',
-    description: 'Şehirde profesyonel uygulama arayanlar için rehber',
-  },
+];
+
+export const legalLinks: NavItem[] = [
+  { label: 'Gizlilik Politikası', href: '/gizlilik-politikasi/' },
+  { label: 'Çerez Politikası', href: '/cerez-politikasi/' },
 ];

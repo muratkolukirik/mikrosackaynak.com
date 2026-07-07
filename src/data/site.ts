@@ -1,6 +1,14 @@
+/** Sach & Vogue Hair — marka ve ürün sabitleri */
+export const BRAND = {
+  name: 'Sach & Vogue Hair',
+  colorCount: 141,
+  colorNote:
+    '141 renk sisteminde doğal saç rengiyle uyumlu harmanlama hedeflenir.',
+} as const;
+
 /** Fethiye merkez — adres, telefon, WhatsApp ve çalışma saatleri (tek kaynak) */
 export const CONTACT_FETHIYE = {
-  pagePath: '/fethiye-mikro-kaynak-sac-merkezi/',
+  pagePath: '/fethiye-mikro-sac-kaynak/',
   /** Google Business Profile / resmi marka adı */
   brandName: 'Sach & Vogue Hair',
   /** Sayfa H1 ve lokal rehber bağlamı */
@@ -47,17 +55,20 @@ export const CONTACT_GENERAL = {
 } as const;
 
 export const SITE = {
-  name: 'Mikro Kaynak Saç Rehberi',
-  tagline: 'Doğru yöntemi anlamak için sakin ve net bir rehber',
+  name: 'Mikro Saç Kaynak Rehberi',
+  tagline: 'Türkiye\'nin mikro saç kaynak uzmanlık kaynağı',
   domain: 'https://mikrosackaynak.com',
   ogImage: '/og-mikro-kaynak-rehberi.png',
   locale: 'tr-TR',
   organization: {
-    name: 'Mikro Kaynak Saç Rehberi',
+    name: 'Mikro Saç Kaynak Rehberi',
     description:
-      'Mikro kaynak ve saç uzatma yöntemleri hakkında bağımsız, kullanıcı odaklı bilgilendirme rehberi.',
+      'Mikro saç kaynak konusunda kapsamlı, uzman ve güvenilir bilgilendirme rehberi. Fethiye / Ölüdeniz hizmet merkezi: Sach & Vogue Hair.',
   },
 } as const;
+
+/** Pillar sayfa — tüm cluster iç linklerin merkezi */
+export const PILLAR_PATH = '/mikro-sac-kaynak/' as const;
 
 /** İstanbul — yalnızca profesyonel saç kaynak uygulaması talepleri */
 export const CONTACT_ISTANBUL = {

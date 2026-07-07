@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE } from '../../data/site';
+import { breadcrumbSchema } from '../../utils/schema';
+
+const path = '/cerez-politikasi/';
+const title = 'Çerez Politikası';
+const description =
+  'Mikro Saç Kaynak Rehberi çerez politikası. Sitede kullanılan çerezler ve tercihleriniz hakkında bilgilendirme.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Çerez Politikası', path },
+];
+const schemas = [breadcrumbSchema(breadcrumbs)];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas} noindex>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Çerez Politikası"
+    lead="Bu sayfa, mikrosackaynak.com üzerinde kullanılan çerezler hakkında bilgi verir."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <p><em>Son güncelleme: 1 Temmuz 2026</em></p>
+
+      <h2>1. Çerez nedir?</h2>
+      <p>
+        Çerezler, ziyaret ettiğiniz web siteleri tarafından tarayıcınıza
+        kaydedilen küçük metin dosyalarıdır. Site işlevselliği, tercihlerinizin
+        hatırlanması veya istatistik toplama amacıyla kullanılabilir.
+      </p>
+
+      <h2>2. Bu sitede kullanılan çerezler</h2>
+      <p>
+        {SITE.name} bilgilendirme amaçlı statik bir sitedir ve minimal çerez
+        kullanır. Şu an için aşağıdaki türler geçerlidir:
+      </p>
+
+      <h3>Zorunlu çerezler</h3>
+      <p>
+        Sitenin temel işlevlerini sağlamak için gerekli olabilecek teknik
+        çerezler. Bu çerezler olmadan site düzgün çalışmayabilir.
+      </p>
+
+      <h3>Analitik çerezler</h3>
+      <p>
+        Şu an için üçüncü taraf analitik araçları (Google Analytics vb.)
+        kullanılmamaktadır. Gelecekte analitik çerez eklenirse bu sayfa
+        güncellenecektir.
+      </p>
+
+      <h3>Pazarlama çerezleri</h3>
+      <p>
+        Bu site reklam veya hedefli pazarlama çerezi kullanmaz.
+      </p>
+
+      <h2>3. Üçüncü taraf bağlantıları</h2>
+      <p>
+        WhatsApp ve telefon gibi harici hizmetlere yönlendiren bağlantılar,
+        ilgili platformların kendi çerez politikalarına tabidir. Bu site
+        üzerinden WhatsApp'a geçtiğinizde Meta'nın çerez uygulamaları
+        devreye girebilir.
+      </p>
+
+      <h2>4. Çerez tercihleriniz</h2>
+      <p>
+        Tarayıcı ayarlarınızdan çerezleri silebilir veya engelleyebilirsiniz.
+        Zorunlu çerezlerin engellenmesi site deneyimini olumsuz etkileyebilir.
+        Çoğu tarayıcıda çerez ayarları Gizlilik veya Güvenlik bölümünde
+        bulunur.
+      </p>
+
+      <h2>5. Kişisel veriler</h2>
+      <p>
+        Çerezler aracılığıyla toplanan veriler hakkında ayrıntılı bilgi için
+        <a href="/gizlilik-politikasi/">gizlilik politikamıza</a> bakın.
+      </p>
+
+      <h2>6. Değişiklikler</h2>
+      <p>
+        Bu çerez politikası güncellenebilir. Önemli değişiklikler bu sayfada
+        yayımlanır.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

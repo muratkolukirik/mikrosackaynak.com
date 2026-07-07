@@ -4,69 +4,68 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
 import CTAWhatsApp from '../components/CTAWhatsApp.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import ResultsSection from '../components/ResultsSection.astro';
 import { guideLinks } from '../data/navigation';
+import { IMAGES, applicationGallery } from '../data/images';
+import { BRAND, PILLAR_PATH } from '../data/site';
 import { websiteSchema, breadcrumbSchema } from '../utils/schema';
 
 const path = '/';
-const title = 'Mikro Kaynak Saç Rehberi';
+const title = 'Mikro Saç Kaynak Rehberi';
 const description =
-  'Mikro kaynak saç yöntemi, uygunluk kriterleri, fiyatlandırma mantığı ve bakım süreci hakkında sakin ve net bir bilgilendirme rehberi.';
+  'Mikro saç kaynak hakkında Türkiye\'nin kapsamlı uzman rehberi. Yöntem, fiyat mantığı, kısa ve ince saç planlaması, bakım ve Fethiye danışmanlık.';
 
 const breadcrumbs = [{ name: 'Ana Sayfa', path: '/' }];
 const schemas = [websiteSchema(), breadcrumbSchema(breadcrumbs)];
+const heroImage = IMAGES.mikroDogalGorunum;
 ---
 
 <BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
   <Breadcrumb items={breadcrumbs} />
   <PageHero
-    title="Mikro Kaynak Saç Rehberi"
-    lead="Doğru yöntemi seçmeden önce bilmeniz gerekenleri — teknik detayları sade bir dille, abartısız ve kullanıcı odaklı anlatıyoruz."
+    title="Mikro Saç Kaynak Rehberi"
+    lead="Mikro saç kaynak yalnızca küçük tutamlı bir uzatma yöntemi değildir. Doğal yoğunluk, tel taşıma kapasitesi, tutam ağırlığı, yerleşim planı ve bakım disiplini birlikte değerlendirilmelidir."
+    image={heroImage}
   />
 
   <section class="section">
     <div class="container container--narrow prose">
-      <p>
-        Mikro kaynak, doğal saç tellerine küçük bağlantı noktalarıyla eklenen saç
-        uzatma yöntemlerinden biridir. Görünüm açısından ince ve düzenli bir
-        bağlantı profili sunabilir; ancak her saç yapısı ve her hedef için aynı
-        sonucu vermez. Bu rehber, karar vermeden önce yöntemi anlamanıza yardımcı
-        olmak için hazırlandı.
-      </p>
-
-      <h2>Neden sadece gram fiyatına bakmak yeterli değil?</h2>
-      <p>
-        Saç kaynak fiyatları çoğu zaman gram başına hesaplanır; bu da karşılaştırmayı
-        kolaylaştırır. Oysa nihai maliyet; saçın mevcut uzunluğu, hedeflenen hacim,
-        harmanlama ihtiyacı, tellerin ağırlığı, uygulama süresi ve bakım planı gibi
-        birçok faktöre bağlıdır. Özellikle kısa saç dönüşümlerinde işçilik payı,
-        malzeme miktarından daha belirleyici olabilir.
-      </p>
-
-      <h2>Doğru yöntem nasıl seçilir?</h2>
-      <p>
-        Mikro kapsül kaynak, keratin kaynak ve nanofilament kaynak farklı bağlantı
-        mantıklarına sahiptir. Seçim; doğal saç yoğunluğu, kesim şekli, hedef uzunluk,
-        tellerin inceliği, yerleştirme stratejisi ve günlük bakım alışkanlıklarınıza
-        göre yapılmalıdır. Herkes için tek bir “en iyi yöntem” yoktur — profesyonel
-        bir değerlendirme, gereksiz yük veya erken kopma riskini azaltır.
-      </p>
-
-      <div class="callout">
+      <div class="short-answer">
+        <p class="short-answer__label">Kısa cevap</p>
         <p>
-          <strong>Önemli:</strong> Bu site tıbbi tavsiye vermez ve her bireyin mikro
-          kaynak için uygun olduğunu iddia etmez. Saç derisi hassasiyeti, aşırı incelme
-          veya aktif tedavi süreçleri gibi durumlarda mutlaka uzman görüşü alınmalıdır.
+          Mikro saç kaynak, doğal saç tellerine ince tutamlarla bağlanan bir saç
+          uzatma yöntemidir. Doğru sonuç; gram hesabından çok saç analizi, yerleşim
+          stratejisi ve gerçekçi bakım planıyla mümkün olur.
+          <a href={PILLAR_PATH}>Detaylı pillar rehber</a> tüm konuları kapsar.
         </p>
       </div>
 
+      <h2>Neden bu rehber?</h2>
       <p>
-        Fethiye ve Ölüdeniz çevresinde ikamet eden veya bölgeye gelen ziyaretçiler
-        için ön danışmanlık rehberimiz
-        <a href="/fethiye-mikro-kaynak-sac-merkezi/">Fethiye mikro kaynak saç merkezi</a>
-        sayfasında ayrıntılı bilgi bulabilirsiniz.
+        mikrosackaynak.com, mikro saç kaynak konusuna odaklanan uzman bir bilgi
+        kaynağıdır. {BRAND.name} deneyimi ve Fethiye / Ölüdeniz hizmet merkezi
+        perspektifiyle; fiyat, uygunluk, kısa saç dönüşümü ve yöntem seçimini
+        sakin, gerçekçi bir dille anlatırız.
+      </p>
+
+      <h2>Uzmanlık mesajı</h2>
+      <p>
+        Mikro saç kaynak kararı; mevcut kesim, hedef uzunluk, tellerin inceliği,
+        ense yoğunluğu ve günlük bakım alışkanlıklarınızla birlikte ele alınmalıdır.
+        {BRAND.colorNote} Kesin vaatler yerine kişiye özel danışmanlık sunuyoruz.
+      </p>
+
+      <h2>İlk adım: pillar rehber</h2>
+      <p>
+        Tüm konuların merkezi
+        <a href={PILLAR_PATH}>mikro saç kaynak rehberi</a>
+        sayfasıdır. Uygunluk, gramaj mantığı, yöntem farkları ve sık sorulan
+        sorular orada toplanmıştır.
       </p>
     </div>
   </section>
+
+  <ResultsSection images={applicationGallery} />
 
   <section class="section section--muted">
     <div class="container">

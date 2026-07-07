@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import FAQList from '../../components/FAQList.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import { guideLinks } from '../../data/navigation';
+import { keratinComparisonGallery } from '../../data/images';
+import { PILLAR_PATH } from '../../data/site';
+import {
+  breadcrumbSchema,
+  articleSchema,
+  faqSchema,
+  type FAQEntry,
+} from '../../utils/schema';
+
+const path = '/mikro-kaynak-mi-keratin-kaynak-mi/';
+const title = 'Mikro Kaynak mı Keratin Kaynak mı?';
+const description =
+  'Mikro kaynak ile keratin kaynak arasındaki farklar. Bağlantı profili, konfor, bakım ve hangi saç tipine daha uygun? Nanofilament kısa not.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Mikro Kaynak mı Keratin mi?', path },
+];
+
+const faqs: FAQEntry[] = [
+  {
+    question: 'Mikro kaynak mı keratin kaynak mı daha doğal görünür?',
+    answer:
+      'Doğallık yöntemden çok yerleşim planına, tutam ağırlığına ve renk harmanlamasına bağlıdır. Mikro kaynak ince bağlantı profili hedefler; keratin kaynak farklı bir bağ noktası kullanır. Her iki yöntem de doğru planlandığında doğal sonuç verebilir; yanlış planlandığında ikisi de sorunlu olabilir.',
+  },
+  {
+    question: 'İnce saçta hangisi daha uygun?',
+    answer:
+      'İnce saçta tutam ağırlığı ve bağlantı konumu belirleyicidir. Bazı ince saç profillerinde mikro kaynak, bazılarında keratin kaynak daha uygun olabilir. Tek doğru cevap yoktur; bireysel saç analizi gerekir.',
+  },
+  {
+    question: 'Nanofilament kaynak nedir, mikro kaynakla aynı mı?',
+    answer:
+      'Hayır. Nanofilament kaynak ince film veya nano ölçekli bağlantı elemanı kullanan farklı bir yöntemdir. Mikro kaynak ve keratin kaynaktan bağlantı profili ve malzeme açısından ayrılır. Üç yöntem de saç uzatma amacı taşır; seçim saç yapınıza göre yapılmalıdır.',
+  },
+];
+
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+  faqSchema(faqs),
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Mikro Kaynak mı Keratin Kaynak mı?"
+    lead="İki yöntem de saç uzatma amacı taşır; fark bağlantı malzemesinde, profilinde ve bakım ihtiyacında ortaya çıkar. Tek doğru yöntem yoktur."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <div class="short-answer">
+        <p class="short-answer__label">Kısa cevap</p>
+        <p>
+          Mikro kaynak küçük kapsül veya mikro bağ profili hedefler; keratin
+          kaynak ergimiş keratin boncuğu kullanır. Konfor, görünürlük ve bakım
+          ihtiyacı farklıdır. Seçim saç yapınıza, hedefinize ve bakım
+          disiplininize göre yapılmalıdır.
+        </p>
+      </div>
+
+      <h2>Karşılaştırma özeti</h2>
+      <p>
+        Yöntem seçimi kişiseldir. Aşağıdaki tablo genel eğilimleri özetler; nihai
+        karar saç analizi ile verilmelidir.
+      </p>
+
+      <div class="comparison-table" role="region" aria-label="Mikro kaynak ve keratin kaynak karşılaştırması">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Özellik</th>
+              <th scope="col">Mikro kaynak</th>
+              <th scope="col">Keratin kaynak</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Bağlantı profili</th>
+              <td>Küçük kapsül / mikro bağ</td>
+              <td>Ergimiş keratin boncuk</td>
+            </tr>
+            <tr>
+              <th scope="row">Görünürlük</th>
+              <td>İnce profil hedeflenir</td>
+              <td>Bağ noktası daha belirgin olabilir</td>
+            </tr>
+            <tr>
+              <th scope="row">Konfor</th>
+              <td>Hafif tutam profili</td>
+              <td>Bağ noktası hissi değişken</td>
+            </tr>
+            <tr>
+              <th scope="row">Uygulama süresi</th>
+              <td>Orta–uzun</td>
+              <td>Orta</td>
+            </tr>
+            <tr>
+              <th scope="row">İnce saç uygunluğu</th>
+              <td>Profil değerlendirmesi gerekir</td>
+              <td>Profil değerlendirmesi gerekir</td>
+            </tr>
+            <tr>
+              <th scope="row">Bakım</th>
+              <td>Düzenli kontrol gerekir</td>
+              <td>Periyodik düzeltme</td>
+            </tr>
+            <tr>
+              <th scope="row">Maliyet eğilimi</th>
+              <td>İşçilik yoğunluğuna bağlı</td>
+              <td>Değişken; profil belirler</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Mikro kaynak (mikro kapsül kaynak)</h2>
+      <p>
+        Küçük bağlantı noktalarıyla uygulanır. Düzenli ve ince bir profil hedefleyen
+        kişiler tarafından tercih edilebilir. Bağlantıların konumu ve tellerin
+        ağırlığı doğru ayarlanmazsa konfor etkilenebilir. Kapsamlı tanım için
+        <a href={PILLAR_PATH}>mikro saç kaynak</a> pillar rehberimize bakın.
+      </p>
+
+      <h2>Keratin kaynak</h2>
+      <p>
+        Ergimiş keratin ile oluşturulan boncuk veya damla bağlantılar kullanılır.
+        Uygulama süreci farklıdır; bağ noktası profili mikro kaynaktan genellikle
+        daha belirgindir. Bazı saç tiplerinde güvenilir bir seçenek olabilir;
+        ince saçta profil değerlendirmesi özellikle önemlidir.
+      </p>
+
+      <h2>Nanofilament kaynak — kısa not</h2>
+      <p>
+        Nanofilament kaynak, ince bir film veya nano ölçekli bağlantı elemanı
+        kullanan üçüncü bir yöntemdir. Düz profil hedefleyen uygulamalarda
+        değerlendirilebilir. Mikro kaynak ve keratin kaynaktan farklı malzeme
+        ve uygulama tekniği kullanır; üç yöntemi birbirine karıştırmamak gerekir.
+        Detaylı nanofilament karşılaştırması ilerleyen içerik fazında eklenecektir; temel çerçeve için
+        <a href="/mikro-sac-kaynak/">mikro saç kaynak rehberi</a>
+        sayfasına bakabilirsiniz.
+      </p>
+
+      <h2>Hangisini seçmeliyim?</h2>
+      <p>
+        Doğal saç yoğunluğu, kesim, hedef uzunluk, tellerin ağırlığı, yerleştirme
+        stratejisi ve bakım alışkanlıklarınız birlikte değerlendirilmelidir. Tek
+        bir yöntemi “herkes için en iyisi” olarak sunmak doğru değildir.
+        <a href="/ince-saca-mikro-kaynak/">İnce saça mikro kaynak</a> ve
+        <a href="/kisa-saca-mikro-kaynak/">kısa saça mikro kaynak</a>
+        rehberlerimizde profil bazlı senaryoları inceleyebilirsiniz.
+      </p>
+
+      <div class="callout">
+        <p>
+          Yöntem seçiminde fiyat tek kriter olmamalıdır. Yanlış yöntem; erken kopma,
+          rahatsızlık veya doğal olmayan görünümle ek maliyet doğurabilir.
+        </p>
+      </div>
+
+      <h2>Sık sorulan sorular</h2>
+      <FAQList faqs={faqs} />
+    </div>
+  </article>
+
+  <ImageGallery
+    title="Mikro ve Keratin Kaynak Görselleri"
+    intro="Gerçek uygulama görselleri — bağlantı profili ve doğal görünüm referansı. Görseller belirli bir yöntem iddiası taşımaz."
+    images={keratinComparisonGallery}
+    columns={3}
+  />
+
+  <CTAWhatsApp
+    title="Size uygun yöntemi birlikte belirleyelim"
+    message="Merhaba, mikro kaynak ile keratin kaynak arasındaki fark hakkında danışmanlık almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

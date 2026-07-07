@@ -1,0 +1,52 @@
+---
+import type { SiteImage } from '../data/images';
+
+interface Props {
+  image: SiteImage;
+  loading?: 'lazy' | 'eager';
+  sizes?: string;
+  class?: string;
+}
+
+const {
+  image,
+  loading = 'lazy',
+  sizes = '(min-width: 768px) 720px, 100vw',
+  class: className,
+} = Astro.props;
+---
+
+<figure class:list={['editorial-image', className]}>
+  <picture>
+    <source srcset={image.webp} type="image/webp" sizes={sizes} />
+    <img
+      src={image.jpg}
+      alt={image.alt}
+      loading={loading}
+      decoding="async"
+      sizes={sizes}
+      width="1200"
+      height="900"
+    />
+  </picture>
+  {image.caption && <figcaption>{image.caption}</figcaption>}
+</figure>
+
+<style>
+  .editorial-image {
+    margin: var(--space-lg) 0;
+  }
+
+  .editorial-image img {
+    width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .editorial-image figcaption {
+    margin-top: var(--space-xs);
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+  }
+</style>

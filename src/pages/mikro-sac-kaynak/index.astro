@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import FAQList from '../../components/FAQList.astro';
+import ResultsSection from '../../components/ResultsSection.astro';
+import EditorialImage from '../../components/EditorialImage.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import { guideLinks } from '../../data/navigation';
+import { IMAGES, applicationGallery } from '../../data/images';
+import { BRAND, CONTACT_FETHIYE } from '../../data/site';
+import {
+  breadcrumbSchema,
+  articleSchema,
+  faqSchema,
+  serviceSchema,
+  type FAQEntry,
+} from '../../utils/schema';
+
+const path = '/mikro-sac-kaynak/';
+const title = 'Mikro Saç Kaynak';
+const description =
+  'Mikro saç kaynak nedir, nasıl uygulanır, kimler için uygundur? Tutam ağırlığı, yerleşim planı, 141 renk sistemi ve gerçekçi beklentiler — kapsamlı uzman rehber.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Mikro Saç Kaynak', path },
+];
+
+const faqs: FAQEntry[] = [
+  {
+    question: 'Mikro saç kaynak nedir?',
+    answer:
+      'Doğal saç tellerine ince tutamlarla bağlanan saç uzatma yöntemidir. Her tutam genellikle hafif profilde hazırlanır; amaç doğal görünüm ve kontrollü yoğunluk artışıdır.',
+  },
+  {
+    question: 'Mikro saç kaynak herkese uygun mu?',
+    answer:
+      'Hayır. Saç derisi hassasiyeti, aşırı incelme veya aktif tedavi süreçlerinde uzman değerlendirmesi gerekir. Uygunluk bireysel saç analizi ile belirlenir.',
+  },
+  {
+    question: 'Mikro saç kaynak fiyatı neden gramdan ibaret değil?',
+    answer:
+      'Mevcut uzunluk, hedef, yoğunluk, renk eşleştirme, işçilik süresi ve bakım döngüsü birlikte maliyeti belirler. Detay için mikro saç kaynak fiyatları rehberine bakın.',
+  },
+  {
+    question: '141 renk sistemi ne anlama gelir?',
+    answer:
+      `${BRAND.name} kartelasında ${BRAND.colorCount} renk seçeneği bulunur. Amaç, doğal saç rengiyle uyumlu harmanlama yapabilmektir; tek renk zorunluluğu yoktur.`,
+  },
+];
+
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+  faqSchema(faqs),
+  serviceSchema({
+    name: 'Mikro Saç Kaynak Danışmanlık',
+    description:
+      'Mikro saç kaynak uygunluk, planlama ve yöntem seçimi hakkında uzman danışmanlık.',
+    path,
+    areaServed: 'Türkiye',
+  }),
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Mikro Saç Kaynak"
+    lead="Küçük tutamlı bağlantı profili hedefleyen saç uzatma yöntemi. Doğru planlama; gram hesabından çok saç yapısı, yerleşim ve bakım disipliniyle mümkündür."
+    image={IMAGES.mikroDogalGorunum}
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <div class="short-answer">
+        <p class="short-answer__label">Kısa cevap</p>
+        <p>
+          Mikro saç kaynak, ince tutamlarla uygulanan saç uzatma sistemidir. Her
+          tutamın ağırlığı, bağlantı konumu ve hedef yoğunluk kişiye özel
+          planlanmalıdır; standart paket her profile uymaz.
+        </p>
+      </div>
+
+      <h2 id="temel-tanim">Temel tanım ve uygulama mantığı</h2>
+      <p>
+        Mikro saç kaynak, saç kaynak sistemleri arasında ince bağlantı profili
+        hedefleyen yöntemlerden biridir. Tutamlar genellikle hafif ağırlıkta
+        hazırlanır ve kontrollü bir yerleşim planıyla uygulanır. İşlem öncesinde
+        mevcut uzunluk, yoğunluk, kesim katmanları ve hedef görünüm birlikte
+        değerlendirilir.
+      </p>
+      <p>
+        Uygulama süresi; tellerin sayısı, saçın kısalığı, harmanlama ihtiyacı ve
+        yerleşim karmaşıklığına göre değişir. Kısa saçta geçiş hattının doğal
+        görünmesi ek planlama gerektirebilir —
+        <a href="/kisa-saca-mikro-kaynak/">kısa saça mikro kaynak</a>
+        rehberimizde ayrıntılı anlatıyoruz.
+      </p>
+
+      <h2 id="kimler-icin">Kimler için uygundur?</h2>
+      <ul>
+        <li>İnce ve düzenli bağlantı profili arayanlar</li>
+        <li>Bakım disiplinine sahip, periyodik kontrol yaptırabilecek kişiler</li>
+        <li>Doğal yoğunluk artışı veya kontrollü uzatma hedefleyenler</li>
+        <li>Renk harmanlaması ve katman planlamasına zaman ayırabilecek profiller</li>
+      </ul>
+
+      <h2 id="kimler-icin-degil">Kimler için uygun olmayabilir?</h2>
+      <ul>
+        <li>Aşırı incelmiş veya kırılgan saç telleri</li>
+        <li>Aktif saç derisi sorunları (uzman yönlendirmesi olmadan)</li>
+        <li>Bakım rutinine uyamayacak yoğun yaşam temposu</li>
+        <li>Gerçekçi olmayan tek seansta dramatik dönüşüm beklentisi</li>
+      </ul>
+
+      <h2>Tutam ağırlığı ve gramaj mantığı</h2>
+      <p>
+        Mikro saç kaynakta tutam ağırlığı tek başına karar verdirmez. Doğal saçın
+        taşıma kapasitesi, ense yoğunluğu, yan bölgeler ve hedef hacim birlikte
+        okunmalıdır. İnce saçta daha hafif tutam tercih edilirken yoğun saçta
+        farklı bir yerleşim stratejisi uygulanabilir.
+      </p>
+
+      <EditorialImage image={IMAGES.renkUyumu} />
+
+      <h2>141 renk sistemi ve renk uyumu</h2>
+      <p>
+        {BRAND.name} kartelasında {BRAND.colorCount} renk seçeneği bulunur. Saç
+        renginiz ne olursa olsun, doğal tonlarla uyumlu harmanlama hedeflenir.
+        Renk eşleştirme yalnızca estetik değil; geçiş hattının fark edilmemesi
+        için de kritiktir.
+      </p>
+
+      <h2>Uygulama öncesi değerlendirme</h2>
+      <p>
+        Karar vermeden önce mevcut saç fotoğrafları, hedef uzunluk ve günlük bakım
+        alışkanlıklarınız paylaşılmalıdır. {CONTACT_FETHIYE.regionNote} hizmet
+        merkezimizde veya WhatsApp hattımızda ön danışmanlık alabilirsiniz —
+        <a href="/fethiye-mikro-sac-kaynak/">Fethiye rehberi</a>.
+      </p>
+
+      <h2>Mikro kaynakta doğal görünüm</h2>
+      <p>
+        Doğal sonuç; bağlantı noktasının boyutu, konumu ve tellerin düşüş yönüne
+        uyumuyla sağlanır. Aşırı yoğunluk veya yanlış katman yerleşimi hem konforu
+        hem görünümü olumsuz etkileyebilir.
+      </p>
+    </div>
+  </article>
+
+  <ImageGallery
+    title="Mikro Kaynakta Doğal Görünüm"
+    intro="Gerçek Sach model görselleri — saç kalitesi, renk uyumu ve doğal düşüş referansı. Görseller belirli bir yöntem iddiası taşımaz; uzman değerlendirme için örnek teşkil eder."
+    images={[IMAGES.mikroDogalGorunum, IMAGES.model1, IMAGES.model3]}
+    columns={3}
+  />
+
+  <ResultsSection images={applicationGallery} />
+
+  <section class="section section--muted">
+    <div class="container container--narrow">
+      <h2>Sık sorulan sorular</h2>
+      <FAQList faqs={faqs} />
+    </div>
+  </section>
+
+  <CTAWhatsApp
+    title="Mikro saç kaynak uygunluğunuzu birlikte değerlendirelim"
+    message="Merhaba, mikro saç kaynak yöntemi hakkında danışmanlık almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

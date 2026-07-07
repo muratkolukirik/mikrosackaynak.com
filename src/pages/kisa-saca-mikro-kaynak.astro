@@ -4,7 +4,11 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
 import CTAWhatsApp from '../components/CTAWhatsApp.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import ResultsSection from '../components/ResultsSection.astro';
+import EditorialImage from '../components/EditorialImage.astro';
+import ImageGallery from '../components/ImageGallery.astro';
 import { guideLinks } from '../data/navigation';
+import { IMAGES, shortHairGallery } from '../data/images';
 import { breadcrumbSchema, articleSchema } from '../utils/schema';
 
 const path = '/kisa-saca-mikro-kaynak/';
@@ -27,6 +31,7 @@ const schemas = [
   <PageHero
     title="Kısa Saça Mikro Kaynak"
     lead="Kısa saçta dönüşüm mümkün olabilir; ancak planlama, harmanlama ve işçilik maliyeti uzun saça kıyasla genellikle daha belirleyicidir."
+    image={IMAGES.kisaSacDonusum}
   />
 
   <article class="section">
@@ -39,6 +44,8 @@ const schemas = [
         daha hassastır. Bu nedenle kısa saça mikro kaynak uygulaması, sadece gram
         eklemekten ibaret değildir.
       </p>
+
+      <EditorialImage image={IMAGES.kisaSacDonusum} />
 
       <h2>Harmanlama ve katman stratejisi</h2>
       <p>
@@ -53,7 +60,7 @@ const schemas = [
         Kısa saçta daha fazla bölgesel ayar, daha sık kontrol ve daha dikkatli
         harmanlama gerekebilir. Bu da uygulama süresini ve dolayısıyla maliyeti
         artırır — yalnızca kullanılan gram miktarı değil, emek yoğunluğu fiyatı
-        belirler. <a href="/mikro-kaynak-fiyatlari/">Fiyatlandırma rehberimizde</a>
+        belirler. <a href="/mikro-sac-kaynak-fiyatlari/">Fiyatlandırma rehberimizde</a>
         bu konuyu ayrıntılı ele aldık.
       </p>
 
@@ -70,8 +77,9 @@ const schemas = [
       <p>
         Hem kısa hem ince saç kombinasyonunda tellerin ağırlığı ve yoğunluğu ekstra
         dikkat gerektirir. Bu profilde
-        <a href="/ince-sacta-mikro-kaynak/">ince saç rehberimizdeki</a> yoğunluk
-        ve ağırlık dengesi önerilerini de göz önünde bulundurun.
+        <a href="/ince-saca-mikro-kaynak/">ince saça mikro kaynak</a>
+        rehberimizdeki yoğunluk ve ağırlık dengesi önerilerini de göz önünde
+        bulundurun.
       </p>
 
       <div class="callout">
@@ -83,6 +91,18 @@ const schemas = [
       </div>
     </div>
   </article>
+
+  <ImageGallery
+    title="Kısa Saç Dönüşüm Görselleri"
+    intro="Gerçek Sach model görselleri — kısa saçta geçiş planlaması ve katman stratejisi referansı."
+    images={shortHairGallery}
+    columns={3}
+  />
+
+  <ResultsSection
+    title="Kısa Saç Dönüşüm Mantığı"
+    images={shortHairGallery}
+  />
 
   <CTAWhatsApp
     title="Kısa saç planınızı birlikte değerlendirelim"

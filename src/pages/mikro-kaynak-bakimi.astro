@@ -4,8 +4,15 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
 import CTAWhatsApp from '../components/CTAWhatsApp.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import FAQList from '../components/FAQList.astro';
 import { guideLinks } from '../data/navigation';
-import { breadcrumbSchema, articleSchema } from '../utils/schema';
+import { PILLAR_PATH } from '../data/site';
+import {
+  breadcrumbSchema,
+  articleSchema,
+  faqSchema,
+  type FAQEntry,
+} from '../utils/schema';
 
 const path = '/mikro-kaynak-bakimi/';
 const title = 'Mikro Kaynak Bakımı';
@@ -16,9 +23,29 @@ const breadcrumbs = [
   { name: 'Ana Sayfa', path: '/' },
   { name: 'Mikro Kaynak Bakımı', path },
 ];
+
+const faqs: FAQEntry[] = [
+  {
+    question: 'Mikro kaynak saç ne kadar süre kullanılır?',
+    answer:
+      'Kullanım süresi bakım disiplininize, saç büyüme hızınıza ve günlük alışkanlıklarınıza bağlıdır. Kesin ay garantisi vermek doğru değildir. Düzenli kontrol seansları görünümü ve konforu korumaya yardımcı olur. Detaylı kullanım süresi rehberi yakında yayınlanacaktır.',
+  },
+  {
+    question: 'Mikro kaynak saç kaç günde bir yıkanmalı?',
+    answer:
+      'Uygulama sonrası ilk 24–48 saat yıkamaktan kaçının. Sonrasında haftada 2–3 kez veya saç tipinize göre daha seyrek yıkama genellikle yeterlidir. Aşırı yıkama bağlantı noktalarını yorabilir. Uzmanınızın size özel talimatını takip edin.',
+  },
+  {
+    question: 'Mikro kaynak bakımında hangi ürünler kullanılmalı?',
+    answer:
+      'Sülfatsız veya hafif formüllü şampuan, geniş dişli tarak veya kaynak fırçası tercih edin. Kremsi ürünleri bağlantı noktasına yığmayın. Isı koruyucu ürün fön ve maşa kullanımında faydalıdır. Kimyasal işlem öncesi mutlaka uzmanınıza danışın.',
+  },
+];
+
 const schemas = [
   breadcrumbSchema(breadcrumbs),
   articleSchema({ title, description, path }),
+  faqSchema(faqs),
 ];
 ---
 
@@ -31,6 +58,15 @@ const schemas = [
 
   <article class="section">
     <div class="container container--narrow prose">
+      <div class="short-answer">
+        <p class="short-answer__label">Kısa cevap</p>
+        <p>
+          Mikro kaynak bakımı; nazik yıkama, doğru fırçalama, ısı kontrolü ve
+          düzenli kontrol seanslarından oluşur. İlk 48 saat kritiktir; uzun vadede
+          bakım disiplininiz bağlantı ömrünü belirler.
+        </p>
+      </div>
+
       <h2>İlk günler</h2>
       <p>
         Uygulama sonrası ilk 24–48 saat, bağlantı noktalarının oturması için
@@ -70,6 +106,14 @@ const schemas = [
         saten yastık kılıfı sürtünmeyi azaltabilir.
       </p>
 
+      <h2>Deniz, güneş ve spor</h2>
+      <p>
+        Fethiye ve Ölüdeniz gibi sahil bölgelerinde deniz suyu, klor ve yoğun
+        güneş telleri kurutabilir. Yüzme sonrası tatlı suyla durulama, UV
+        korumalı ürünler ve spor sonrası saçın nemlendirilmesi bakım planının
+        parçası olmalıdır.
+      </p>
+
       <h2>Yenileme ve kontrol seansları</h2>
       <p>
         Mikro kaynak kalıcı değildir. Doğal saç büyüdükçe bağlantı noktaları aşağı
@@ -78,15 +122,28 @@ const schemas = [
         hafta ile birkaç ay arasında. Düzenli kontrol, kopma ve mat görünümü
         önlemeye yardımcı olur.
       </p>
+      <p>
+        Mikro kaynak ne kadar süre kullanılır sorusunun ayrıntılı cevabı için
+        yakında yayınlanacak kullanım süresi rehberimize bakabilirsiniz.
+      </p>
+
+      <h2>Bakım maliyeti ve planlama</h2>
+      <p>
+        Uzun vadeli maliyet hesabı yaparken yenileme aralıklarını da
+        <a href="/mikro-sac-kaynak-fiyatlari/">fiyatlandırma rehberimizdeki</a>
+        gibi değerlendirin. İyi bakım, erken yenileme ihtiyacını azaltabilir.
+      </p>
 
       <div class="callout">
         <p>
-          Bakım planınız uygulama öncesinde netleştirilmelidir. Uzun vadeli
-          maliyet hesabı yaparken yenileme aralıklarını da
-          <a href="/mikro-kaynak-fiyatlari/">fiyatlandırma rehberimizdeki</a>
-          gibi değerlendirin.
+          Bakım planınız uygulama öncesinde netleştirilmelidir.
+          <a href={PILLAR_PATH}>Mikro saç kaynak</a> rehberimizde yöntem
+          seçimi ve uygunluk kriterlerini de okumanızı öneririz.
         </p>
       </div>
+
+      <h2>Sık sorulan sorular</h2>
+      <FAQList faqs={faqs} />
     </div>
   </article>
 

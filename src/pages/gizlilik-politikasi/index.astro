@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE, CONTACT_FETHIYE } from '../../data/site';
+import { breadcrumbSchema } from '../../utils/schema';
+
+const path = '/gizlilik-politikasi/';
+const title = 'Gizlilik Politikası';
+const description =
+  'Mikro Saç Kaynak Rehberi gizlilik politikası. Kişisel verilerin toplanması, kullanımı ve korunması hakkında bilgilendirme.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Gizlilik Politikası', path },
+];
+const schemas = [breadcrumbSchema(breadcrumbs)];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas} noindex>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Gizlilik Politikası"
+    lead="Bu sayfa, mikrosackaynak.com üzerinde kişisel verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <p><em>Son güncelleme: 1 Temmuz 2026</em></p>
+
+      <h2>1. Veri sorumlusu</h2>
+      <p>
+        {SITE.name} ({SITE.domain}), bilgilendirme amaçlı bir web sitesidir.
+        Fethiye bölgesindeki fiziksel hizmet merkezi {CONTACT_FETHIYE.brandName}
+        markası altında faaliyet gösterir. Gizlilik uygulamalarımız hakkında
+        sorularınız için <a href="/iletisim/">iletişim sayfamız</a> üzerinden
+        bize ulaşabilirsiniz.
+      </p>
+
+      <h2>2. Toplanan veriler</h2>
+      <p>Bu site üzerinden aşağıdaki veriler toplanabilir:</p>
+      <ul>
+        <li>
+          <strong>WhatsApp iletişimi:</strong> Bize WhatsApp üzerinden yazdığınızda
+          paylaştığınız mesaj, telefon numaranız ve gönderdiğiniz fotoğraflar.
+        </li>
+        <li>
+          <strong>Telefon araması:</strong> Arama sırasında telefon numaranız
+          operatör kayıtlarında görünebilir.
+        </li>
+        <li>
+          <strong>Teknik veriler:</strong> Sunucu günlüklerinde IP adresi, tarayıcı
+          türü, ziyaret edilen sayfalar ve erişim zamanı gibi standart web
+          günlüğü verileri.
+        </li>
+      </ul>
+      <p>
+        Bu site üzerinde kayıt formu, e-posta bülteni veya ödeme işlemi
+        bulunmamaktadır.
+      </p>
+
+      <h2>3. Verilerin kullanım amacı</h2>
+      <p>Toplanan veriler yalnızca şu amaçlarla kullanılır:</p>
+      <ul>
+        <li>Mikro saç kaynak danışmanlık taleplerinize yanıt vermek</li>
+        <li>Randevu ve ön analiz sürecini yürütmek</li>
+        <li>Site güvenliğini ve performansını sağlamak</li>
+        <li>Yasal yükümlülükleri yerine getirmek</li>
+      </ul>
+
+      <h2>4. Verilerin paylaşımı</h2>
+      <p>
+        Kişisel verileriniz, yasal zorunluluk dışında üçüncü taraflarla
+        satılmaz veya kiralanmaz. Hosting sağlayıcısı ve WhatsApp (Meta)
+        gibi hizmet altyapıları, teknik işlem için verilere erişebilir;
+        bu erişim ilgili hizmet sağlayıcılarının kendi gizlilik politikalarına
+        tabidir.
+      </p>
+
+      <h2>5. Veri saklama süresi</h2>
+      <p>
+        WhatsApp mesajları ve paylaşılan fotoğraflar, danışmanlık sürecinin
+        tamamlanmasından sonra makul bir süre içinde silinir veya arşivlenir.
+        Sunucu günlükleri teknik gereksinimler doğrultusunda sınırlı süre
+        tutulur.
+      </p>
+
+      <h2>6. Haklarınız</h2>
+      <p>
+        6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında;
+        verilerinize erişim, düzeltme, silme ve işlenmesine itiraz etme
+        haklarına sahipsiniz. Taleplerinizi iletişim kanallarımız üzerinden
+        iletebilirsiniz.
+      </p>
+
+      <h2>7. Çerezler</h2>
+      <p>
+        Bu site minimal çerez kullanır. Ayrıntılar için
+        <a href="/cerez-politikasi/">çerez politikamıza</a> bakın.
+      </p>
+
+      <h2>8. Değişiklikler</h2>
+      <p>
+        Bu gizlilik politikası güncellenebilir. Önemli değişiklikler bu
+        sayfada yayımlanır.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,57 @@
+---
+import EditorialImage from './EditorialImage.astro';
+import type { SiteImage } from '../data/images';
+
+interface Props {
+  title: string;
+  intro?: string;
+  images: SiteImage[];
+  columns?: 2 | 3;
+}
+
+const { title, intro, images, columns = 2 } = Astro.props;
+---
+
+<section class="image-gallery">
+  <div class="container container--narrow">
+    <h2>{title}</h2>
+    {intro && <p class="image-gallery__intro">{intro}</p>}
+    <div class:list={['image-gallery__grid', `image-gallery__grid--${columns}`]}>
+      {images.map((image) => (
+        <EditorialImage image={image} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .image-gallery {
+    padding-block: var(--space-lg);
+  }
+
+  .image-gallery h2 {
+    margin-top: 0;
+  }
+
+  .image-gallery__intro {
+    color: var(--color-text-muted);
+    max-width: 42rem;
+  }
+
+  .image-gallery__grid {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .image-gallery__grid--2 {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .image-gallery__grid--3 {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+
+  .image-gallery__grid :global(.editorial-image) {
+    margin: 0;
+  }
+</style>

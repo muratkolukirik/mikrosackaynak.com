@@ -118,3 +118,38 @@ export function fethiyeHairSalonSchema() {
 export function schemaScript(schemas: Record<string, unknown>[]) {
   return JSON.stringify(schemas.length === 1 ? schemas[0] : schemas);
 }
+
+export function serviceSchema(options: {
+  name: string;
+  description: string;
+  path: string;
+  areaServed?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: options.name,
+    description: options.description,
+    url: absoluteUrl(options.path),
+    provider: {
+      '@type': 'Organization',
+      name: SITE.organization.name,
+      url: SITE.domain,
+    },
+    areaServed: options.areaServed ?? 'TR',
+  };
+}
+
+export function imageObjectSchema(options: {
+  url: string;
+  caption: string;
+  name: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: absoluteUrl(options.url),
+    name: options.name,
+    caption: options.caption,
+  };
+}

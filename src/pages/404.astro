@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PILLAR_PATH } from '../data/site';
+
+const path = '/404/';
+const title = 'Sayfa Bulunamadı';
+const description = 'Aradığınız sayfa bulunamadı. Ana sayfaya veya mikro saç kaynak rehberine dönebilirsiniz.';
+---
+
+<BaseLayout {title} {description} {path} noindex>
+  <section class="section">
+    <div class="container container--narrow prose" style="text-align: center; padding-block: var(--space-2xl);">
+      <p class="error-code" aria-hidden="true">404</p>
+      <h1>Sayfa bulunamadı</h1>
+      <p>
+        Aradığınız sayfa taşınmış, kaldırılmış veya hiç var olmamış olabilir.
+        Endişelenmeyin — aşağıdaki bağlantılarla devam edebilirsiniz.
+      </p>
+      <div class="error-actions">
+        <a href="/" class="btn btn--primary">Ana sayfaya dön</a>
+        <a href={PILLAR_PATH} class="btn btn--secondary">Mikro saç kaynak rehberi</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-code {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-sm);
+    line-height: 1;
+  }
+
+  .error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+</style>

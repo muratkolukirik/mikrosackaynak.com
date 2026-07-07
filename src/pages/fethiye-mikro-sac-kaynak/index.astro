@@ -1,54 +1,54 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumb from '../components/Breadcrumb.astro';
-import PageHero from '../components/PageHero.astro';
-import FAQList from '../components/FAQList.astro';
-import FethiyeContactBlock from '../components/FethiyeContactBlock.astro';
-import RelatedLinks from '../components/RelatedLinks.astro';
-import { guideLinks } from '../data/navigation';
-import { CONTACT_FETHIYE, CONTACT_ISTANBUL } from '../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import FAQList from '../../components/FAQList.astro';
+import FethiyeContactBlock from '../../components/FethiyeContactBlock.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { guideLinks } from '../../data/navigation';
+import { BRAND, CONTACT_FETHIYE } from '../../data/site';
 import {
   breadcrumbSchema,
   articleSchema,
   faqSchema,
   fethiyeHairSalonSchema,
   type FAQEntry,
-} from '../utils/schema';
+} from '../../utils/schema';
 
 const path = CONTACT_FETHIYE.pagePath;
-const title = 'Fethiye Mikro Kaynak Saç Merkezi';
-const titleSuffix = 'Mikro Saç Kaynak Danışmanlığı';
+const title = 'Fethiye Mikro Saç Kaynak';
+const titleSuffix = `${CONTACT_FETHIYE.brandName} · Mikro Saç Kaynak`;
 const description =
-  'Fethiye ve Ölüdeniz çevresinde mikro kaynak saç yaptırmadan önce saç yoğunluğu, mevcut kesim, hedef uzunluk ve yöntem seçimi profesyonel olarak değerlendirilmelidir. WhatsApp danışmanlık: 0532 592 88 42.';
+  'Fethiye ve Ölüdeniz çevresinde mikro saç kaynak danışmanlığı. Sach & Vogue Hair — 141 renk sistemi, ön analiz ve randevu planlaması. WhatsApp: 0532 592 88 42.';
 
 const breadcrumbs = [
   { name: 'Ana Sayfa', path: '/' },
-  { name: 'Fethiye Mikro Kaynak Saç Merkezi', path },
+  { name: 'Fethiye Mikro Saç Kaynak', path },
 ];
 
 const faqs: FAQEntry[] = [
   {
-    question: 'Fethiye\'de mikro kaynak fiyatları nasıl belirlenir?',
+    question: 'Fethiye\'de mikro saç kaynak fiyatları nasıl belirlenir?',
     answer:
       'Fiyat yalnızca gram üzerinden hesaplanmaz. Doğal saç yoğunluğu, mevcut kesim, hedef uzunluk, seçilen yöntem, tutam ağırlığı, yerleşim stratejisi, işçilik süresi ve bakım alışkanlığınız birlikte değerlendirilir. Ön analiz sonrası makul bir aralık konuşulabilir.',
   },
   {
-    question: 'Mikro kaynak kısa saça uygulanır mı?',
+    question: 'Mikro saç kaynak kısa saça uygulanır mı?',
     answer:
       'Birçok profilde mümkündür; ancak kısa saçta geçiş hattı, kat dengesi ve yoğunluk planlaması ekstra emek gerektirir. Basit gram hesabı yanıltıcı olabilir. Uygunluk bireysel değerlendirme ile belirlenir.',
   },
   {
-    question: 'İnce saçta mikro kaynak zararlı mı?',
+    question: 'İnce saçta mikro saç kaynak zararlı mı?',
     answer:
       'Yöntem tek başına zararlı değildir; risk, aşırı ağırlık, yanlış yerleşim veya yetersiz bakımdan doğabilir. İnce saçta tutam ağırlığı ve bağlantı noktaları özellikle dikkatle planlanmalıdır. Herkese uygun değildir.',
   },
   {
-    question: 'Mikro kaynak saç ne kadar süre kullanılır?',
+    question: 'Mikro saç kaynak ne kadar süre kullanılır?',
     answer:
       'Kullanım süresi bakım disiplininize, saç büyüme hızınıza ve günlük alışkanlıklarınıza bağlıdır. Kesin ay garantisi vermek doğru değildir. Düzenli kontrol seansları görünümü ve konforu korumaya yardımcı olur.',
   },
   {
-    question: 'Mikro kaynak yaptırmadan önce fotoğraf göndermek gerekir mi?',
+    question: 'Mikro saç kaynak yaptırmadan önce fotoğraf göndermek gerekir mi?',
     answer:
       'Zorunlu değildir ancak gündüz ışığında çekilmiş güncel saç fotoğrafları ön analizi hızlandırır. Mevcut uzunluk, yoğunluk ve hedefinizi mesajla birlikte paylaşmanız yeterli bir başlangıç olur.',
   },
@@ -72,7 +72,7 @@ const schemas = [
 ];
 
 const fethiyeWhatsappMessage =
-  'Merhaba, Fethiye merkezinizden mikro kaynak saç hakkında danışmanlık almak istiyorum. Gündüz ışığında saç fotoğrafımı paylaşabilirim; ön analiz ve randevu planlaması hakkında bilgi almak istiyorum.';
+  'Merhaba, Fethiye merkezinizden mikro saç kaynak hakkında danışmanlık almak istiyorum. Gündüz ışığında saç fotoğrafımı paylaşabilirim; ön analiz ve randevu planlaması hakkında bilgi almak istiyorum.';
 ---
 
 <BaseLayout
@@ -85,15 +85,25 @@ const fethiyeWhatsappMessage =
 >
   <Breadcrumb items={breadcrumbs} />
   <PageHero
-    title="Fethiye Mikro Kaynak Saç Merkezi"
-    lead="Fethiye ve Ölüdeniz çevresinde mikro kaynak saç düşünenler için ön analiz, yöntem seçimi, doğal geçiş planlaması ve bakım bilinci — sakin ve uzman bir rehber."
+    title="Fethiye Mikro Saç Kaynak"
+    lead={`${CONTACT_FETHIYE.regionNote} mikro saç kaynak danışmanlığı — ${CONTACT_FETHIYE.brandName} markası altında ön analiz, yöntem seçimi ve doğal geçiş planlaması.`}
   />
 
   <article class="section">
     <div class="container container--narrow prose">
+      <div class="short-answer">
+        <p class="short-answer__label">Kısa cevap</p>
+        <p>
+          {CONTACT_FETHIYE.brandName}, Fethiye'de {BRAND.colorCount} renk
+          sisteminde mikro saç kaynak danışmanlığı ve uygulaması sunar. Ön analiz
+          WhatsApp ({CONTACT_FETHIYE.phoneDisplay}) üzerinden başlatılabilir;
+          nihai plan yüz yüze değerlendirme ile netleşir.
+        </p>
+      </div>
+
       <h2>Giriş</h2>
       <p>
-        Bölgede mikro kaynak saç yaptırmadan önce yalnızca fiyat veya gram
+        Bölgede mikro saç kaynak yaptırmadan önce yalnızca fiyat veya gram
         karşılaştırmasına odaklanmak, çoğu zaman yanıltıcı sonuç doğurur.
         Profesyonel ön analiz; saç yoğunluğunuz, mevcut kesiminiz, hedef
         uzunluğunuz ve günlük yaşam tarzınız bir arada değerlendirildiğinde
@@ -104,13 +114,13 @@ const fethiyeWhatsappMessage =
         Bu sayfa, Fethiye ve Ölüdeniz çevresinden gelen müşteriler için ön analiz
         ve randevu planlaması odaklıdır. Abartılı vaatler veya garanti iddiaları
         yerine gerçekçi beklenti yönetimi esas alınır. Karar vermeden önce
-        <a href="/mikro-kaynak-nedir/">mikro kaynak nedir</a> rehberimizi
+        <a href="/mikro-sac-kaynak/">mikro saç kaynak</a> pillar rehberimizi
         okumanız faydalı olur.
       </p>
 
-      <h2>Fethiye'de mikro kaynak saç yaptırmadan önce nelere dikkat edilmeli?</h2>
+      <h2>Fethiye'de mikro saç kaynak yaptırmadan önce nelere dikkat edilmeli?</h2>
       <p>
-        Mikro kaynak her saç profiline aynı şekilde uygulanmaz. Değerlendirme
+        Mikro saç kaynak her saç profiline aynı şekilde uygulanmaz. Değerlendirme
         öncesinde şu başlıklar netleştirilmelidir:
       </p>
       <ul>
@@ -161,18 +171,16 @@ const fethiyeWhatsappMessage =
       </ul>
       <p>
         Genel fiyatlandırma mantığı
-        <a href="/mikro-kaynak-fiyatlari/">fiyat rehberimizde</a> ayrıntılı
-        anlatılır. Bölgede de aynı prensipler geçerlidir; lokasyon tek başına
-        fiyatı açıklamaz.
+        <a href="/mikro-sac-kaynak-fiyatlari/">fiyat rehberimizde</a> ayrıntılı
+        anlatılır. Bölgede de aynı prensipler geçerlidir.
       </p>
 
-      <h2>Kısa saçta mikro kaynak neden daha fazla planlama ister?</h2>
+      <h2>Kısa saçta mikro saç kaynak neden daha fazla planlama ister?</h2>
       <p>
         Kısa saç transformasyonları basit bir gram hesabı değildir. Geçiş hattı,
         kat dengesi ve yoğunluk planlaması birlikte ele alınmalıdır. Yanlış
         uzunlukta veya ağırlıkta teller omuz hizasında doğal olmayan bir basamak
-        oluşturabilir. Kısa saçta işçilik payı, malzeme maliyetinden daha
-        belirleyici olabilir.
+        oluşturabilir.
       </p>
       <p>
         Ayrıntılar için
@@ -180,47 +188,40 @@ const fethiyeWhatsappMessage =
         rehberimize bakın.
       </p>
 
-      <h2>İnce saçta mikro kaynak uygun mu?</h2>
+      <h2>İnce saçta mikro saç kaynak uygun mu?</h2>
       <p>
         Herkese uygun değildir. İnce telli saçlarda tutam ağırlığı ve bağlantı
         noktalarının konumu bireysel olarak değerlendirilmelidir. Aşırı yoğunluk
-        veya ağır teller hem konforu hem görünümü olumsuz etkileyebilir. Kontrollü
-        bir hacim artışı çoğu zaman daha doğal sonuç verir.
+        veya ağır teller hem konforu hem görünümü olumsuz etkileyebilir.
       </p>
       <p>
-        <a href="/ince-sacta-mikro-kaynak/">İnce saçta mikro kaynak</a>
+        <a href="/ince-saca-mikro-kaynak/">İnce saça mikro kaynak</a>
         rehberimizde bu konuyu genişlettik.
       </p>
 
-      <h2>Mikro kaynak mı, keratin kaynak mı, nanofilament mi?</h2>
+      <h2>Mikro saç kaynak mı, keratin kaynak mı?</h2>
       <p>
-        Üç yöntem de saç uzatma amacı taşır; fark bağlantı profili, konfor ve
-        bakım ihtiyacında ortaya çıkar. Mikro kaynak ince bağlantı hedefler;
-        keratin kaynak farklı bir profil sunar; nanofilament düz bağlantı
-        senaryolarında değerlendirilebilir. “En iyi yöntem budur” demek yerine,
-        saç yapınıza göre seçim yapılmalıdır.
+        İki yöntem de saç uzatma amacı taşır; fark bağlantı profili, konfor ve
+        bakım ihtiyacında ortaya çıkar. Nanofilament de üçüncü bir alternatif
+        olarak değerlendirilebilir. “En iyi yöntem budur” demek yerine, saç
+        yapınıza göre seçim yapılmalıdır.
       </p>
       <p>
         Tarafsız karşılaştırma için
-        <a href="/mikro-kaynak-keratin-nanofilament-farki/">yöntem farkları</a>
+        <a href="/mikro-kaynak-mi-keratin-kaynak-mi/">mikro kaynak mı keratin mi?</a>
         sayfamızı inceleyin.
       </p>
 
-      <h2>Merkez ve iletişim</h2>
+      <h2>{CONTACT_FETHIYE.brandName} — merkez ve iletişim</h2>
       <p>
+        {CONTACT_FETHIYE.brandName}, {BRAND.colorCount} renk sisteminde doğal
+        saç rengiyle uyumlu harmanlama hedefleyen mikro saç kaynak hizmeti sunar.
         Ön analiz ve randevu planlaması için aşağıdaki merkez bilgilerini
         kullanabilirsiniz. Fethiye / Ölüdeniz çevresinden gelen müşteriler
         gündüz ışığında saç fotoğrafı paylaşarak görüşmeyi hızlandırabilir.
       </p>
 
       <FethiyeContactBlock whatsappMessage={fethiyeWhatsappMessage} />
-
-      <p>
-        İstanbul'da yüz yüze profesyonel uygulama arayanlar farklı bir iletişim
-        kanalı kullanır; bölge seçimi kişisel bir tercihtir. İstanbul uygulaması
-        için <a href={CONTACT_ISTANBUL.pagePath}>ayrı rehber sayfamıza</a>
-        bakabilirsiniz.
-      </p>
 
       <h2>Sık sorulan sorular</h2>
       <FAQList faqs={faqs} />

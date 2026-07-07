@@ -294,6 +294,57 @@ strong {
   color: var(--color-text-muted);
 }
 
+.comparison-table {
+  overflow-x: auto;
+  margin: var(--space-lg) 0;
+}
+
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-subtle);
+  vertical-align: top;
+}
+
+.comparison-table thead th {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  background: var(--color-bg-muted);
+}
+
+.comparison-table tbody th[scope='row'] {
+  font-weight: 500;
+  color: var(--color-text);
+  background: var(--color-bg-elevated);
+}
+
+.short-answer {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.short-answer__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-light);
+  margin: 0 0 var(--space-xs);
+}
+
+.short-answer p:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
   :root {
     --space-xl: 3rem;

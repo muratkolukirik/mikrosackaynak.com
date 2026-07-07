@@ -1,6 +1,6 @@
 ---
-import { SITE, CONTACT_GENERAL, CONTACT_ISTANBUL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
-import { guideLinks, localGuides } from '../data/navigation';
+import { SITE, CONTACT_GENERAL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
+import { guideLinks, localGuides, legalLinks } from '../data/navigation';
 ---
 
 <footer class="footer">
@@ -60,10 +60,16 @@ import { guideLinks, localGuides } from '../data/navigation';
         <p class="footer__istanbul">
           Fethiye danışmanlık:
           <a href={CONTACT_FETHIYE.pagePath}>rehber sayfası</a>
-          · İstanbul uygulama:
-          <a href={CONTACT_ISTANBUL.pagePath}>profesyonel rehber</a>
         </p>
       </div>
+    </div>
+
+    <div class="footer__legal">
+      {
+        legalLinks.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))
+      }
     </div>
 
     <div class="footer__bottom">
@@ -175,6 +181,23 @@ import { guideLinks, localGuides } from '../data/navigation';
 
   .footer__istanbul a {
     text-decoration: none;
+  }
+
+  .footer__legal {
+    margin-top: var(--space-md);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    font-size: 0.8125rem;
+  }
+
+  .footer__legal a {
+    color: var(--color-text-light);
+    text-decoration: none;
+  }
+
+  .footer__legal a:hover {
+    color: var(--color-accent);
   }
 
   .footer__bottom {

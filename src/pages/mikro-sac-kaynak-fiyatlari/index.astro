@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import FAQList from '../../components/FAQList.astro';
+import { guideLinks } from '../../data/navigation';
+import { BRAND, CONTACT_FETHIYE } from '../../data/site';
+import {
+  breadcrumbSchema,
+  articleSchema,
+  faqSchema,
+  type FAQEntry,
+} from '../../utils/schema';
+
+const path = '/mikro-sac-kaynak-fiyatlari/';
+const title = 'Mikro Saç Kaynak Fiyatları';
+const description =
+  'Mikro saç kaynak fiyatları neden sabit değildir? Gram dışı faktörler, işçilik, harmanlama, saç profili ve bakım döngüsü — şeffaf fiyatlandırma mantığı. WhatsApp: 0532 592 88 42.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Mikro Saç Kaynak Fiyatları', path },
+];
+
+const faqs: FAQEntry[] = [
+  {
+    question: 'Mikro saç kaynak fiyatı neden gramdan ibaret değil?',
+    answer:
+      'Aynı gramaj farklı saç profillerinde farklı işçilik gerektirir. Kısa saçta harmanlama, ince saçta ağırlık kontrolü, renk eşleştirmede 141 renk sisteminde harmanlama ve uygulama süresi maliyeti doğrudan etkiler. Gram fiyatı karşılaştırma aracıdır; nihai teklif planlamayla şekillenir.',
+  },
+  {
+    question: 'Fethiye\'de mikro saç kaynak fiyatları farklı mı?',
+    answer:
+      'Fethiye ve Ölüdeniz çevresinde de fiyatlandırma mantığı aynıdır: saç yoğunluğu, mevcut kesim, hedef uzunluk, yöntem ve bakım döngüsü birlikte değerlendirilir. Lokasyon tek başına fiyatı açıklamaz. Bölgesel danışmanlık için Fethiye rehber sayfamıza bakabilirsiniz.',
+  },
+  {
+    question: 'WhatsApp üzerinden fiyat aralığı alabilir miyim?',
+    answer:
+      'Evet. Gündüz ışığında çekilmiş güncel saç fotoğraflarınız, hedef uzunluğunuz ve bakım alışkanlıklarınızı paylaştığınızda ön analiz sonrası makul bir aralık hakkında yönlendirme alabilirsiniz. Kesin rakam, yüz yüze planlama sonrası netleşir.',
+  },
+];
+
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+  faqSchema(faqs),
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Mikro Saç Kaynak Fiyatları"
+    lead="Gram fiyatı karşılaştırmayı kolaylaştırır; ancak nihai maliyet çoğu zaman planlama, işçilik ve saç profilinize bağlıdır. Bu sayfada sabit fiyat listesi paylaşmıyoruz — şeffaf mantığı anlatıyoruz."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <div class="short-answer">
+        <p class="short-answer__label">Kısa cevap</p>
+        <p>
+          Mikro saç kaynak fiyatı yalnızca kullanılan gram miktarına göre
+          hesaplanmaz. Mevcut uzunluk, hedef görünüm, saç yoğunluğu, renk
+          harmanlama, işçilik süresi ve yenileme döngüsü birlikte maliyeti
+          belirler. Her profil farklı bir plan gerektirir.
+        </p>
+      </div>
+
+      <h2>Gram fiyatı neden yanıltıcı olabilir?</h2>
+      <p>
+        Piyasada saç kaynak teklifleri sıklıkla gram başına sunulur. Bu,
+        farklı merkezleri hızlıca kıyaslamanızı sağlar. Oysa aynı gramaj;
+        kısa saçta farklı, ince saçta farklı, yoğun saçta farklı bir emek
+        gerektirebilir. Özellikle kısa saç dönüşümlerinde harmanlama ve katman
+        ayarı, malzeme maliyetinden daha baskın olabilir.
+      </p>
+      <p>
+        <a href="/kisa-saca-mikro-kaynak/">Kısa saça mikro kaynak</a>
+        rehberimizde bu konuyu ayrıntılı ele aldık. Kısa saç profillerinde
+        basit gram hesabı genellikle yanıltıcı sonuç verir.
+      </p>
+
+      <h2>Maliyeti etkileyen temel faktörler</h2>
+
+      <h3>1. Mevcut saç uzunluğu ve hedef</h3>
+      <p>
+        Başlangıç uzunluğu kısaldıkça geçiş planlaması zorlaşır. Omuz altına
+        geçiş ile bel hizasına geçiş aynı emek ve süreyi gerektirmez. Hedef
+        ne kadar iddialıysa, planlama ve uygulama o kadar detaylı olabilir.
+      </p>
+
+      <h3>2. Saç yoğunluğu ve tellerin ağırlığı</h3>
+      <p>
+        İnce saçta daha hafif teller tercih edilirken, yoğun saçta farklı bir
+        yerleştirme stratejisi uygulanabilir. Tellerin kalitesi, kaynağı ve
+        işlenme düzeyi fiyatı etkiler — ancak pahalı saç her profilde gerekli
+        değildir.
+      </p>
+
+      <h3>3. Renk eşleştirme ve harmanlama</h3>
+      <p>
+        {BRAND.name} kartelasında {BRAND.colorCount} renk seçeneği bulunur.
+        {BRAND.colorNote} Tek renk eşleştirmesi her zaman mümkün veya gerekli
+        olmayabilir; ton geçişleri ek planlama ve malzeme seçimi gerektirebilir.
+      </p>
+
+      <h3>4. Uygulama süresi ve uzmanlık</h3>
+      <p>
+        Mikro saç kaynak uygulaması zaman alıcı bir iştir. Bağlantı noktalarının
+        düzenli, konforlu ve gizli olması deneyim gerektirir. Uzun uygulama
+        süreleri doğrudan işçilik maliyetine yansır.
+      </p>
+
+      <h3>5. Yöntem seçimi</h3>
+      <p>
+        Mikro kapsül kaynak, keratin kaynak ve nanofilament kaynak farklı malzeme
+        ve süreç maliyetlerine sahip olabilir. Doğru yöntem, en ucuz teklif değil;
+        profilinize en uygun ve sürdürülebilir olandır.
+        <a href="/mikro-kaynak-mi-keratin-kaynak-mi/">Yöntem karşılaştırması</a>
+        rehberimizde ayrıntıları bulabilirsiniz.
+      </p>
+
+      <h3>6. Bakım ve yenileme döngüsü</h3>
+      <p>
+        İlk uygulama tek seferlik bir harcama değildir. Periyodik bakım,
+        düzeltme ve yenileme seansları toplam maliyetin önemli bir parçasını
+        oluşturur. Uzun vadeli bütçe planı yaparken
+        <a href="/mikro-kaynak-bakimi/">bakım rehberimizdeki</a> yenileme
+        aralıklarını da değerlendirin.
+      </p>
+
+      <h2>Şeffaf teklif almak için</h2>
+      <p>
+        Güvenilir bir fiyatlandırma; kullanılan saç kalitesi, tahmini gram aralığı,
+        uygulama süresi, bakım aralığı ve garanti iddiası olmadan net beklenti
+        sunmayı içermelidir. “Herkese aynı paket” yaklaşımı genellikle kişisel
+        ihtiyaçları yansıtmaz.
+      </p>
+
+      <h2>Fethiye ve Ölüdeniz bölgesi</h2>
+      <p>
+        {CONTACT_FETHIYE.regionNote} hizmet merkezimiz {CONTACT_FETHIYE.brandName}
+        markası altında faaliyet gösterir. Bölgede de aynı fiyatlandırma prensipleri
+        geçerlidir; deniz, güneş ve yaz aylarındaki bakım alışkanlıkları planlamayı
+        etkileyebilir. Detaylı bilgi için
+        <a href={CONTACT_FETHIYE.pagePath}>Fethiye mikro saç kaynak</a>
+        rehberimize bakın.
+      </p>
+
+      <div class="callout">
+        <p>
+          Bu sayfada sabit bir fiyat listesi paylaşmıyoruz; çünkü her saç profili
+          farklıdır. WhatsApp ({CONTACT_FETHIYE.phoneDisplay}) üzerinden kısa bir
+          ön bilgi ile size özel bir aralık hakkında yönlendirme alabilirsiniz.
+        </p>
+      </div>
+
+      <h2>Sık sorulan sorular</h2>
+      <FAQList faqs={faqs} />
+    </div>
+  </article>
+
+  <CTAWhatsApp
+    title="Size özel fiyat aralığı için yazın"
+    message="Merhaba, mikro saç kaynak fiyatlandırması hakkında bilgi almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

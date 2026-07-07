@@ -3,14 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
 import FethiyeContactBlock from '../components/FethiyeContactBlock.astro';
-import { SITE, CONTACT_GENERAL, CONTACT_ISTANBUL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
+import { SITE, CONTACT_GENERAL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
 import { guideLinks } from '../data/navigation';
 import { breadcrumbSchema } from '../utils/schema';
 
 const path = '/iletisim/';
 const title = 'İletişim — WhatsApp Danışmanlık';
 const description =
-  'Mikro kaynak saç hakkında WhatsApp danışmanlık. Fethiye ve Türkiye geneli: 0532 592 88 42. İstanbul profesyonel uygulama için ayrı iletişim kanalı.';
+  'Mikro saç kaynak hakkında WhatsApp danışmanlık. Fethiye, Ölüdeniz ve Türkiye geneli: 0532 592 88 42.';
 
 const breadcrumbs = [
   { name: 'Ana Sayfa', path: '/' },
@@ -23,7 +23,7 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="İletişim / WhatsApp Danışmanlık"
-    lead="Fethiye, Ölüdeniz ve Türkiye geneli ön danışmanlık için aşağıdaki numarayı kullanın. İstanbul'da yüz yüze uygulama arayanlar için ayrı bir kanal bulunmaktadır."
+    lead="Fethiye, Ölüdeniz ve Türkiye geneli ön danışmanlık için aşağıdaki numarayı kullanın."
   />
 
   <section class="section">
@@ -65,37 +65,6 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
             <li>Günlük bakım alışkanlıklarınız (spor, yüzme, fön vb.)</li>
             <li>Mümkünse güncel saç fotoğrafları (doğal ışıkta)</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="contact-card contact-card--istanbul">
-        <p class="contact-card__label">İstanbul — profesyonel uygulama</p>
-        <h2>İstanbul'da uygulama mı arıyorsunuz?</h2>
-        <p>
-          Şehirde mikro saç kaynak, mikro kapsül kaynak ve ihtiyaca göre keratin
-          kaynak gibi yöntemlerle yüz yüze profesyonel uygulama talepleri
-          {CONTACT_ISTANBUL.name} üzerinden ayrı bir hat ile yönetilir. Genel
-          bilgilendirme numarası ({CONTACT_GENERAL.phoneDisplay}) ile
-          karıştırılmaz.
-        </p>
-        <p class="contact-card__istanbul-phone">
-          <strong>{CONTACT_ISTANBUL.name}</strong><br />
-          <a href={telUrl(CONTACT_ISTANBUL.phoneE164)}>
-            {CONTACT_ISTANBUL.phoneDisplay}
-          </a>
-          <span> — Telefon ve WhatsApp</span>
-        </p>
-        <div class="contact-card__actions">
-          <a href={CONTACT_ISTANBUL.pagePath} class="btn btn--secondary">
-            İstanbul rehber sayfası
-          </a>
-          <a
-            href={whatsappUrl(undefined, 'istanbul')}
-            class="btn btn--whatsapp"
-            rel="noopener noreferrer"
-          >
-            WhatsApp ile Yazın
-          </a>
         </div>
       </div>
 
@@ -145,11 +114,6 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
     background: var(--color-bg-muted);
   }
 
-  .contact-card--istanbul {
-    margin-top: var(--space-md);
-    border-color: var(--color-border);
-  }
-
   .contact-card__label {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -167,17 +131,6 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
     color: var(--color-text-muted);
   }
 
-  .contact-card__phone {
-    margin: var(--space-md) 0 !important;
-  }
-
-  .contact-card__phone a {
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    text-decoration: none;
-    color: var(--color-text);
-  }
-
   .contact-card__actions {
     display: flex;
     flex-wrap: wrap;
@@ -190,21 +143,9 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
     margin-bottom: 0;
   }
 
-  .contact-card--istanbul .btn {
-    margin-top: var(--space-md);
-  }
-
-  .contact-card__istanbul-phone {
-    margin: var(--space-md) 0 0 !important;
-    font-size: 0.9375rem;
-  }
-
-  .contact-card__istanbul-phone a {
-    text-decoration: none;
-    color: var(--color-text);
-  }
-
-  .contact-card__istanbul-phone span {
-    color: var(--color-text-light);
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
