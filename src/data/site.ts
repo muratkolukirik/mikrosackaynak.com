@@ -1,3 +1,14 @@
+/**
+ * Lokal Türkiye iletişim — tek kaynak (tüm site).
+ * Görünen: 0532 592 88 42 · WhatsApp: https://wa.me/905325928842
+ */
+export const LOCAL_PHONE = {
+  display: '0532 592 88 42',
+  international: '+90 532 592 88 42',
+  e164: '905325928842',
+  whatsappUrl: 'https://wa.me/905325928842',
+} as const;
+
 /** Sach & Vogue Hair — marka ve ürün sabitleri */
 export const BRAND = {
   name: 'Sach & Vogue Hair',
@@ -14,10 +25,10 @@ export const CONTACT_FETHIYE = {
   /** Sayfa H1 ve lokal rehber bağlamı */
   businessName: 'Fethiye Mikro Kaynak Saç Merkezi',
   regionNote: 'Fethiye ve Ölüdeniz çevresi',
-  phoneDisplay: '0532 592 88 42',
-  phoneInternational: '+90 532 592 88 42',
-  phoneE164: '905325928842',
-  whatsappNumber: '905325928842',
+  phoneDisplay: LOCAL_PHONE.display,
+  phoneInternational: LOCAL_PHONE.international,
+  phoneE164: LOCAL_PHONE.e164,
+  whatsappNumber: LOCAL_PHONE.e164,
   whatsappDefaultMessage:
     'Merhaba, Fethiye bölgesinde mikro kaynak saç hakkında danışmanlık almak istiyorum. Saç yapım ve hedeflediğim görünüm için uygun yöntemi birlikte değerlendirebilir miyiz?',
   address: {
@@ -70,19 +81,6 @@ export const SITE = {
 /** Pillar sayfa — tüm cluster iç linklerin merkezi */
 export const PILLAR_PATH = '/mikro-sac-kaynak/' as const;
 
-/** İstanbul — yalnızca profesyonel saç kaynak uygulaması talepleri */
-export const CONTACT_ISTANBUL = {
-  name: 'BERAT KOLUKIRIK',
-  phoneDisplay: '0536 507 90 28',
-  phoneE164: '905365079028',
-  whatsappNumber: '905365079028',
-  whatsappDefaultMessage:
-    'Merhaba, İstanbul\'da mikro saç kaynak uygulaması hakkında bilgi almak istiyorum. Saç yapım ve hedeflediğim görünüm için uygun yöntemi görüşebilir miyiz?',
-  pagePath: '/istanbul-mikro-sac-kaynak/',
-} as const;
-
-export type ContactChannel = 'general' | 'istanbul';
-
 export function absoluteUrl(path: string): string {
   const normalized = path.startsWith('/') ? path : `/${path}`;
   return `${SITE.domain}${normalized}`;
@@ -92,16 +90,11 @@ export function telUrl(e164: string): string {
   return `tel:+${e164}`;
 }
 
-export function whatsappUrl(
-  message?: string,
-  channel: ContactChannel = 'general',
-): string {
-  const contact =
-    channel === 'istanbul' ? CONTACT_ISTANBUL : CONTACT_GENERAL;
+export function whatsappUrl(message?: string): string {
   const text = encodeURIComponent(
-    message ?? contact.whatsappDefaultMessage,
+    message ?? CONTACT_GENERAL.whatsappDefaultMessage,
   );
-  return `https://wa.me/${contact.whatsappNumber}?text=${text}`;
+  return `${LOCAL_PHONE.whatsappUrl}?text=${text}`;
 }
 
 /** @deprecated CONTACT_FETHIYE.whatsappNumber kullanın */

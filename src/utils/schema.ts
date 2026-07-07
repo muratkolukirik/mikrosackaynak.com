@@ -17,6 +17,7 @@ export function organizationSchema() {
     name: SITE.organization.name,
     url: SITE.domain,
     description: SITE.organization.description,
+    telephone: CONTACT_FETHIYE.phoneInternational,
   };
 }
 
@@ -97,7 +98,7 @@ export function fethiyeHairSalonSchema() {
     name: CONTACT_FETHIYE.brandName,
     alternateName: CONTACT_FETHIYE.businessName,
     url: absoluteUrl(CONTACT_FETHIYE.pagePath),
-    telephone: `+${CONTACT_FETHIYE.phoneE164}`,
+    telephone: CONTACT_FETHIYE.phoneInternational,
     address: {
       '@type': 'PostalAddress',
       streetAddress: CONTACT_FETHIYE.address.streetAddress,

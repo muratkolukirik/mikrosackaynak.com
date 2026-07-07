@@ -48,5 +48,5 @@ Faz 2 cluster sayfaları. İlk canlı sürüm (11 sayfa) tamamlandıktan sonra a
 - Manipülatif SEO yok (keyword stuffing, doorway, sahte review)
 - 141 renk sistemi (151 değil)
 - Fethiye / Ölüdeniz güncel konum
-- WhatsApp: 0532 592 88 42
+- Telefon / WhatsApp: 0532 592 88 42 — https://wa.me/905325928842
 - Gerçek Sach görselleri; yanlış yöntem iddiası yok

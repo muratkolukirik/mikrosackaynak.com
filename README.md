@@ -23,10 +23,11 @@ npm run preview
 - **İçerik meta:** `src/data/images.ts`, `src/data/site.ts`
 - **Faz 2 planı:** `docs/CONTENT_ROADMAP.md`
 
-## İletişim sabitleri
+## İletişim sabitleri (lokal TR — tek numara)
 
-- Fethiye / Ölüdeniz — Sach & Vogue Hair
-- WhatsApp: 0532 592 88 42 — https://wa.me/905325928842
+- Görünen telefon: **0532 592 88 42**
+- WhatsApp: **https://wa.me/905325928842**
+- Kaynak: `src/data/site.ts` → `LOCAL_PHONE`
 - Renk sistemi: 141 renk
 
 ## Sayfalar (Faz 1)
