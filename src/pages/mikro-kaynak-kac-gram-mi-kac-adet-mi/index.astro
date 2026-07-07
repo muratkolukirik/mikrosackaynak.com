@@ -1,0 +1,439 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import FAQList from '../../components/FAQList.astro';
+import { guideLinks } from '../../data/navigation';
+import { IMAGES } from '../../data/images';
+import { BRAND, CONTACT_FETHIYE } from '../../data/site';
+import {
+  breadcrumbSchema,
+  articleSchema,
+  faqSchema,
+  serviceSchema,
+  imageObjectSchema,
+  type FAQEntry,
+} from '../../utils/schema';
+
+const path = '/mikro-kaynak-kac-gram-mi-kac-adet-mi/';
+const title = 'Mikro Kaynak Kaç Gram mı Kaç Adet mi Gerekir?';
+const titleSuffix = 'Gramaj ve Adet Rehberi';
+const description =
+  'Mikro kaynakta kaç gram ve kaç adet gerektiği saç yoğunluğu, hedef uzunluk, tutam ağırlığı ve yerleşim planına göre değişir. Gramaj ve adet farkını profesyonel rehberle öğrenin.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Kaç Gram mı Kaç Adet mi?', path },
+];
+
+const heroImage = IMAGES.gramAdetHero;
+
+const faqs: FAQEntry[] = [
+  {
+    question: 'Mikro kaynakta gramaj mı adet mi daha önemlidir?',
+    answer:
+      'İkisi birbirinden bağımsız okunmamalıdır. Gramaj saça eklenecek toplam hacmi, adet ise bu hacmin kaç bağlantıya bölüneceğini gösterir. Aynı gramaj farklı tutam ağırlıklarıyla farklı adet sayısına denk gelebilir. Sağlıklı planlama için tutam ağırlığı ve bölgesel yerleşim birlikte değerlendirilir; tek başına adet veya gram rakamına odaklanmak yanıltıcı olabilir.',
+  },
+  {
+    question: '100 gram mikro kaynak kaç adet eder?',
+    answer:
+      'Sabit bir dönüşüm formülü yoktur. Tutam başına düşen ağırlık; saç kalitesi, hedef uzunluk, tellerin inceliği ve uygulayıcının hazırladığı tutam profiline göre değişir. Yaklaşık 0,5–0,6 g tutam ağırlığı planlanabilir; ancak bu her uygulamada aynı değildir. 100 gramın kaç bağlantıya bölüneceği, fotoğrafla ön analiz ve yüz yüze planlama sonrası netleşir.',
+  },
+  {
+    question: '150 adet mikro kaynak yeterli olur mu?',
+    answer:
+      '150 adet bazı profillerde yeterli görünüm sağlayabilir; bazı profillerde yetersiz kalabilir veya aşırı yükleme riski taşıyabilir. Belirleyici olan adet değil, toplam gramaj, tutam ağırlığı, mevcut yoğunluk ve hedef görünümdür. İnce saçta 150 adet bile ağır gelebilir; yoğun saçta aynı adet farklı bir hacim etkisi yaratır. Kişisel değerlendirme şarttır.',
+  },
+  {
+    question: '200 adet mikro kaynak herkeste aynı sonucu verir mi?',
+    answer:
+      'Hayır. 200 adet; farklı tutam ağırlıkları, farklı uzunluklar ve farklı yerleşim planlarıyla tamamen farklı sonuçlar üretebilir. Kısa saçta 200 adet geçişi gizlemek için stratejik dağıtım gerektirirken, uzun saçta aynı adet farklı bir yoğunluk algısı oluşturabilir. Rakam tek başına sonuç garantisi vermez.',
+  },
+  {
+    question: 'İnce telli saçlarda kaç gram mikro kaynak gerekir?',
+    answer:
+      'İnce telli saçlarda amaç genellikle maksimum gramaj değil, saçın taşıyabileceği doğru ağırlığı planlamaktır. Toplam gramaj; tellerin inceliği, ense yoğunluğu, hedef hacim ve bağlantı konumuna göre belirlenir. Sabit bir gram aralığı paylaşmak doğru olmaz. İnce saç profilleri için ayrıntılı yaklaşımı ince saça mikro kaynak rehberimizde ele aldık; ön analiz önerilir.',
+  },
+  {
+    question: 'Kısa saça mikro kaynakta neden daha fazla adet gerekebilir?',
+    answer:
+      'Kısa saçta geçiş hattını gizlemek, katmanları harmanlamak ve bağlantıları görünmez tutmak için daha sık ve stratejik yerleşim gerekebilir. Bu durum adet sayısını artırabilir; ancak her ek bağlantı aynı tutam ağırlığına sahip olmayabilir. Kısa saç dönüşümleri basit gram hesabı değil, kişiye özel planlama projeleridir. Harmanlama ihtiyacı işçilik süresini de etkiler.',
+  },
+  {
+    question: 'Mikro tutam ağırlığı neden önemlidir?',
+    answer:
+      'Her mikro bağlantı, doğal saç köküne belirli bir yük taşır. Tutam ağırlığı arttıkça kök bölgesindeki baskı artabilir; çok hafif tutam ise hedef hacme ulaşmak için daha fazla bağlantı gerektirebilir. Doğru denge; saçın taşıma kapasitesi, konfor ve görünüm hedefi arasında kurulur. Tutam ağırlığı bilinmeden ne gram ne adet rakamı anlamlı tahmin edilemez.',
+  },
+  {
+    question: 'Fotoğrafla gramaj ve adet hesabı yapılabilir mi?',
+    answer:
+      'Evet, ön değerlendirme için en pratik yöntem budur. Gündüz ışığında çekilmiş güncel fotoğraflar; mevcut uzunluk, yoğunluk, kesim katmanları ve hedef görünüm hakkında güçlü ipuçları verir. Kesin gram ve adet planı genellikle yüz yüze analiz ve saç derisi/tel yapısı kontrolü sonrası netleşir. WhatsApp hattımız üzerinden fotoğrafla ön analiz talep edebilirsiniz.',
+  },
+];
+
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({
+    title: 'Mikro Kaynak Kaç Gram mı, Kaç Adet mi Gerekir?',
+    description,
+    path,
+  }),
+  faqSchema(faqs),
+  imageObjectSchema({
+    url: heroImage.webp,
+    name: heroImage.alt,
+    caption: heroImage.caption ?? heroImage.alt,
+  }),
+  serviceSchema({
+    name: 'Mikro Kaynak Gramaj ve Adet Danışmanlığı',
+    description:
+      'Saç profiline göre mikro kaynak gramaj, adet ve tutam ağırlığı planlaması için uzman danışmanlık.',
+    path,
+    areaServed: 'Türkiye',
+  }),
+];
+---
+
+<BaseLayout
+  {title}
+  {description}
+  {path}
+  {titleSuffix}
+  breadcrumbs={breadcrumbs}
+  schemas={schemas}
+>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="Mikro Kaynak Kaç Gram mı, Kaç Adet mi Gerekir?"
+    lead="Gram ve adet rakamları tek başına cevap vermez. Doğru planlama; saç yapınız, tutam ağırlığı ve bölgesel yerleşim stratejisiyle mümkündür."
+    image={heroImage}
+    layout="banner"
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <div class="short-answer" id="kisa-cevap">
+        <p class="short-answer__label">Kısa cevap</p>
+        <p>
+          Mikro kaynakta en doğru sonuç, en fazla adet kaynak takmakla değil;
+          saçın taşıyabileceği doğru gramajı, doğru tutam ağırlığıyla ve doğru
+          bölgesel yerleşim planıyla uygulamakla elde edilir. Gramaj toplam hacmi,
+          adet ise bu hacmin kaç mikro bağlantıya bölüneceğini gösterir — ikisi
+          birlikte okunmalıdır. Genel çerçeve için
+          <a href="/">ana sayfamıza</a> ve
+          <a href="/mikro-sac-kaynak/">mikro saç kaynak rehberimize</a> de
+          göz atabilirsiniz.
+        </p>
+      </div>
+
+      <nav class="toc" aria-label="İçindekiler">
+        <p class="toc__title">Bu rehberde</p>
+        <ol>
+          <li><a href="#gramaj-nedir">Gramaj ne anlama gelir?</a></li>
+          <li><a href="#adet-nedir">Adet sayısı ne anlama gelir?</a></li>
+          <li><a href="#neden-sadece-adet">Neden sadece adet sayısına göre karar vermek yanlıştır?</a></li>
+          <li><a href="#dogru-planlama">Mikro kaynakta doğru planlama nasıl yapılır?</a></li>
+          <li><a href="#kisa-sac">Kısa saçlarda gramaj mı, adet mi daha önemlidir?</a></li>
+          <li><a href="#ince-sac">İnce telli saçlarda gramaj mı, adet mi daha önemlidir?</a></li>
+          <li><a href="#dogru-secim">Sizin için en doğru seçim nasıl belirlenir?</a></li>
+          <li><a href="#sonuc">Sonuç</a></li>
+          <li><a href="#karsilastirma">Gramaj ve adet karşılaştırması</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="gramaj-nedir">Gramaj ne anlama gelir?</h2>
+      <p>
+        Mikro saç kaynak planlamasında gramaj, saçınıza eklenecek toplam saç
+        hacmini ifade eder. Bu rakam; hedeflediğiniz uzunluk, mevcut yoğunluk,
+        istenen dolgunluk ve renk harmanlama ihtiyacıyla birlikte şekillenir.
+        Piyasada sık duyulan “100 gram”, “150 gram” veya “200 gram” ifadeleri
+        karşılaştırma yapmayı kolaylaştırır; ancak aynı gramaj farklı saç
+        profillerinde bambaşka bir görünüm veya konfor düzeyi üretebilir.
+      </p>
+      <p>
+        Gramaj yalnızca malzeme miktarı değildir. Eklenen saçın kalitesi, tellerin
+        inceliği, uzunluk dağılımı ve harmanlama derinliği toplam hacmin algısını
+        değiştirir. Örneğin omuz hizasından bel hizasına geçiş hedefleyen biri ile
+        yalnızca hafif bir yoğunluk artışı isteyen biri aynı gram aralığında bile
+        farklı planlama gerektirebilir. Bu nedenle
+        <a href="/mikro-sac-kaynak-fiyatlari/">fiyatlandırma rehberimizde</a>
+        de vurguladığımız gibi, nihai maliyet ve sonuç yalnızca gram fiyatına
+        indirgenemez.
+      </p>
+      <p>
+        {BRAND.name} deneyiminde gramaj kararı; mevcut saç fotoğrafları, hedef
+        referans görselleri ve günlük bakım alışkanlıklarınızla birlikte
+        değerlendirilir. Aşırı gramaj hedefi, özellikle ince telli saçlarda taşıma
+        kapasitesini zorlayabilir. Kontrollü bir artış çoğu zaman daha doğal ve
+        sürdürülebilir sonuç verir. Gramaj planlanırken aynı zamanda
+        <a href="/mikro-sac-kaynak/">mikro saç kaynak</a> pillar rehberimizde
+        anlattığımız yerleşim mantığı da devreye girer: hacim tek bir bölgeye
+        yığılmak yerine katmanlara ve yüz hatlarına göre dağıtılmalıdır.
+      </p>
+
+      <h2 id="adet-nedir">Adet sayısı ne anlama gelir?</h2>
+      <p>
+        Adet, toplam gramajın kaç ayrı mikro bağlantıya bölündüğünü gösterir.
+        Her adet bir tutamı temsil eder; tutamın içindeki tel sayısı ve ağırlığı
+        profilinize göre değişir. Sosyal medyada veya merkez broşürlerinde
+        duyulan “150 adet paket”, “200 adet kampanya” gibi ifadeler cazip
+        görünebilir; fakat adet sayısı tek başına ne toplam hacmi ne de konforu
+        tanımlar.
+      </p>
+      <p>
+        Aynı 150 adet; hafif tutamlarla daha düşük toplam gramaja, daha ağır
+        tutamlarla daha yüksek gramaja karşılık gelebilir. 200 adet her saçta aynı
+        sonucu vermez: biri için yeterli dolgunluk sağlarken başka biri için aşırı
+        yük oluşturabilir. Adet rakamı, uygulama süresini ve işçilik yoğunluğunu
+        da etkiler — kısa saçta geçişi gizlemek için daha fazla bağlantı noktası
+        gerekebilir; bu durum adet sayısını artırırken tutam başına ağırlığı
+        düşürmeyi gerektirebilir.
+      </p>
+      <p>
+        Sağlıklı bir planlama sürecinde adet, gramaj belirlendikten ve tutam
+        profili netleştikten sonra ortaya çıkar. Önce “kaç adet alayım?” sorusu
+        yerine “ne kadar hacim, hangi bölgelerde, hangi taşıma kapasitesiyle?”
+        soruları yanıtlanmalıdır. Bu yaklaşım hem görünüm hem de saç bütünlüğü
+        açısından daha dürüst bir danışmanlık sunar.
+      </p>
+
+      <h2 id="neden-sadece-adet">Neden sadece adet sayısına göre karar vermek yanlıştır?</h2>
+      <p>
+        Adet odaklı düşünce genellikle pazarlama diliyle beslenir: daha yüksek adet
+        “daha iyi paket” algısı yaratır. Oysa mikro kaynakta kalite, tutam
+        ağırlığının saçınızla uyumu, bağlantıların gizliliği ve bakım
+        disiplininizle ölçülür. Tutam ağırlığı bilinmeden adet rakamına bakarak
+        sonuç tahmin etmek mümkün değildir.
+      </p>
+      <p>
+        150 adet her zaman aynı gramaj değildir — bunu tekrarlamak gerekir, çünkü
+        bu yanılgı en sık karşılaşılan hatalardan biridir. Bir merkez hafif
+        tutamlarla 150 adet uygularken başka bir merkez aynı adette daha ağır
+        tutamlar kullanabilir. Siz fotoğrafta veya aynada gördüğünüz sonuçla adet
+        rakamını değil, toplam dengeyi yaşarsınız. Karşılaştırma yaparken adet
+        yerine tutam profili, toplam gram aralığı ve yerleşim planını sorun.
+      </p>
+      <p>
+        Benzer şekilde 200 adet her profilde “full dolgunluk” anlamına gelmez.
+        İnce saçta 200 adet ağır gelebilir; kısa saçta 200 adet geçiş hattını
+        gizlemek için yeterli olmayabilir. Uzun saçta ise aynı adet farklı
+        katmanlara yayıldığında daha hafif bir etki bırakabilir. Rakip merkezler
+        arasında yalnızca adet kıyaslamak, elma ile armudu karşılaştırmaya
+        benzer.
+      </p>
+      <p>
+        Doğru soru şudur: “Benim saçım taşıyabileceğim gramajı ve buna uygun adet
+        dağılımını nasıl planlarım?” Bu sorunun cevabı
+        <a href="/mikro-kaynak-mi-keratin-kaynak-mi/">yöntem seçimi</a>,
+        mevcut kesim ve hedef görünümle birlikte ele alınmalıdır. Mikro kaynak mı
+        keratin kaynak mı sorusu da adetten bağımsız olarak bağlantı profilini
+        etkiler.
+      </p>
+
+      <h2 id="dogru-planlama">Mikro kaynakta doğru planlama nasıl yapılır?</h2>
+      <p>
+        Mikro tutam ağırlığı, her bağlantı noktasının doğal saç köküne taşıdığı
+        yükü belirler. Mikro kaynak ince bağlantı profili hedefler; bu profilin
+        anlamı “mümkün olduğunca hafif tutam” değil, “saçınız için doğru ağırlıkta
+        tutam”dır. Planlama aşamasında tutam başına yaklaşık 0,5–0,6 g gibi bir
+        aralık konuşulabilir; ancak bu her uygulamada sabit ve tek doğru değer
+        değildir. Tel kalınlığı, hedef uzunluk ve bölgesel yoğunluk dengeyi
+        değiştirir.
+      </p>
+      <p>
+        Çok hafif tutamlar konforu artırabilir; fakat hedef hacme ulaşmak için
+        daha fazla bağlantı ve daha uzun uygulama süresi gerektirebilir. Daha ağır
+        tutamlar daha az adetle hacim kazandırabilir; fakat ince saçta kök
+        bölgesinde baskı hissi oluşturma riski taşır. Uzman, bu dengeyi saç
+        derinizi, tellerinizin inceliğini ve günlük kullanım alışkanlıklarınızı
+        göz önünde bulundurarak kurar.
+      </p>
+      <p>
+        Tutam ağırlığı aynı zamanda bakım ömrünü etkiler. Aşırı yüklenmiş
+        bağlantılar erken gevşeme veya kopma eğilimi gösterebilir; bu da yenileme
+        maliyetini artırır. Uzun vadeli plan yaparken
+        <a href="/mikro-kaynak-bakimi/">bakım rehberimizdeki</a> yenileme
+        döngüsü ve günlük rutin önerilerini gramaj-adet planınızla birlikte
+        düşünün. İyi bir uygulama, taşıyabileceğiniz yükü aşmadan hedef görünüme
+        yaklaşmanızı sağlar.
+      </p>
+
+      <h2 id="kisa-sac">Kısa saçlarda gramaj mı, adet mi daha önemlidir?</h2>
+      <p>
+        Kısa saç dönüşümleri basit gram bazlı uygulamalar değildir; kişiye özel
+        saç dönüşüm projeleridir. Mevcut kesim kısaldıkça geçiş hattı daha
+        görünür hale gelir; ek tellerin nereden başlayacağı, katmanların nasıl
+        harmanlanacağı ve bağlantıların nasıl gizleneceği kritik hale gelir. Bu
+        süreçte adet sayısı artabilir — ancak her bağlantı aynı ağırlıkta
+        olmayabilir. Stratejik olarak hafif tutamlar, sık aralıklarla yerleştirilebilir.
+      </p>
+      <p>
+        Kısa saçta toplam gramaj bazen uzun saça kıyasla daha düşük görünse bile
+        işçilik süresi ve planlama karmaşıklığı maliyeti artırabilir. Omuz hizasından
+        aşağıya inen ek teller, kısa katmanlarla uyumlu olmalı; aksi halde belirgin
+        bir “step” oluşabilir. Bu nedenle kısa saça mikro kaynak kararı vermeden
+        önce gerçekçi bir yol haritası çıkarılmalıdır.
+        <a href="/kisa-saca-mikro-kaynak/">Kısa saça mikro kaynak</a> rehberimizde
+        harmanlama, katman stratejisi ve beklenti yönetimini ayrıntılı ele aldık.
+      </p>
+      <p>
+        Kısa saç profillerinde fotoğrafla ön analiz özellikle değerlidir: mevcut
+        katman yapınız, ense yoğunluğunuz ve hedef referansınız bir arada
+        okunmalıdır. Bazı durumlarda aşamalı bir plan — önce orta uzunluk, sonra
+        hedefe yaklaşma — tek seferde yüksek gramaj ve yüksek adet uygulamasından
+        daha sağlıklı olabilir. Aceleci paket kararları kısa saçta pişmanlık
+        yaratabilir.
+      </p>
+
+      <h2 id="ince-sac">İnce telli saçlarda gramaj mı, adet mi daha önemlidir?</h2>
+      <p>
+        İnce telli saçlarda amaç daha fazla saç takmak değil, saçın taşıyabileceği
+        doğru ağırlığı planlamaktır. İnce teller, aynı görünür hacme kıyasla daha
+        az taşıyıcı kapasiteye sahip olabilir. Ek gramaj artırıldığında bağlantı
+        noktaları daha erken yorulabilir; bu da konforu ve görünümü olumsuz
+        etkileyebilir. İnce saçta agresif adet veya gram hedefleri genellikle
+        sürdürülebilir değildir.
+      </p>
+      <p>
+        Planlama sürecinde önce mevcut yoğunluk haritası çıkarılır: ense, yan
+        bölgeler ve tepe hattı ayrı ayrı değerlendirilir. Hafif tutamlar, tellerin
+        doğal düşüş yönünü takip eden konumlara yerleştirilir. Renk harmanlaması
+        ince saçta daha da kritiktir; {BRAND.colorCount} renkli kartelamızda ton
+        eşleştirmesi geçiş hattının fark edilmemesi için şarttır.
+        <a href="/ince-saca-mikro-kaynak/">İnce saça mikro kaynak</a> rehberimizde
+        yoğunluk dengesi ve bağlantı konumu konularını genişlettik.
+      </p>
+      <p>
+        İnce saç + kısa kesim kombinasyonu, gramaj ve adet planlamasını daha da
+        hassaslaştırır. Bu profilde “standart paket” mantığı neredeyse hiç
+        işe yaramaz. Fotoğrafla ön analiz ve yüz yüze değerlendirme bir arada
+        yürütülmelidir. Hedefiniz yalnızca uzunluk değil, kontrollü bir dolgunluk
+        artışıysa toplam gramaj daha muhafazakâr tutulabilir; bu durum adet
+        sayısını da etkiler.
+      </p>
+
+      <h2 id="dogru-secim">Sizin için en doğru seçim nasıl belirlenir?</h2>
+      <p>
+        En doğru değerlendirme fotoğrafla ön analizle başlar. Karar vermeden önce
+        güncel saç fotoğraflarınızı paylaşmanız; gram ve adet hakkında gerçekçi bir
+        çerçeve oluşturmanın en hızlı yoludur. İdeal fotoğraflar gündüz doğal
+        ışıkta, filtresiz ve farklı açılardan çekilmiş olmalıdır: önden, yandan,
+        ense bölgesi ve mevcut katman yapısını gösteren detaylar.
+      </p>
+      <p>
+        Ön analizde uzman; mevcut uzunluk, yoğunluk dağılımı, tellerin inceliği,
+        hedef referansınız ve bakım alışkanlıklarınızı birlikte okur. Bu aşamada
+        yaklaşık bir gram aralığı, olası adet dağılımı ve bölgesel yerleşim stratejisi
+        hakkında yönlendirme alabilirsiniz. Kesin plan genellikle yüz yüze
+        değerlendirme sonrası netleşir; saç derisi ve kök dayanıklılığı ancak
+        o zaman tam okunabilir.
+      </p>
+      <p>
+        {CONTACT_FETHIYE.regionNote} {CONTACT_FETHIYE.brandName} hizmet merkezimizde
+        veya WhatsApp ({CONTACT_FETHIYE.phoneDisplay}) hattımızda fotoğrafla ön
+        analiz talep edebilirsiniz. Hedef uzunluğunuzu ve günlük rutininizi kısaca
+        yazmanız süreci hızlandırır. Karar öncesi
+        <a href="/iletisim/">iletişim</a> sayfamızdaki kanallardan da bize
+        ulaşabilirsiniz.
+      </p>
+
+      <h2 id="sonuc">Sonuç</h2>
+      <p>
+        Mikro kaynak planlamasında üçlü dengeyi hatırlayın: toplam gramaj (hacim),
+        adet (bağlantı sayısı) ve bölgesel dağılım (yerleşim). Tek bir rakama
+        kilitlenmek yerine bu üçlünün saç profilinizle uyumunu sorgulayın. Ense
+        bölgesi, yan hatlar, tepe ve ön katmanlar farklı yoğunluk gereksinimleri
+        taşır; hacmi tek noktaya yıkmak hem doğallığı hem konforu bozar.
+      </p>
+      <p>
+        Pratik bir karar süreci şöyle ilerleyebilir: önce hedef görünümünüzü netleştirin
+        (uzunluk, dolgunluk, renk geçişi). Ardından mevcut saç fotoğraflarınızla
+        ön analiz yaptırın. Uzmanınız taşıma kapasitenize uygun gram aralığı ve tutam
+        profili önerdiğinde adet planı doğal olarak ortaya çıkar. Son aşamada bakım
+        rutininizi ve yenileme aralığınızı
+        <a href="/mikro-sac-kaynak-fiyatlari/">maliyet planınızla</a> birlikte
+        değerlendirin.
+      </p>
+      <p>
+        Unutmayın: mikro kaynak bir “paket al–tak” hizmeti değildir. {BRAND.name} uzmanlığında her plan kişiseldir. Fethiye ve Ölüdeniz’de yüz yüze
+        danışmanlık alabileceğiniz gibi, Türkiye genelinde WhatsApp üzerinden
+        fotoğrafla ön değerlendirme de mümkündür. Doğru gramaj, doğru adet ve
+        doğru yerleşim — hepsi bir arada düşünüldüğünde anlam kazanır.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>Uzman notu:</strong> Rakamları karşılaştırırken tutam ağırlığını
+          mutlaka sorun. 150 adet veya 200 adet ifadesi, tutam profili olmadan
+          anlamlı bir sonuç vaadi değildir. Şüphe duyduğunuz tekliflerde fotoğrafla
+          ikinci bir görüş almak yerinde olur.
+        </p>
+      </div>
+
+      <h2 id="karsilastirma">Gramaj ve adet: hızlı karşılaştırma</h2>
+      <div class="comparison-table" role="region" aria-label="Gramaj ve adet karşılaştırması">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Soru</th>
+              <th scope="col">Ne Anlama Gelir?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kaç gram gerekir?</td>
+              <td>Saça eklenecek toplam hacmi ve dolgunluğu belirler.</td>
+            </tr>
+            <tr>
+              <td>Kaç adet gerekir?</td>
+              <td>Bu toplam saçın kaç mikro bağlantıya bölüneceğini gösterir.</td>
+            </tr>
+            <tr>
+              <td>Tutam ağırlığı neden önemlidir?</td>
+              <td>Her bağlantının saç köküne taşıttığı yükü belirler.</td>
+            </tr>
+            <tr>
+              <td>Kısa saçta neden değişir?</td>
+              <td>Geçişi gizlemek için daha fazla planlama ve dağılım gerekir.</td>
+            </tr>
+            <tr>
+              <td>İnce saçta neden dikkat gerekir?</td>
+              <td>Saçın taşıma kapasitesi aşılmamalıdır.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Sık sorulan sorular</h2>
+      <FAQList faqs={faqs} />
+    </div>
+  </article>
+
+  <CTAWhatsApp
+    title="Gramaj ve adet planınız için fotoğrafla ön analiz"
+    message="Merhaba, mikro kaynak için gramaj ve adet planlaması hakkında fotoğrafla ön analiz almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>
+
+<style>
+  .toc {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md);
+    background: var(--color-surface-muted);
+    border-radius: var(--radius-md);
+  }
+  .toc__title {
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+  .toc li {
+    margin-bottom: 0.35rem;
+  }
+</style>

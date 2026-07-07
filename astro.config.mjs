@@ -13,7 +13,7 @@ export default defineConfig({
     '/ince-sacta-mikro-kaynak/': '/ince-saca-mikro-kaynak/',
     '/mikro-kaynak-keratin-nanofilament-farki/': '/mikro-kaynak-mi-keratin-kaynak-mi/',
     '/fethiye-mikro-kaynak-sac-merkezi/': '/fethiye-mikro-sac-kaynak/',
-    '/mikro-kaynak-kimlere-uygundur/': '/mikro-sac-kaynak/',
+    '/mikro-kaynak-kimlere-uygundur/': '/mikro-sac-kaynak/#kimler-icin',
     '/sik-sorulan-sorular/': '/mikro-sac-kaynak/',
     '/istanbul-mikro-sac-kaynak/': '/iletisim/',
     '/keratin-kaynak/': '/mikro-kaynak-mi-keratin-kaynak-mi/',

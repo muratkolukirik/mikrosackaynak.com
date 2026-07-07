@@ -24,6 +24,11 @@ export const guideLinks: NavItem[] = [
     description: 'Pillar rehber: yöntem, uygunluk ve uzmanlık mesajı',
   },
   {
+    label: 'Kaç Gram mı Kaç Adet mi?',
+    href: '/mikro-kaynak-kac-gram-mi-kac-adet-mi/',
+    description: 'Gramaj ve adet planlaması — amiral rehber',
+  },
+  {
     label: 'Mikro Saç Kaynak Fiyatları',
     href: '/mikro-sac-kaynak-fiyatlari/',
     description: 'Gram dışı fiyatlandırma faktörleri',

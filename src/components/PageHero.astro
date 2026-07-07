@@ -3,14 +3,17 @@ interface Props {
   title: string;
   lead?: string;
   image?: { webp: string; jpg: string; alt: string };
+  /** Tam genişlik banner: metin üstte, görsel altta */
+  layout?: 'default' | 'banner';
 }
 
-const { title, lead, image } = Astro.props;
+const { title, lead, image, layout = 'default' } = Astro.props;
+const isBanner = layout === 'banner' && image;
 ---
 
 <section class="hero">
   <div class="container">
-    <div class:list={['hero__inner', { 'hero__inner--with-image': image }]}>
+    <div class:list={['hero__inner', { 'hero__inner--with-image': image && !isBanner, 'hero__inner--banner': isBanner }]}>
       <div class="hero__text">
         <h1>{title}</h1>
         {lead && <p class="lead">{lead}</p>}
@@ -56,6 +59,17 @@ const { title, lead, image } = Astro.props;
     .hero__inner--with-image {
       grid-template-columns: 1.1fr 0.9fr;
     }
+  }
+
+  .hero__inner--banner {
+    max-width: var(--max-width);
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .hero__inner--banner .hero__media img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 
   .hero__media img {

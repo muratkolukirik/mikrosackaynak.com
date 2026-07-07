@@ -91,6 +91,15 @@ export const IMAGES = {
     caption: 'Nanofilament yöntemi farklı bağlantı malzemesi kullanır; mikro kaynakla karıştırılmamalıdır.',
     context: 'nanofilament',
   },
+  gramAdetHero: {
+    id: 'mikro-kaynak-kac-gram-kac-adet-hero',
+    webp: `${base}/mikro-kaynak-kac-gram-kac-adet-hero.webp`,
+    jpg: `${base}/mikro-kaynak-kac-gram-kac-adet-hero.jpg`,
+    alt: 'Mikro kaynakta gramaj ve adet farkını anlatan profesyonel saç kaynak rehberi',
+    caption:
+      'Gramaj ve adet planlaması; saç profili, tutam ağırlığı ve yerleşim stratejisiyle birlikte değerlendirilir.',
+    context: 'genel',
+  },
   ombreRenk: {
     id: 'sac-kaynak-ombre-renk-ornek',
     webp: `${base}/sac-kaynak-ombre-renk-ornek.webp`,
