@@ -23,35 +23,3 @@ const { title, intro, images, columns = 2 } = Astro.props;
     </div>
   </div>
 </section>
-
-<style>
-  .image-gallery {
-    padding-block: var(--space-lg);
-  }
-
-  .image-gallery h2 {
-    margin-top: 0;
-  }
-
-  .image-gallery__intro {
-    color: var(--color-text-muted);
-    max-width: 42rem;
-  }
-
-  .image-gallery__grid {
-    display: grid;
-    gap: var(--space-md);
-  }
-
-  .image-gallery__grid--2 {
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  }
-
-  .image-gallery__grid--3 {
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  }
-
-  .image-gallery__grid :global(.editorial-image) {
-    margin: 0;
-  }
-</style>

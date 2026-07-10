@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "mkdir -p public/styles && cp src/styles/global.css public/styles/site.css",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
