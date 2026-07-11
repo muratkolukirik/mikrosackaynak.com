@@ -13,17 +13,20 @@ const filtered = exclude ? links.filter((l) => l.href !== exclude) : links;
 
 {
   filtered.length > 0 && (
-    <section class="related">
-      <div class="container container--narrow">
-        <h2>{title}</h2>
-        <div class="card-grid">
-          {filtered.slice(0, 4).map((link) => (
-            <article class="card">
-              <h3 class="card__title">
-                <a href={link.href}>{link.label}</a>
-              </h3>
-              {link.description && <p class="card__desc">{link.description}</p>}
-            </article>
+    <section class="related section section--muted">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Devam edin</p>
+          <h2>{title}</h2>
+        </div>
+        <div class="guide-grid">
+          {filtered.slice(0, 4).map((link, i) => (
+            <a href={link.href} class="guide-card">
+              <span class="guide-card__num">Rehber {String(i + 1).padStart(2, '0')}</span>
+              <h3 class="guide-card__title">{link.label}</h3>
+              {link.description && <p class="guide-card__desc">{link.description}</p>}
+              <span class="guide-card__link">Oku →</span>
+            </a>
           ))}
         </div>
       </div>

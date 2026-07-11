@@ -1,0 +1,12 @@
+---
+interface Props {
+  children?: unknown;
+}
+
+const { children } = Astro.props;
+---
+
+<aside class="expert-note">
+  <p class="expert-note__label">Uzman notu</p>
+  <slot />
+</aside>

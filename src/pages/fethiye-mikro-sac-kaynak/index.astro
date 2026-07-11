@@ -4,9 +4,11 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import PageHero from '../../components/PageHero.astro';
 import FAQList from '../../components/FAQList.astro';
 import FethiyeContactBlock from '../../components/FethiyeContactBlock.astro';
+import PremiumCTA from '../../components/PremiumCTA.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import { guideLinks } from '../../data/navigation';
 import { BRAND, CONTACT_FETHIYE } from '../../data/site';
+import { IMAGES } from '../../data/images';
 import {
   breadcrumbSchema,
   articleSchema,
@@ -86,7 +88,10 @@ const fethiyeWhatsappMessage =
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="Fethiye Mikro Saç Kaynak"
+    kicker="Lokal rehber · Fethiye / Ölüdeniz"
     lead={`${CONTACT_FETHIYE.regionNote} mikro saç kaynak danışmanlığı — ${CONTACT_FETHIYE.brandName} markası altında ön analiz, yöntem seçimi ve doğal geçiş planlaması.`}
+    image={IMAGES.renkUyumu}
+    layout="banner"
   />
 
   <article class="section">
@@ -227,6 +232,12 @@ const fethiyeWhatsappMessage =
       <FAQList faqs={faqs} />
     </div>
   </article>
+
+  <PremiumCTA
+    title="Fethiye merkezinden fotoğrafla ön analiz"
+    text="Fethiye ve Ölüdeniz çevresinden gündüz ışığında saç fotoğrafınızı paylaşarak ön analiz ve randevu planlaması hakkında bilgi alabilirsiniz."
+    message={fethiyeWhatsappMessage}
+  />
 
   <RelatedLinks links={guideLinks} exclude={path} />
 </BaseLayout>

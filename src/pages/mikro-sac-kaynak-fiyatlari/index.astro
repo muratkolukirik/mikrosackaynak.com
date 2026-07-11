@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PageHero from '../../components/PageHero.astro';
-import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import PremiumCTA from '../../components/PremiumCTA.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import FAQList from '../../components/FAQList.astro';
 import { guideLinks } from '../../data/navigation';
@@ -53,6 +53,7 @@ const schemas = [
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="Mikro Saç Kaynak Fiyatları"
+    kicker="Fiyatlandırma rehberi · Şeffaf maliyet mantığı"
     lead="Gram fiyatı karşılaştırmayı kolaylaştırır; ancak nihai maliyet çoğu zaman planlama, işçilik ve saç profilinize bağlıdır. Bu sayfada sabit fiyat listesi paylaşmıyoruz — şeffaf mantığı anlatıyoruz."
   />
 
@@ -164,8 +165,9 @@ const schemas = [
     </div>
   </article>
 
-  <CTAWhatsApp
-    title="Size özel fiyat aralığı için yazın"
+  <PremiumCTA
+    title="Size özel fiyat aralığı için fotoğrafla ön analiz"
+    text="Güncel saç fotoğraflarınız ve hedef görünümünüzle birlikte makul bir maliyet çerçevesi hakkında yönlendirme alabilirsiniz."
     message="Merhaba, mikro saç kaynak fiyatlandırması hakkında bilgi almak istiyorum."
   />
   <RelatedLinks links={guideLinks} exclude={path} />

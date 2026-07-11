@@ -1,13 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumb from '../components/Breadcrumb.astro';
-import PageHero from '../components/PageHero.astro';
-import CTAWhatsApp from '../components/CTAWhatsApp.astro';
-import RelatedLinks from '../components/RelatedLinks.astro';
-import ResultsSection from '../components/ResultsSection.astro';
+import SplitHero from '../components/SplitHero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import VisualStatement from '../components/VisualStatement.astro';
+import GuideCards from '../components/GuideCards.astro';
+import HairTypeGrid from '../components/HairTypeGrid.astro';
+import AnalysisSteps from '../components/AnalysisSteps.astro';
+import LocalShowcase from '../components/LocalShowcase.astro';
+import MiniFAQ from '../components/MiniFAQ.astro';
+import PremiumCTA from '../components/PremiumCTA.astro';
 import { guideLinks } from '../data/navigation';
-import { IMAGES, applicationGallery } from '../data/images';
-import { BRAND, PILLAR_PATH } from '../data/site';
+import { IMAGES } from '../data/images';
+import { BRAND, PILLAR_PATH, whatsappUrl } from '../data/site';
 import { websiteSchema, breadcrumbSchema } from '../utils/schema';
 
 const path = '/';
@@ -17,86 +21,119 @@ const description =
 
 const breadcrumbs = [{ name: 'Ana Sayfa', path: '/' }];
 const schemas = [websiteSchema(), breadcrumbSchema(breadcrumbs)];
-const heroImage = IMAGES.mikroDogalGorunum;
+
+const trustItems = [
+  { label: 'Hizmet merkezi', value: 'Fethiye / Ölüdeniz' },
+  { label: 'Renk sistemi', value: `${BRAND.colorCount} renk` },
+  { label: 'Ön değerlendirme', value: 'Fotoğrafla analiz' },
+  { label: 'Saç kalitesi', value: 'Premium insan saçı' },
+];
+
+const hairTypes = [
+  {
+    title: 'Kısa saça mikro kaynak',
+    text: 'Geçiş hattı, katman ve yoğunluk planlaması — kısa saçta dönüşüm stratejisi.',
+    href: '/kisa-saca-mikro-kaynak/',
+    image: IMAGES.kisaSacDonusum,
+  },
+  {
+    title: 'İnce saça mikro kaynak',
+    text: 'Taşıma kapasitesi ve hafif tutam profili — ince telli saçlarda kontrollü yoğunluk.',
+    href: '/ince-saca-mikro-kaynak/',
+    image: IMAGES.model2,
+  },
+  {
+    title: 'Kaç gram mı, kaç adet mi?',
+    text: 'Gramaj ve adet birbirinden ayrı okunmamalı — amiral planlama rehberi.',
+    href: '/mikro-kaynak-kac-gram-mi-kac-adet-mi/',
+    image: IMAGES.gramAdetHero,
+  },
+  {
+    title: 'Fiyatlar neye göre değişir?',
+    text: 'Gram dışı faktörler: işçilik, harmanlama, saç kalitesi ve bakım döngüsü.',
+    href: '/mikro-sac-kaynak-fiyatlari/',
+    image: IMAGES.renkUyumu,
+  },
+];
+
+const analysisSteps = [
+  {
+    title: 'Gündüz ışığında fotoğraf gönderin',
+    text: 'Ön, yan ve arka açıdan güncel saç fotoğraflarınızı WhatsApp üzerinden iletin. Filtresiz çekimler renk eşleştirmesi için daha doğru sonuç verir.',
+  },
+  {
+    title: 'Uzman ön analizi',
+    text: 'Saç yoğunluğu, kesim katmanları, hedef uzunluk ve bakım alışkanlıklarınız birlikte değerlendirilir. Yaklaşık gram ve adet çerçevesi oluşturulur.',
+  },
+  {
+    title: 'Kişisel plan oluşturun',
+    text: 'Tutam ağırlığı, yerleşim stratejisi ve yöntem seçimi netleştirilir. Fethiye merkezinde yüz yüze veya WhatsApp ile devam edebilirsiniz.',
+  },
+];
+
+const miniFaqs = [
+  {
+    question: 'Mikro saç kaynak kimler için uygundur?',
+    answer:
+      'Mevcut saç yoğunluğu, tellerin inceliği, hedef uzunluk ve bakım disiplini birlikte değerlendirilmelidir. Tek bir profil tüm adaylar için geçerli değildir.',
+  },
+  {
+    question: '150 veya 200 adet yeterli mi?',
+    answer:
+      'Adet sayısı tek başına sonuç garantisi vermez. Tutam ağırlığı, toplam gramaj ve yerleşim planı birlikte okunmalıdır.',
+  },
+  {
+    question: 'Fiyat yalnızca grama göre mi hesaplanır?',
+    answer:
+      'Hayır. İşçilik süresi, harmanlama, saç kalitesi, yenileme döngüsü ve planlama karmaşıklığı maliyeti etkiler.',
+  },
+  {
+    question: 'Fethiye dışından danışmanlık alabilir miyim?',
+    answer:
+      'Evet. Türkiye genelinde WhatsApp hattı üzerinden fotoğrafla ön analiz talep edebilirsiniz.',
+  },
+];
 ---
 
 <BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
-  <Breadcrumb items={breadcrumbs} />
-  <PageHero
+  <SplitHero
     title="Mikro Saç Kaynak Rehberi"
     lead="Mikro saç kaynak yalnızca küçük tutamlı bir uzatma yöntemi değildir. Doğal yoğunluk, tel taşıma kapasitesi, tutam ağırlığı, yerleşim planı ve bakım disiplini birlikte değerlendirilmelidir."
-    image={heroImage}
+    image={IMAGES.mikroDogalGorunum}
+    badge="Sach & Vogue Hair — gerçek model çekimi, AI üretimi değil"
+    primaryCta={{
+      label: 'WhatsApp Ön Analiz',
+      href: whatsappUrl(),
+    }}
+    secondaryCta={{
+      label: 'Pillar rehberi oku',
+      href: PILLAR_PATH,
+    }}
   />
 
-  <section class="section">
-    <div class="container container--narrow prose">
-      <div class="short-answer">
-        <p class="short-answer__label">Kısa cevap</p>
-        <p>
-          Mikro saç kaynak, doğal saç tellerine ince tutamlarla bağlanan bir saç
-          uzatma yöntemidir. Doğru sonuç; gram hesabından çok saç analizi, yerleşim
-          stratejisi ve gerçekçi bakım planıyla mümkün olur.
-          <a href={PILLAR_PATH}>Detaylı pillar rehber</a> tüm konuları kapsar.
-        </p>
-      </div>
+  <TrustStrip items={trustItems} />
 
-      <h2>Neden bu rehber?</h2>
-      <p>
-        mikrosackaynak.com, mikro saç kaynak konusuna odaklanan uzman bir bilgi
-        kaynağıdır. {BRAND.name} deneyimi ve Fethiye / Ölüdeniz hizmet merkezi
-        perspektifiyle; fiyat, uygunluk, kısa saç dönüşümü ve yöntem seçimini
-        sakin, gerçekçi bir dille anlatırız.
-      </p>
-
-      <h2>Uzmanlık mesajı</h2>
-      <p>
-        Mikro saç kaynak kararı; mevcut kesim, hedef uzunluk, tellerin inceliği,
-        ense yoğunluğu ve günlük bakım alışkanlıklarınızla birlikte ele alınmalıdır.
-        {BRAND.colorNote} Kesin vaatler yerine kişiye özel danışmanlık sunuyoruz.
-      </p>
-
-      <h2>Gram ve adet planlaması</h2>
-      <p>
-        Mikro saç kaynak kararı verirken yalnızca fiyat değil, kaç gram ve kaç adet
-        gerektiği de merak edilir. Bu iki kavram birbirinden ayrı okunmamalıdır —
-        <a href="/mikro-kaynak-kac-gram-mi-kac-adet-mi/">gramaj ve adet rehberimiz</a>
-        konuyu baştan sona açıklar.
-      </p>
-
-      <h2>İlk adım: pillar rehber</h2>
-      <p>
-        Tüm konuların merkezi
-        <a href={PILLAR_PATH}>mikro saç kaynak rehberi</a>
-        sayfasıdır. Uygunluk, gramaj mantığı, yöntem farkları ve sık sorulan
-        sorular orada toplanmıştır.
-      </p>
-    </div>
-  </section>
-
-  <ResultsSection images={applicationGallery} />
-
-  <section class="section section--muted">
-    <div class="container">
-      <h2 class="section-title">Rehber içeriği</h2>
-      <div class="card-grid">
-        {
-          guideLinks.map((link) => (
-            <article class="card">
-              <h3 class="card__title">
-                <a href={link.href}>{link.label}</a>
-              </h3>
-              {link.description && <p class="card__desc">{link.description}</p>}
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <CTAWhatsApp
-    title="Karar vermeden önce sorularınızı netleştirin"
-    text="Saç yapınız, hedeflediğiniz uzunluk ve bakım rutininiz hakkında kısa bir ön görüşme, doğru yöntemi seçmenize yardımcı olur."
+  <VisualStatement
+    quote="200 adet her zaman aynı sonucu vermez."
+    text="Aynı adet sayısı; farklı tutam ağırlıkları, farklı saç profilleri ve farklı yerleşim planlarıyla tamamen farklı sonuçlar üretebilir. Mikro kaynak kararında gramaj, adet ve bölgesel dağılım birlikte okunmalıdır."
+    image={IMAGES.model3}
+    ctaLabel="Gramaj ve adet rehberi"
+    ctaHref="/mikro-kaynak-kac-gram-mi-kac-adet-mi/"
+    reverse
   />
 
-  <RelatedLinks links={guideLinks} exclude={path} />
+  <GuideCards links={guideLinks} />
+
+  <HairTypeGrid items={hairTypes} />
+
+  <AnalysisSteps steps={analysisSteps} />
+
+  <LocalShowcase image={IMAGES.mikroDogalGorunum} />
+
+  <MiniFAQ faqs={miniFaqs} />
+
+  <PremiumCTA
+    title="Karar vermeden önce net bir plan oluşturun"
+    text={`${BRAND.name} uzmanlığında fotoğrafla ön analiz ile saç profilinize uygun mikro kaynak planını birlikte değerlendirelim.`}
+  />
 </BaseLayout>

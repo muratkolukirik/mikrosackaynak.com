@@ -2,19 +2,28 @@
 interface Props {
   title: string;
   lead?: string;
+  kicker?: string;
   image?: { webp: string; jpg: string; alt: string };
-  /** Tam genişlik banner: metin üstte, görsel altta */
-  layout?: 'default' | 'banner';
+  layout?: 'default' | 'banner' | 'split';
 }
 
-const { title, lead, image, layout = 'default' } = Astro.props;
+const { title, lead, kicker, image, layout = 'default' } = Astro.props;
 const isBanner = layout === 'banner' && image;
+const isSplit = layout === 'split' && image;
 ---
 
 <section class="hero">
   <div class="container">
-    <div class:list={['hero__inner', { 'hero__inner--with-image': image && !isBanner, 'hero__inner--banner': isBanner }]}>
+    <div
+      class:list={[
+        'hero__inner',
+        { 'hero__inner--with-image': image && !isBanner && !isSplit },
+        { 'hero__inner--banner': isBanner },
+        { 'split-hero__grid': isSplit },
+      ]}
+    >
       <div class="hero__text">
+        {kicker && <p class="hero__kicker">{kicker}</p>}
         <h1>{title}</h1>
         {lead && <p class="lead">{lead}</p>}
       </div>

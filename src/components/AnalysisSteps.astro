@@ -1,0 +1,41 @@
+---
+interface Step {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  title?: string;
+  lead?: string;
+  steps: Step[];
+}
+
+const {
+  title = 'Fotoğrafla ön analiz — 3 adım',
+  lead = 'Karar vermeden önce saç profilinizi uzman ekibimizle birlikte değerlendirin. Ücretsiz ön görüşme ile başlayın.',
+  steps,
+} = Astro.props;
+---
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="section-kicker">Danışmanlık akışı</p>
+      <h2>{title}</h2>
+      <p class="section-lead">{lead}</p>
+    </div>
+    <div class="steps">
+      {
+        steps.map((step, i) => (
+          <div class="step-card">
+            <span class="step-card__num" aria-hidden="true">{i + 1}</span>
+            <div>
+              <h3 class="step-card__title">{step.title}</h3>
+              <p class="step-card__text">{step.text}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

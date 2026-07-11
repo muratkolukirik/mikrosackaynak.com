@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PageHero from '../../components/PageHero.astro';
-import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import PremiumCTA from '../../components/PremiumCTA.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import FAQList from '../../components/FAQList.astro';
 import ImageGallery from '../../components/ImageGallery.astro';
@@ -55,6 +55,7 @@ const schemas = [
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="Mikro Kaynak mı Keratin Kaynak mı?"
+    kicker="Yöntem karşılaştırması · Tarafsız rehber"
     lead="İki yöntem de saç uzatma amacı taşır; fark bağlantı malzemesinde, profilinde ve bakım ihtiyacında ortaya çıkar. Tek doğru yöntem yoktur."
   />
 
@@ -183,8 +184,9 @@ const schemas = [
     columns={3}
   />
 
-  <CTAWhatsApp
+  <PremiumCTA
     title="Size uygun yöntemi birlikte belirleyelim"
+    text="Saç profiliniz ve günlük rutininiz için hangi yöntemin daha uygun olabileceğini fotoğrafla ön analiz ile değerlendirebiliriz."
     message="Merhaba, mikro kaynak ile keratin kaynak arasındaki fark hakkında danışmanlık almak istiyorum."
   />
   <RelatedLinks links={guideLinks} exclude={path} />

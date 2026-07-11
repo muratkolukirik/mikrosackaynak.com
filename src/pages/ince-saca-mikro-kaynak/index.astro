@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PageHero from '../../components/PageHero.astro';
-import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import PremiumCTA from '../../components/PremiumCTA.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import ResultsSection from '../../components/ResultsSection.astro';
 import EditorialImage from '../../components/EditorialImage.astro';
@@ -31,8 +31,10 @@ const schemas = [
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="İnce Saça Mikro Kaynak"
+    kicker="Saç profili rehberi · İnce saç"
     lead="İnce telli saçlarda hacim ve uzunluk hedefi mümkün olabilir; ancak ağırlık kontrolü ve yerleştirme stratejisi belirleyicidir. Abartılı yoğunluk vaatlerinden kaçının."
     image={IMAGES.model2}
+    layout="banner"
   />
 
   <article class="section">
@@ -129,8 +131,9 @@ const schemas = [
     images={thinHairGallery}
   />
 
-  <CTAWhatsApp
+  <PremiumCTA
     title="İnce saç profiliniz için ön değerlendirme"
+    text="Saç yoğunluğunuz ve hedef hacminiz hakkında fotoğrafla ön analiz için WhatsApp üzerinden iletişime geçebilirsiniz."
     message="Merhaba, ince saçım için mikro kaynak uygunluğu hakkında bilgi almak istiyorum."
   />
   <RelatedLinks links={guideLinks} exclude={path} />

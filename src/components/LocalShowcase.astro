@@ -1,0 +1,46 @@
+---
+import type { SiteImage } from '../data/images';
+import { CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
+
+interface Props {
+  image: SiteImage;
+}
+
+const { image } = Astro.props;
+---
+
+<section class="section section--muted">
+  <div class="container">
+    <div class="local-showcase__grid">
+      <div class="local-showcase__media">
+        <picture>
+          <source srcset={image.webp} type="image/webp" />
+          <img src={image.jpg} alt={image.alt} loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="local-showcase__content">
+        <p class="section-kicker">Fethiye · Ölüdeniz</p>
+        <h2>{CONTACT_FETHIYE.businessName}</h2>
+        <p class="section-lead">
+          {CONTACT_FETHIYE.regionNote} — Sach &amp; Vogue Hair deneyimiyle yüz yüze danışmanlık ve
+          fotoğrafla ön analiz. Türkiye genelinde WhatsApp hattı üzerinden de ulaşabilirsiniz.
+        </p>
+        <p>{CONTACT_FETHIYE.address.display}</p>
+        <p>{CONTACT_FETHIYE.openingHours.summary}</p>
+        <div class="local-showcase__meta">
+          <a href={CONTACT_FETHIYE.pagePath} class="btn btn--primary">Fethiye rehberi</a>
+          <a
+            href={whatsappUrl(CONTACT_FETHIYE.whatsappDefaultMessage)}
+            class="btn btn--whatsapp"
+            rel="noopener noreferrer"
+          >
+            WhatsApp Ön Analiz
+          </a>
+          <a href={telUrl(CONTACT_FETHIYE.phoneE164)} class="btn btn--secondary">
+            {CONTACT_FETHIYE.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

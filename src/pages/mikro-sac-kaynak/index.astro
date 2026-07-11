@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PageHero from '../../components/PageHero.astro';
-import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import PremiumCTA from '../../components/PremiumCTA.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import FAQList from '../../components/FAQList.astro';
 import ResultsSection from '../../components/ResultsSection.astro';
@@ -70,8 +70,10 @@ const schemas = [
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="Mikro Saç Kaynak"
+    kicker="Pillar rehber · Mikro saç kaynak"
     lead="Küçük tutamlı bağlantı profili hedefleyen saç uzatma yöntemi. Doğru planlama; gram hesabından çok saç yapısı, yerleşim ve bakım disipliniyle mümkündür."
     image={IMAGES.mikroDogalGorunum}
+    layout="banner"
   />
 
   <article class="section">
@@ -170,8 +172,9 @@ const schemas = [
     </div>
   </section>
 
-  <CTAWhatsApp
+  <PremiumCTA
     title="Mikro saç kaynak uygunluğunuzu birlikte değerlendirelim"
+    text="Saç yapınız ve hedef görünümünüz hakkında fotoğrafla ön analiz almak için WhatsApp üzerinden yazabilirsiniz."
     message="Merhaba, mikro saç kaynak yöntemi hakkında danışmanlık almak istiyorum."
   />
   <RelatedLinks links={guideLinks} exclude={path} />

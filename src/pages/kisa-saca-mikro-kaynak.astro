@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
-import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import PremiumCTA from '../components/PremiumCTA.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import ResultsSection from '../components/ResultsSection.astro';
 import EditorialImage from '../components/EditorialImage.astro';
@@ -30,8 +30,10 @@ const schemas = [
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="Kısa Saça Mikro Kaynak"
+    kicker="Saç profili rehberi · Kısa saç"
     lead="Kısa saçta dönüşüm mümkün olabilir; ancak planlama, harmanlama ve işçilik maliyeti uzun saça kıyasla genellikle daha belirleyicidir."
     image={IMAGES.kisaSacDonusum}
+    layout="banner"
   />
 
   <article class="section">
@@ -106,8 +108,9 @@ const schemas = [
     images={shortHairGallery}
   />
 
-  <CTAWhatsApp
+  <PremiumCTA
     title="Kısa saç planınızı birlikte değerlendirelim"
+    text="Mevcut kesiminiz ve hedef görünümünüz için fotoğrafla ön analiz almak üzere WhatsApp üzerinden yazabilirsiniz."
     message="Merhaba, kısa saçım için mikro kaynak planlaması hakkında bilgi almak istiyorum."
   />
   <RelatedLinks links={guideLinks} exclude={path} />

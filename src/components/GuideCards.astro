@@ -1,0 +1,41 @@
+---
+import type { NavItem } from '../data/navigation';
+
+interface Props {
+  title?: string;
+  lead?: string;
+  links: NavItem[];
+  exclude?: string;
+}
+
+const {
+  title = 'Uzman rehberler',
+  lead = 'Mikro saç kaynak kararınızı doğru bilgiyle destekleyen kapsamlı rehber sayfaları.',
+  links,
+  exclude,
+} = Astro.props;
+
+const filtered = exclude ? links.filter((l) => l.href !== exclude) : links;
+---
+
+<section class="section section--muted">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="section-kicker">Rehber kütüphanesi</p>
+      <h2>{title}</h2>
+      <p class="section-lead">{lead}</p>
+    </div>
+    <div class="guide-grid">
+      {
+        filtered.map((link, i) => (
+          <a href={link.href} class="guide-card">
+            <span class="guide-card__num">Rehber {String(i + 1).padStart(2, '0')}</span>
+            <h3 class="guide-card__title">{link.label}</h3>
+            {link.description && <p class="guide-card__desc">{link.description}</p>}
+            <span class="guide-card__link">Rehberi oku →</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

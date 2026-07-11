@@ -2,9 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PageHero from '../../components/PageHero.astro';
-import CTAWhatsApp from '../../components/CTAWhatsApp.astro';
+import PremiumCTA from '../../components/PremiumCTA.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import FAQList from '../../components/FAQList.astro';
+import ExpertNote from '../../components/ExpertNote.astro';
 import { guideLinks } from '../../data/navigation';
 import { IMAGES } from '../../data/images';
 import { BRAND, CONTACT_FETHIYE } from '../../data/site';
@@ -107,6 +108,7 @@ const schemas = [
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="Mikro Kaynak Kaç Gram mı, Kaç Adet mi Gerekir?"
+    kicker="Amiral rehber · Gramaj ve adet planlaması"
     lead="Gram ve adet rakamları tek başına cevap vermez. Doğru planlama; saç yapınız, tutam ağırlığı ve bölgesel yerleşim stratejisiyle mümkündür."
     image={heroImage}
     layout="banner"
@@ -363,14 +365,13 @@ const schemas = [
         doğru yerleşim — hepsi bir arada düşünüldüğünde anlam kazanır.
       </p>
 
-      <div class="callout">
+      <ExpertNote>
         <p>
-          <strong>Uzman notu:</strong> Rakamları karşılaştırırken tutam ağırlığını
-          mutlaka sorun. 150 adet veya 200 adet ifadesi, tutam profili olmadan
-          anlamlı bir sonuç vaadi değildir. Şüphe duyduğunuz tekliflerde fotoğrafla
-          ikinci bir görüş almak yerinde olur.
+          Rakamları karşılaştırırken tutam ağırlığını mutlaka sorun. 150 adet veya 200 adet
+          ifadesi, tutam profili olmadan anlamlı bir sonuç vaadi değildir. Şüphe duyduğunuz
+          tekliflerde fotoğrafla ikinci bir görüş almak yerinde olur.
         </p>
-      </div>
+      </ExpertNote>
 
       <h2 id="karsilastirma">Gramaj ve adet: hızlı karşılaştırma</h2>
       <div class="comparison-table" role="region" aria-label="Gramaj ve adet karşılaştırması">
@@ -411,8 +412,9 @@ const schemas = [
     </div>
   </article>
 
-  <CTAWhatsApp
+  <PremiumCTA
     title="Gramaj ve adet planınız için fotoğrafla ön analiz"
+    text="Saç yapınıza en uygun gramaj ve adet planını birlikte değerlendirmek için WhatsApp üzerinden fotoğraflarınızı iletebilirsiniz."
     message="Merhaba, mikro kaynak için gramaj ve adet planlaması hakkında fotoğrafla ön analiz almak istiyorum."
   />
   <RelatedLinks links={guideLinks} exclude={path} />

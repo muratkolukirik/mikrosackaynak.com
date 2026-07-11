@@ -1,0 +1,53 @@
+---
+import type { SiteImage } from '../data/images';
+
+interface HairType {
+  title: string;
+  text: string;
+  href: string;
+  image: SiteImage;
+}
+
+interface Props {
+  title?: string;
+  lead?: string;
+  items: HairType[];
+}
+
+const {
+  title = 'Saç tipinize göre planlama',
+  lead = 'Her saç profili farklı gramaj, adet ve yerleşim stratejisi gerektirir. Standart paket mantığı yerine kişiye özel danışmanlık sunuyoruz.',
+  items,
+} = Astro.props;
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-kicker">Kişisel planlama</p>
+      <h2>{title}</h2>
+      <p class="section-lead">{lead}</p>
+    </div>
+    <div class="hair-type-grid">
+      {
+        items.map((item) => (
+          <article class="hair-type-card">
+            <a href={item.href} class="hair-type-card__img">
+              <picture>
+                <source srcset={item.image.webp} type="image/webp" />
+                <img src={item.image.jpg} alt={item.image.alt} loading="lazy" decoding="async" />
+              </picture>
+            </a>
+            <div class="hair-type-card__body">
+              <h3 class="hair-type-card__title">
+                <a href={item.href}>{item.title}</a>
+              </h3>
+              <p class="hair-type-card__text">{item.text}</p>
+              <a href={item.href} class="hair-type-card__link">Planı incele →</a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

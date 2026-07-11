@@ -1,0 +1,35 @@
+---
+import type { SiteImage } from '../data/images';
+
+interface Props {
+  quote: string;
+  text: string;
+  image: SiteImage;
+  ctaLabel?: string;
+  ctaHref?: string;
+  reverse?: boolean;
+}
+
+const { quote, text, image, ctaLabel, ctaHref, reverse = false } = Astro.props;
+---
+
+<section class="visual-block section section--cream">
+  <div class="container">
+    <div class:list={['visual-block__grid', { 'visual-block__grid--reverse': reverse }]}>
+      <div class="visual-block__content">
+        <p class="section-kicker">Uzman mesajı</p>
+        <blockquote class="visual-block__quote">{quote}</blockquote>
+        <p class="visual-block__text">{text}</p>
+        {ctaHref && ctaLabel && (
+          <a href={ctaHref} class="btn btn--primary">{ctaLabel}</a>
+        )}
+      </div>
+      <div class="visual-block__media">
+        <picture>
+          <source srcset={image.webp} type="image/webp" />
+          <img src={image.jpg} alt={image.alt} loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+import { whatsappUrl } from '../data/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+  message?: string;
+  buttonLabel?: string;
+}
+
+const {
+  title = 'Fotoğrafla ücretsiz ön analiz',
+  text = 'Saç yapınız, hedef uzunluğunuz ve bakım alışkanlıklarınız hakkında kısa bir ön görüşme, doğru mikro kaynak planını oluşturmanıza yardımcı olur.',
+  message,
+  buttonLabel = 'WhatsApp Ön Analiz Başlat',
+} = Astro.props;
+---
+
+<section class="premium-cta">
+  <div class="container">
+    <div class="premium-cta__inner">
+      <div class="premium-cta__content">
+        <p class="section-kicker">Ücretsiz danışmanlık</p>
+        <h2 class="premium-cta__title">{title}</h2>
+        <p class="premium-cta__text">{text}</p>
+      </div>
+      <div class="premium-cta__action">
+        <a
+          href={whatsappUrl(message)}
+          class="btn btn--whatsapp btn--lg"
+          rel="noopener noreferrer"
+        >
+          {buttonLabel}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

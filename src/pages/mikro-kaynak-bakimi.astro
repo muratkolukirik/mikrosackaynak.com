@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
-import CTAWhatsApp from '../components/CTAWhatsApp.astro';
+import PremiumCTA from '../components/PremiumCTA.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import FAQList from '../components/FAQList.astro';
 import { guideLinks } from '../data/navigation';
@@ -53,6 +53,7 @@ const schemas = [
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="Mikro Kaynak Bakımı"
+    kicker="Bakım rehberi · Günlük alışkanlıklar"
     lead="İyi bir uygulama kadar önemli olan düzenli bakımdır. Günlük alışkanlıklarınız bağlantı ömrünü ve görünümü doğrudan etkiler."
   />
 
@@ -150,8 +151,9 @@ const schemas = [
     </div>
   </article>
 
-  <CTAWhatsApp
+  <PremiumCTA
     title="Bakım planınız hakkında sorularınız mı var?"
+    text="Günlük rutininiz ve bakım ihtiyaçlarınız hakkında yönlendirme almak için WhatsApp üzerinden yazabilirsiniz."
     message="Merhaba, mikro kaynak bakımı hakkında bilgi almak istiyorum."
   />
   <RelatedLinks links={guideLinks} exclude={path} />

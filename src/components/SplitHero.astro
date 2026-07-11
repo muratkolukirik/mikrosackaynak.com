@@ -1,0 +1,58 @@
+---
+import type { SiteImage } from '../data/images';
+
+interface Props {
+  kicker?: string;
+  title: string;
+  lead: string;
+  image: SiteImage;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  badge?: string;
+}
+
+const {
+  kicker = 'Premium mikro saç kaynak danışmanlığı',
+  title,
+  lead,
+  image,
+  primaryCta,
+  secondaryCta,
+  badge,
+} = Astro.props;
+---
+
+<section class="split-hero">
+  <div class="container">
+    <div class="split-hero__grid">
+      <div class="split-hero__content">
+        {kicker && <p class="split-hero__kicker">{kicker}</p>}
+        <h1 class="split-hero__title">{title}</h1>
+        <p class="split-hero__lead">{lead}</p>
+        {
+          (primaryCta || secondaryCta) && (
+            <div class="split-hero__actions">
+              {primaryCta && (
+                <a href={primaryCta.href} class="btn btn--whatsapp btn--lg" rel="noopener noreferrer">
+                  {primaryCta.label}
+                </a>
+              )}
+              {secondaryCta && (
+                <a href={secondaryCta.href} class="btn btn--secondary btn--lg">
+                  {secondaryCta.label}
+                </a>
+              )}
+            </div>
+          )
+        }
+      </div>
+      <div class="split-hero__media">
+        <picture>
+          <source srcset={image.webp} type="image/webp" />
+          <img src={image.jpg} alt={image.alt} loading="eager" decoding="async" />
+        </picture>
+        {badge && <p class="split-hero__badge">{badge}</p>}
+      </div>
+    </div>
+  </div>
+</section>

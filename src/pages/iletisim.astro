@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
 import FethiyeContactBlock from '../components/FethiyeContactBlock.astro';
+import PremiumCTA from '../components/PremiumCTA.astro';
 import { SITE, CONTACT_GENERAL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
 import { guideLinks } from '../data/navigation';
 import { breadcrumbSchema } from '../utils/schema';
@@ -23,6 +24,7 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="İletişim / WhatsApp Danışmanlık"
+    kicker="Danışmanlık · WhatsApp ön analiz"
     lead="Fethiye, Ölüdeniz ve Türkiye geneli ön danışmanlık için aşağıdaki numarayı kullanın."
   />
 
@@ -94,4 +96,10 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
       </div>
     </div>
   </section>
+
+  <PremiumCTA
+    title="WhatsApp üzerinden ön analiz başlatın"
+    text="Mevcut saç uzunluğunuz, hedef görünümünüz ve bakım rutininiz hakkında kısa bir mesaj göndermeniz yeterlidir."
+    message={CONTACT_FETHIYE.whatsappDefaultMessage}
+  />
 </BaseLayout>
