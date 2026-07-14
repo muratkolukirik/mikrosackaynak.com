@@ -10,8 +10,7 @@ export const primaryNav: NavItem[] = [
   { label: 'Fiyatlar', href: '/mikro-sac-kaynak-fiyatlari/' },
   { label: 'Kısa Saç', href: '/kisa-saca-mikro-kaynak/' },
   { label: 'İnce Saç', href: '/ince-saca-mikro-kaynak/' },
-  { label: 'Keratin mi?', href: '/mikro-kaynak-mi-keratin-kaynak-mi/' },
-  { label: 'Bakım', href: '/mikro-kaynak-bakimi/' },
+  { label: 'Gram mı Adet mi?', href: '/mikro-kaynak-kac-gram-mi-kac-adet-mi/' },
   { label: 'Fethiye', href: '/fethiye-mikro-sac-kaynak/' },
   { label: 'İletişim', href: '/iletisim/' },
 ];

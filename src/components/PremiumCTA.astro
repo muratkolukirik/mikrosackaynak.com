@@ -6,6 +6,7 @@ interface Props {
   text?: string;
   message?: string;
   buttonLabel?: string;
+  sub?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   text = 'Saç yapınız, hedef uzunluğunuz ve bakım alışkanlıklarınız hakkında kısa bir ön görüşme, doğru mikro kaynak planını oluşturmanıza yardımcı olur.',
   message,
   buttonLabel = 'WhatsApp Ön Analiz Başlat',
+  sub = 'Hızlı dönüş · Kişiye özel analiz · Ücretsiz danışmanlık',
 } = Astro.props;
 ---
 
@@ -32,6 +34,7 @@ const {
         >
           {buttonLabel}
         </a>
+        {sub && <p class="premium-cta__sub">{sub}</p>}
       </div>
     </div>
   </div>

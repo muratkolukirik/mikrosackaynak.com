@@ -23,10 +23,18 @@ const breadcrumbs = [{ name: 'Ana Sayfa', path: '/' }];
 const schemas = [websiteSchema(), breadcrumbSchema(breadcrumbs)];
 
 const trustItems = [
-  { label: 'Hizmet merkezi', value: 'Fethiye / Ölüdeniz' },
-  { label: 'Renk sistemi', value: `${BRAND.colorCount} renk` },
-  { label: 'Ön değerlendirme', value: 'Fotoğrafla analiz' },
-  { label: 'Saç kalitesi', value: 'Premium insan saçı' },
+  { label: 'Doğal uyum', value: `${BRAND.colorCount} Renk Seçeneği`, note: 'Doğal tonlarla mükemmel uyum' },
+  { label: 'Ön değerlendirme', value: 'Fotoğrafla Ön Analiz', note: 'Saç fotoğraflarınızla kişiye özel değerlendirme' },
+  { label: 'Saç kalitesi', value: 'Premium İnsan Saçı', note: 'Doğal his, uzun ömürlü kullanım' },
+  { label: 'Bölge', value: 'Fethiye Danışmanlığı', note: 'Bölgeye özel uzman destek ve randevu kolaylığı' },
+];
+
+// Sonucu belirleyen faktörler (signature education)
+const eduPoints = [
+  { n: '01', title: 'Gramaj & Tutam Ağırlığı', text: 'Aynı adette farklı gramaj, farklı dolgunluk sağlar.' },
+  { n: '02', title: 'Saç Kalitesi', text: 'Premium insan saçı daha doğal durur ve uzun ömürlüdür.' },
+  { n: '03', title: 'Single vs Double Drawn', text: 'Uçların dolgunluğu sonucu belirleyen en önemli etkendir.' },
+  { n: '04', title: 'Doğru Planlama', text: 'Saç yapınıza özel planlama ile en doğal ve dengeli görünüm hedeflenir.' },
 ];
 
 const hairTypes = [
@@ -56,18 +64,64 @@ const hairTypes = [
   },
 ];
 
+// Saç profili bazlı planlama mantığı (kesin gramaj/fiyat iddiası yok)
+const profiles = [
+  {
+    title: 'Seyrek & İnce Telli',
+    text: 'Taşıma kapasitesi öncelikli; hafif tutam ve kontrollü yoğunluk esas alınır.',
+    note: 'Profil bazlı değerlendirilir',
+    swatches: ['#c9a27a', '#e4cba3'],
+  },
+  {
+    title: 'Orta Yoğunluk',
+    text: 'Dengeli dolgunluk için gramaj ve yerleşim birlikte planlanır.',
+    note: 'Ön analizle netleşir',
+    swatches: ['#8a5a3b', '#b98a5e'],
+  },
+  {
+    title: 'Gür & Kalın Telli',
+    text: 'Mevcut hacimle uyum ve doğal geçiş, tutam ağırlığıyla dengelenir.',
+    note: 'Genellikle daha yüksek gramaj',
+    swatches: ['#4b3524', '#7a5335'],
+  },
+  {
+    title: 'Kısa Saç',
+    text: 'Geçiş hattı ve katman planı doğal görünümün belirleyicisidir.',
+    note: 'Dönüşüm projesi olarak ele alınır',
+    swatches: ['#6b4a30', '#a9764a'],
+  },
+  {
+    title: 'Açık Renk / Röfle',
+    text: 'Renk skalası ve harmanlama, doğal ton geçişi için birlikte seçilir.',
+    note: `${BRAND.colorCount} renk skalasından eşleştirme`,
+    swatches: ['#dcc39a', '#f0dcbd'],
+  },
+];
+
 const analysisSteps = [
   {
-    title: 'Gündüz ışığında fotoğraf gönderin',
-    text: 'Ön, yan ve arka açıdan güncel saç fotoğraflarınızı WhatsApp üzerinden iletin. Filtresiz çekimler renk eşleştirmesi için daha doğru sonuç verir.',
+    title: 'Fotoğraf Gönderin',
+    text: 'Önden, arkadan ve yanlardan aydınlık, filtresiz fotoğraflarınızı WhatsApp üzerinden iletin.',
   },
   {
-    title: 'Uzman ön analizi',
-    text: 'Saç yoğunluğu, kesim katmanları, hedef uzunluk ve bakım alışkanlıklarınız birlikte değerlendirilir. Yaklaşık gram ve adet çerçevesi oluşturulur.',
+    title: 'Yoğunluk Analizi',
+    text: 'Saç yapınız ve mevcut yoğunluğunuz değerlendirilir; taşıma kapasitesi göz önünde tutulur.',
   },
   {
-    title: 'Kişisel plan oluşturun',
-    text: 'Tutam ağırlığı, yerleşim stratejisi ve yöntem seçimi netleştirilir. Fethiye merkezinde yüz yüze veya WhatsApp ile devam edebilirsiniz.',
+    title: 'Gram / Adet Planlama',
+    text: 'Sizin için en uygun gramaj ve adet planı, tutam ağırlığı ile birlikte hazırlanır.',
+  },
+  {
+    title: 'Renk Eşleştirme',
+    text: `${BRAND.colorCount} renk skalamızdan doğal tonunuza en uygun eşleştirme belirlenir.`,
+  },
+  {
+    title: 'Uygulama',
+    text: 'Mikro kaynak işlemi hassasiyet ve estetik denge gözetilerek planlanır.',
+  },
+  {
+    title: 'Bakım Rehberi',
+    text: 'Uzun ömürlü kullanım için kişiye özel bakım önerileri ve yenileme döngüsü paylaşılır.',
   },
 ];
 
@@ -97,8 +151,9 @@ const miniFaqs = [
 
 <BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
   <SplitHero
-    title="Mikro Saç Kaynak Rehberi"
-    lead="Mikro saç kaynak yalnızca küçük tutamlı bir uzatma yöntemi değildir. Doğal yoğunluk, tel taşıma kapasitesi, tutam ağırlığı, yerleşim planı ve bakım disiplini birlikte değerlendirilmelidir."
+    kicker="Premium Mikro Saç Kaynak Deneyimi"
+    title="Mikro Saç Kaynakta Doğal Görünüm, Doğru Planlamayla Başlar"
+    lead="Mikro saç kaynakta sonucu yalnızca kaç adet takıldığı değil; toplam gramaj, tutam ağırlığı, saç yoğunluğu, renk uyumu ve yerleşim planı belirler."
     image={IMAGES.mikroDogalGorunum}
     badge="Sach & Vogue Hair — gerçek model çekimi, AI üretimi değil"
     primaryCta={{
@@ -106,8 +161,8 @@ const miniFaqs = [
       href: whatsappUrl(),
     }}
     secondaryCta={{
-      label: 'Pillar rehberi oku',
-      href: PILLAR_PATH,
+      label: 'Gramaj & Adet Rehberi',
+      href: '/mikro-kaynak-kac-gram-mi-kac-adet-mi/',
     }}
   />
 
@@ -115,25 +170,113 @@ const miniFaqs = [
 
   <VisualStatement
     quote="200 adet her zaman aynı sonucu vermez."
-    text="Aynı adet sayısı; farklı tutam ağırlıkları, farklı saç profilleri ve farklı yerleşim planlarıyla tamamen farklı sonuçlar üretebilir. Mikro kaynak kararında gramaj, adet ve bölgesel dağılım birlikte okunmalıdır."
+    text="Görünüm; gramaj, tutam ağırlığı, saç kalitesi ve single drawn / double drawn farkına göre değişir. Doğru planlama ile saçınıza uygun ideal sonucu elde edersiniz."
     image={IMAGES.model3}
-    ctaLabel="Gramaj ve adet rehberi"
+    ctaLabel="Gramaj ve Adet Farkını Öğren"
     ctaHref="/mikro-kaynak-kac-gram-mi-kac-adet-mi/"
     reverse
   />
 
+  <!-- Signature education: sonucu belirleyen dört faktör -->
+  <section class="section section--muted">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="section-kicker">Doğru bilgi, doğru sonuç</p>
+        <h2>Sonucu belirleyen dört faktör</h2>
+        <p class="section-lead">
+          Aynı adet, farklı planlamayla tamamen farklı bir sonuç verir. Doğal görünüm bu dört
+          değişkenin doğru dengesiyle ortaya çıkar.
+        </p>
+      </div>
+      <div class="feature-grid">
+        {eduPoints.map((f) => (
+          <div class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">{f.n}</span>
+            <h3 class="feature-card__title">{f.title}</h3>
+            <p class="feature-card__text">{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison: doğru plan = doğal sonuç -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="section-kicker kicker-rule">Aynı kişi, farklı planlama</p>
+        <h2>Doğru plan = Doğal sonuç</h2>
+        <p class="section-lead">
+          Aşağıdaki örnekler, gerçek bir müşteri sonucu değil; planlama mantığını gösteren
+          temsili karşılaştırmadır. Doğru gramaj ve yerleşim, hedeflenen görünümü belirler.
+        </p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <p class="compare-card__tag">Örnek planlama · hafif</p>
+          <p class="compare-card__value">Daha hafif gramaj</p>
+          <p class="compare-card__text">Doğal ve hafif bir dolgunluk; günlük, fark edilmeyen bir yoğunluk hedeflenir.</p>
+          <div class="compare-bar"><span style="width:55%"></span></div>
+        </div>
+        <div class="compare-card compare-card--strong">
+          <p class="compare-card__tag">Örnek planlama · dolgun</p>
+          <p class="compare-card__value">Daha yoğun gramaj</p>
+          <p class="compare-card__text">Belirgin ve dolgun bir görünüm; daha yüksek gramaj ve adet ile planlanır.</p>
+          <div class="compare-bar"><span style="width:88%"></span></div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top: var(--space-lg);">
+        <a href="/mikro-kaynak-kac-gram-mi-kac-adet-mi/" class="btn btn--primary btn--lg">Gramaj ve Adet Farkını Öğren</a>
+      </p>
+    </div>
+  </section>
+
   <GuideCards links={guideLinks} />
 
-  <HairTypeGrid items={hairTypes} />
+  <AnalysisSteps
+    kicker="Sürecimiz"
+    title="Nasıl Planlıyoruz?"
+    lead="Fotoğrafla ön analizden bakım rehberine kadar, doğal ve kalıcı bir sonuç için altı adımlık planlama sürecimiz."
+    steps={analysisSteps}
+  />
 
-  <AnalysisSteps steps={analysisSteps} />
+  <!-- Hair profile planning -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-kicker">Hangi profilde ne gerekir?</p>
+        <h2>Saç yapınıza göre ideal planlama</h2>
+        <p class="section-lead">
+          Her saç profili farklı bir yaklaşım ister. Kesin gramaj veya fiyat yerine, profil
+          bazlı bir planlama mantığı sunuyoruz; net plan ön analizle belirlenir.
+        </p>
+      </div>
+      <div class="profile-grid">
+        {profiles.map((p) => (
+          <div class="profile-card">
+            <div class="profile-card__swatches" aria-hidden="true">
+              {p.swatches.map((c) => (
+                <span class="profile-card__swatch" style={`background:${c}`}></span>
+              ))}
+            </div>
+            <h3 class="profile-card__title">{p.title}</h3>
+            <p class="profile-card__text">{p.text}</p>
+            <p class="profile-card__note">{p.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <HairTypeGrid items={hairTypes} />
 
   <LocalShowcase image={IMAGES.mikroDogalGorunum} />
 
   <MiniFAQ faqs={miniFaqs} />
 
   <PremiumCTA
-    title="Karar vermeden önce net bir plan oluşturun"
-    text={`${BRAND.name} uzmanlığında fotoğrafla ön analiz ile saç profilinize uygun mikro kaynak planını birlikte değerlendirelim.`}
+    title="Hazır mısınız?"
+    text="Doğru planlama ile hayalinizdeki saçlara bir adım daha yaklaşın. WhatsApp ile ücretsiz ön değerlendirme başlatın."
+    buttonLabel="WhatsApp ile Ücretsiz Ön Değerlendirme"
   />
 </BaseLayout>

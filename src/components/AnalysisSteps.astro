@@ -7,12 +7,14 @@ interface Step {
 interface Props {
   title?: string;
   lead?: string;
+  kicker?: string;
   steps: Step[];
 }
 
 const {
   title = 'Fotoğrafla ön analiz — 3 adım',
   lead = 'Karar vermeden önce saç profilinizi uzman ekibimizle birlikte değerlendirin. Ücretsiz ön görüşme ile başlayın.',
+  kicker = 'Danışmanlık akışı',
   steps,
 } = Astro.props;
 ---
@@ -20,7 +22,7 @@ const {
 <section class="section section--cream">
   <div class="container">
     <div class="section-head section-head--center">
-      <p class="section-kicker">Danışmanlık akışı</p>
+      <p class="section-kicker">{kicker}</p>
       <h2>{title}</h2>
       <p class="section-lead">{lead}</p>
     </div>
