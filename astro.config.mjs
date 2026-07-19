@@ -13,7 +13,8 @@ export default defineConfig({
   redirects: {
     '/mikro-kaynak-nedir/': '/mikro-sac-kaynak/',
     '/mikro-kaynak-fiyatlari/': '/mikro-sac-kaynak-fiyatlari/',
-    '/ince-sacta-mikro-kaynak/': '/ince-saca-mikro-kaynak/',
+    '/ince-saca-mikro-kaynak/': '/ince-telli-saca-mikro-kaynak/',
+    '/ince-sacta-mikro-kaynak/': '/ince-telli-saca-mikro-kaynak/',
     '/mikro-kaynak-keratin-nanofilament-farki/': '/mikro-kaynak-mi-keratin-kaynak-mi/',
     '/fethiye-mikro-kaynak-sac-merkezi/': '/fethiye-mikro-sac-kaynak/',
     '/mikro-kaynak-kimlere-uygundur/': '/mikro-sac-kaynak/#kimler-icin',

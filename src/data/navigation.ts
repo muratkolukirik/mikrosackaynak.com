@@ -9,7 +9,7 @@ export const primaryNav: NavItem[] = [
   { label: 'Mikro Saç Kaynak', href: '/mikro-sac-kaynak/' },
   { label: 'Fiyatlar', href: '/mikro-sac-kaynak-fiyatlari/' },
   { label: 'Kısa Saç', href: '/kisa-saca-mikro-kaynak/' },
-  { label: 'İnce Saç', href: '/ince-saca-mikro-kaynak/' },
+  { label: 'İnce Telli Saç', href: '/ince-telli-saca-mikro-kaynak/' },
   { label: 'Gram mı Adet mi?', href: '/mikro-kaynak-kac-gram-mi-kac-adet-mi/' },
   { label: 'Fethiye', href: '/fethiye-mikro-sac-kaynak/' },
   { label: 'İletişim', href: '/iletisim/' },
@@ -38,9 +38,9 @@ export const guideLinks: NavItem[] = [
     description: 'Kısa saçta dönüşüm planlaması',
   },
   {
-    label: 'İnce Saça Mikro Kaynak',
-    href: '/ince-saca-mikro-kaynak/',
-    description: 'İnce telli saçlarda yoğunluk dengesi',
+    label: 'İnce Telli Saça Mikro Kaynak',
+    href: '/ince-telli-saca-mikro-kaynak/',
+    description: 'İnce telli saçlarda tutam başına gramaj ve taşıma kapasitesi',
   },
   {
     label: 'Mikro Kaynak mı Keratin mi?',

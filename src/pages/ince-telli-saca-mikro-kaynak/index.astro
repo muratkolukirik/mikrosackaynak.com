@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import PremiumCTA from '../../components/PremiumCTA.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import ResultsSection from '../../components/ResultsSection.astro';
+import EditorialImage from '../../components/EditorialImage.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import { guideLinks } from '../../data/navigation';
+import { IMAGES, thinHairGallery } from '../../data/images';
+import { BRAND } from '../../data/site';
+import { breadcrumbSchema, articleSchema } from '../../utils/schema';
+
+const path = '/ince-telli-saca-mikro-kaynak/';
+const title = 'İnce Telli Saça Mikro Kaynak';
+const titleSuffix = 'Doğal ve Dengeli Planlama';
+const description =
+  'İnce telli ve zayıf saça mikro kaynak uygulamasında tutam başına gramaj, saçın taşıma kapasitesi ve yerleşim planı dikkatle belirlenmelidir. Fotoğrafla ön analizle doğal sonuç planlanır.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'İnce Telli Saça Mikro Kaynak', path },
+];
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path }),
+];
+---
+
+<BaseLayout {title} {titleSuffix} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="İnce Telli Saça Mikro Kaynak"
+    kicker="Saç profili rehberi · İnce telli saç"
+    lead="İnce telli ve zayıf saçlarda mikro kaynak planlamasının amacı yalnızca daha az saç takmak değildir. Asıl belirleyici olan, tutam başına gramajın saçın taşıma kapasitesine göre planlanmasıdır."
+    image={IMAGES.model2}
+    layout="banner"
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <div class="short-answer">
+        <p class="short-answer__label">Kısa cevap</p>
+        <p>
+          İnce telli saça mikro kaynak uygulanabilir; fakat her profil için aynı
+          plan geçerli değildir. Tutam başına gramaj, bağlantı konumu ve hedef
+          yoğunluk bireysel olarak planlanmalıdır. İnce telli saçlarda amaç fazla
+          gram yüklemek değil, saçın taşıyabileceği doğru ağırlığı dengeli biçimde
+          dağıtmaktır.
+        </p>
+      </div>
+
+      <h2>İnce telli saç neden farklı değerlendirilir?</h2>
+      <p>
+        İnce telli saç, aynı görünür hacme kıyasla daha sınırlı bir taşıma
+        kapasitesine sahip olabilir. Bağlantı noktalarına düşen yük dikkatle
+        planlanmazsa, kök bölgesindeki baskı artabilir ve bağlantılar daha erken
+        yorulabilir. Bu nedenle seyrek ve ince telli saç profillerinde mikro
+        kaynak, tutam kalınlığı ve yerleşim planı üzerinden kontrollü biçimde
+        kurgulanır.
+      </p>
+
+      <EditorialImage image={IMAGES.model2} />
+
+      <h2>Tutam başına gramaj: taşıma kapasitesine göre planlama</h2>
+      <p>
+        İnce telli ve zayıf saçlarda mikro kaynak planlaması yapılırken amaç
+        yalnızca “daha az saç takmak” değildir. Asıl önemli olan, her bir mikro
+        kaynak tutamının gramajını saçın taşıma kapasitesine göre planlamaktır.
+        Bazı saç profillerinde tutam başına 0,8 g veya 1 g planlama uygun olabilir.
+        Ancak ince telli saçlarda tutamlar 0,6 g, 0,5 g, hatta bazı hassas
+        bölgelerde 0,4 g gibi daha ince hazırlanabilir.
+      </p>
+      <p>
+        Böylece aynı toplam gramaj daha fazla bağlantı noktasına bölünebilir; saç
+        köküne binen yük daha dengeli dağıtılır ve bağlantı noktalarının
+        görünürlüğü ile taşıma konforu daha iyi yönetilir. Toplam gramajın bağlantı
+        sayısına doğru dağıtılması, ince telli saçlarda görünürlük ve konfor
+        dengesinin temelidir. Bu yaklaşımın gramaj ve adet mantığıyla ilişkisini
+        <a href="/mikro-kaynak-kac-gram-mi-kac-adet-mi/">kaç gram mı, kaç adet mi?</a>
+        rehberimizde ayrıntılı ele aldık.
+      </p>
+
+      <h3>Bağlantı noktalarına düşen yük</h3>
+      <p>
+        Her bağlantı noktasının taşıyacağı saç miktarı bireysel olarak
+        belirlenmelidir. Daha ince hazırlanmış mikro tutamlar, gramajın daha çok
+        bağlantı sayısına dağıtılmasına imkân verir. Bu, kök bölgesindeki yükü
+        dengeler ve doğal düşüş hissini korur. Saç yoğunluğuna göre tutam kalınlığı
+        ayarlanarak, ince telli saçlarda düşük tutam gramajı ile dengeli bir görünüm
+        hedeflenir.
+      </p>
+
+      <h3>Bölgesel yerleşim planı</h3>
+      <p>
+        Bağlantı noktaları; saçın ayrım çizgisi, yoğunluğu ve görünürlük riskine
+        göre yerleştirilmelidir. İnce telli saçta bağlantıların üst katmanlara yakın
+        konumlanması görünürlük riskini artırır. Bölgesel yerleşim planında tellerin
+        doğal düşüş yönü takip edilerek bağlantılar gizlenir; yan ve arka bölgelerde
+        tutam kalınlığı ile yerleşim yoğunluğu ayrı ayrı değerlendirilir.
+      </p>
+
+      <h2>{BRAND.colorCount} renk sistemi ve ince telli saçta harmanlama</h2>
+      <p>
+        {BRAND.name} kartelasında {BRAND.colorCount} renk seçeneği bulunur.
+        İnce telli saçta renk eşleştirmesi özellikle kritiktir; ince teller ışığı
+        farklı yansıtabilir ve ton farkı daha belirgin görünebilir. Doğal
+        harmanlama, geçiş hattının fark edilmemesi için taşıyıcı planlamayla
+        birlikte ele alınır.
+      </p>
+
+      <h2>Keratin kaynak alternatifi</h2>
+      <p>
+        Bazı ince telli saç profillerinde keratin kaynak daha uygun olabilir.
+        Bağlantı malzemesinin profili, saçın taşıyabileceği yük ile uyumlu olmalıdır.
+        <a href="/mikro-kaynak-mi-keratin-kaynak-mi/">Mikro kaynak mı keratin
+        kaynak mı?</a> karşılaştırma rehberimizde yöntem farklarını inceleyebilirsiniz.
+      </p>
+
+      <h2>Gramaj, adet ve tutam kalınlığı fotoğrafla netleşir</h2>
+      <p>
+        İnce telli saçta kullanılacak toplam gramaj, saçın taşıma kapasitesiyle
+        sınırlıdır. Gramaj, adet ve tutam kalınlığı; tellerin inceliği, mevcut
+        yoğunluk ve hedef görünüm birlikte değerlendirildikten sonra netleşir.
+        Fiyatlandırma mantığı için
+        <a href="/mikro-sac-kaynak-fiyatlari/">fiyat rehberimize</a>
+        de bakabilirsiniz.
+      </p>
+
+      <h2>Bakım alışkanlıkları</h2>
+      <p>
+        İnce telli saç daha hızlı yağlanabilir veya kolay karışabilir. Düğüm açma,
+        uyku pozisyonu ve ürün seçimi mikro kaynak ömrünü doğrudan etkiler. Detaylı
+        bakım önerileri için
+        <a href="/mikro-kaynak-bakimi/">bakım rehberimize</a> bakın.
+      </p>
+
+      <div class="callout">
+        <p>
+          İnce telli saçta çok yoğun saç takmak yerine dengeli, doğal ve
+          taşınabilir bir görünüm hedeflenir. Tutam başına gramajın saçın taşıma
+          kapasitesine göre planlanması, konfor ve görünürlük açısından belirleyicidir.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <ImageGallery
+    title="İnce Telli Saçta Mikro Kaynak Görselleri"
+    intro="Gerçek Sach model görselleri — ince telli saç profillerinde kontrollü tutam gramajı ve renk uyumu referansı."
+    images={thinHairGallery}
+    columns={3}
+  />
+
+  <ResultsSection
+    title="İnce Telli Saçlarda Doğal Sonuç"
+    images={thinHairGallery}
+  />
+
+  <PremiumCTA
+    title="İnce telli saç profiliniz için ön değerlendirme"
+    text="Saç yoğunluğunuz, tel inceliğiniz ve hedef görünümünüz için fotoğrafla ön analiz talep ederek tutam başına gramaj ve yerleşim planınızı birlikte değerlendirebiliriz."
+    message="Merhaba, ince telli saçım için mikro kaynak planlaması ve tutam gramajı hakkında ön analiz almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>

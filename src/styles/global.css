@@ -229,15 +229,17 @@ table { max-width: 100%; }
   display: block; width: 22px; height: 1.5px; background: var(--color-gold-soft);
 }
 .header__nav-list {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem 1.4rem;
+  display: flex; flex-wrap: wrap; align-items: center; align-content: center;
+  gap: 0.35rem 0.6rem;
   list-style: none; margin: 0; padding: 0; justify-content: flex-end;
 }
-.header__nav-list li { display: flex; align-items: center; }
+/* Global `li + li { margin-top }` (vertical rhythm) must not offset nav items */
+.header__nav-list li { display: flex; align-items: center; margin: 0; }
 .header__nav-link {
   display: inline-flex; align-items: center; line-height: 1;
   font-size: 0.7rem; font-weight: 500; text-decoration: none;
-  color: rgba(247, 243, 236, 0.72); letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 0.3rem 0; position: relative;
+  color: rgba(247, 243, 236, 0.72); letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.3rem 0; position: relative; white-space: nowrap;
 }
 .header__nav-link::after {
   content: ''; position: absolute; left: 0; right: 0; bottom: -1px;
