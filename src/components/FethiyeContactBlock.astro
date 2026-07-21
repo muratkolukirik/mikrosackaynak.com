@@ -1,16 +1,18 @@
 ---
-import { CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
+import { CONTACT_FETHIYE, GRAND_SLAM_OFFER, telUrl, whatsappUrl } from '../data/site';
 
 interface Props {
   whatsappMessage?: string;
   showActions?: boolean;
   compact?: boolean;
+  buttonLabel?: string;
 }
 
 const {
-  whatsappMessage = CONTACT_FETHIYE.whatsappDefaultMessage,
+  whatsappMessage = GRAND_SLAM_OFFER.whatsappMessage,
   showActions = true,
   compact = false,
+  buttonLabel = GRAND_SLAM_OFFER.ctaLabel,
 } = Astro.props;
 ---
 
@@ -41,7 +43,7 @@ const {
           class="btn btn--whatsapp"
           rel="noopener noreferrer"
         >
-          WhatsApp ile Yazın
+          {buttonLabel}
         </a>
         <a href={telUrl(CONTACT_FETHIYE.phoneE164)} class="btn btn--secondary">
           Telefon Et

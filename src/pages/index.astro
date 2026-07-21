@@ -11,7 +11,7 @@ import MiniFAQ from '../components/MiniFAQ.astro';
 import PremiumCTA from '../components/PremiumCTA.astro';
 import { guideLinks } from '../data/navigation';
 import { IMAGES } from '../data/images';
-import { BRAND, PILLAR_PATH, whatsappUrl } from '../data/site';
+import { BRAND, GRAND_SLAM_OFFER, PILLAR_PATH, whatsappUrl } from '../data/site';
 import { websiteSchema, breadcrumbSchema } from '../utils/schema';
 
 const path = '/';
@@ -151,14 +151,14 @@ const miniFaqs = [
 
 <BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
   <SplitHero
-    kicker="Premium Mikro Saç Kaynak Deneyimi"
-    title="Mikro Saç Kaynakta Doğal Görünüm, Doğru Planlamayla Başlar"
-    lead="Mikro saç kaynakta sonucu yalnızca kaç adet takıldığı değil; toplam gramaj, tutam ağırlığı, saç yoğunluğu, renk uyumu ve yerleşim planı belirler."
+    kicker={GRAND_SLAM_OFFER.name}
+    title="Mikro Saç Kaynakta Doğru Plan, Ön Analizle Başlar"
+    lead={GRAND_SLAM_OFFER.promise}
     image={IMAGES.mikroDogalGorunum}
     badge="Sach & Vogue Hair — gerçek model çekimi, AI üretimi değil"
     primaryCta={{
-      label: 'WhatsApp Ön Analiz',
-      href: whatsappUrl(),
+      label: GRAND_SLAM_OFFER.ctaLabel,
+      href: whatsappUrl(GRAND_SLAM_OFFER.whatsappMessage),
     }}
     secondaryCta={{
       label: 'Gramaj & Adet Rehberi',
@@ -233,10 +233,12 @@ const miniFaqs = [
 
   <GuideCards links={guideLinks} />
 
+  <PremiumCTA />
+
   <AnalysisSteps
-    kicker="Sürecimiz"
-    title="Nasıl Planlıyoruz?"
-    lead="Fotoğrafla ön analizden bakım rehberine kadar, doğal ve kalıcı bir sonuç için altı adımlık planlama sürecimiz."
+    kicker={GRAND_SLAM_OFFER.name}
+    title="Ön Analiz Protokolü — Nasıl İlerler?"
+    lead="Fotoğrafla ön analizden bakım rehberine kadar, doğal ve sürdürülebilir bir sonuç için adım adım planlama."
     steps={analysisSteps}
   />
 
@@ -274,9 +276,5 @@ const miniFaqs = [
 
   <MiniFAQ faqs={miniFaqs} />
 
-  <PremiumCTA
-    title="Hazır mısınız?"
-    text="Doğru planlama ile hayalinizdeki saçlara bir adım daha yaklaşın. WhatsApp ile ücretsiz ön değerlendirme başlatın."
-    buttonLabel="WhatsApp ile Ücretsiz Ön Değerlendirme"
-  />
+  <PremiumCTA />
 </BaseLayout>

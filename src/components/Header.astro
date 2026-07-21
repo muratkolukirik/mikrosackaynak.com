@@ -1,5 +1,5 @@
 ---
-import { SITE, whatsappUrl } from '../data/site';
+import { GRAND_SLAM_OFFER, SITE, whatsappUrl } from '../data/site';
 import { primaryNav } from '../data/navigation';
 
 interface Props {
@@ -7,8 +7,6 @@ interface Props {
 }
 
 const { currentPath } = Astro.props;
-const preAnalysisMessage =
-  'Merhaba, mikro kaynak saç için fotoğrafla ücretsiz ön analiz almak istiyorum.';
 ---
 
 <header class="header">
@@ -38,11 +36,11 @@ const preAnalysisMessage =
 
     <div class="header__actions">
       <a
-        href={whatsappUrl(preAnalysisMessage)}
+        href={whatsappUrl(GRAND_SLAM_OFFER.whatsappMessage)}
         class="btn btn--whatsapp header__cta"
         rel="noopener noreferrer"
       >
-        WhatsApp Ön Analiz
+        {GRAND_SLAM_OFFER.ctaLabel}
       </a>
 
       <button

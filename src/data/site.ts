@@ -81,6 +81,17 @@ export const SITE = {
 /** Pillar sayfa — tüm cluster iç linklerin merkezi */
 export const PILLAR_PATH = '/mikro-sac-kaynak/' as const;
 
+/** Hormozi Grand Slam Offer — site geneli CTA ve vaat metni */
+export const GRAND_SLAM_OFFER = {
+  name: 'Mikro Saç Kaynak Ön Analiz Protokolü',
+  ctaLabel: 'Fotoğraf Gönder, Mikro Kaynak Planını Al',
+  promise:
+    'Kısa, ince veya zayıf saçlarda mikro kaynak yaptırmadan önce saçınıza gerçekten uygun yöntemi, gereken gramajı, renk uyumunu ve doğal kapanma ihtimalini fotoğraflı uzman analizle öğrenin. Uygun değilse işlem önermeyiz.',
+  whatsappMessage:
+    'Merhaba, Mikro Saç Kaynak Ön Analiz Protokolü kapsamında fotoğrafla ön analiz almak istiyorum. Saç yapım ve hedeflediğim görünüm için uygun yöntemi birlikte değerlendirebilir miyiz?',
+  trustLine: 'Fotoğrafla ön analiz · Kişiye özel plan · Uygun değilse işlem önermeyiz',
+} as const;
+
 export function absoluteUrl(path: string): string {
   const normalized = path.startsWith('/') ? path : `/${path}`;
   return `${SITE.domain}${normalized}`;

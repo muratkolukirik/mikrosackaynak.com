@@ -1,5 +1,5 @@
 ---
-import { whatsappUrl } from '../data/site';
+import { GRAND_SLAM_OFFER, whatsappUrl } from '../data/site';
 
 interface Props {
   title?: string;
@@ -7,14 +7,16 @@ interface Props {
   message?: string;
   buttonLabel?: string;
   sub?: string;
+  kicker?: string;
 }
 
 const {
-  title = 'Fotoğrafla ücretsiz ön analiz',
-  text = 'Saç yapınız, hedef uzunluğunuz ve bakım alışkanlıklarınız hakkında kısa bir ön görüşme, doğru mikro kaynak planını oluşturmanıza yardımcı olur.',
-  message,
-  buttonLabel = 'WhatsApp Ön Analiz Başlat',
-  sub = 'Hızlı dönüş · Kişiye özel analiz · Ücretsiz danışmanlık',
+  title = GRAND_SLAM_OFFER.name,
+  text = GRAND_SLAM_OFFER.promise,
+  message = GRAND_SLAM_OFFER.whatsappMessage,
+  buttonLabel = GRAND_SLAM_OFFER.ctaLabel,
+  sub = GRAND_SLAM_OFFER.trustLine,
+  kicker = GRAND_SLAM_OFFER.name,
 } = Astro.props;
 ---
 
@@ -22,7 +24,7 @@ const {
   <div class="container">
     <div class="premium-cta__inner">
       <div class="premium-cta__content">
-        <p class="section-kicker">Ücretsiz danışmanlık</p>
+        <p class="section-kicker">{kicker}</p>
         <h2 class="premium-cta__title">{title}</h2>
         <p class="premium-cta__text">{text}</p>
       </div>

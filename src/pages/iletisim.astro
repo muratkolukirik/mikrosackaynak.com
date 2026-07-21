@@ -4,7 +4,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
 import FethiyeContactBlock from '../components/FethiyeContactBlock.astro';
 import PremiumCTA from '../components/PremiumCTA.astro';
-import { SITE, CONTACT_GENERAL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
+import { SITE, CONTACT_GENERAL, CONTACT_FETHIYE, GRAND_SLAM_OFFER, telUrl, whatsappUrl } from '../data/site';
 import { guideLinks } from '../data/navigation';
 import { breadcrumbSchema } from '../utils/schema';
 
@@ -24,12 +24,17 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
   <Breadcrumb items={breadcrumbs} />
   <PageHero
     title="İletişim / WhatsApp Danışmanlık"
-    kicker="Danışmanlık · WhatsApp ön analiz"
-    lead="Fethiye, Ölüdeniz ve Türkiye geneli ön danışmanlık için aşağıdaki numarayı kullanın."
+    kicker={GRAND_SLAM_OFFER.name}
+    lead={GRAND_SLAM_OFFER.promise}
   />
 
   <section class="section">
     <div class="container container--narrow">
+      <div class="callout" style="margin-bottom: var(--space-lg);">
+        <p>
+          <strong>{GRAND_SLAM_OFFER.name}:</strong> {GRAND_SLAM_OFFER.trustLine}
+        </p>
+      </div>
       <div class="contact-grid">
         <div class="contact-card">
           <p class="contact-card__label">{CONTACT_FETHIYE.regionNote} · {CONTACT_GENERAL.regionNote}</p>
@@ -43,11 +48,11 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
           <FethiyeContactBlock compact showActions={false} />
           <div class="contact-card__actions">
             <a
-              href={whatsappUrl(CONTACT_FETHIYE.whatsappDefaultMessage)}
+              href={whatsappUrl(GRAND_SLAM_OFFER.whatsappMessage)}
               class="btn btn--whatsapp"
               rel="noopener noreferrer"
             >
-              WhatsApp ile Yazın
+              {GRAND_SLAM_OFFER.ctaLabel}
             </a>
             <a href={telUrl(CONTACT_GENERAL.phoneE164)} class="btn btn--secondary">
               Telefon Et
@@ -97,9 +102,5 @@ const schemas = [breadcrumbSchema(breadcrumbs)];
     </div>
   </section>
 
-  <PremiumCTA
-    title="WhatsApp üzerinden ön analiz başlatın"
-    text="Mevcut saç uzunluğunuz, hedef görünümünüz ve bakım rutininiz hakkında kısa bir mesaj göndermeniz yeterlidir."
-    message={CONTACT_FETHIYE.whatsappDefaultMessage}
-  />
+  <PremiumCTA />
 </BaseLayout>

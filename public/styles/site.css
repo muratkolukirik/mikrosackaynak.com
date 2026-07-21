@@ -853,8 +853,8 @@ table { max-width: 100%; }
 }
 .footer__nav a:hover { color: var(--color-cream); }
 .footer__contact .btn { margin-top: var(--space-md); }
-.footer__istanbul { margin: var(--space-sm) 0 0; font-size: 0.82rem; color: rgba(255, 253, 249, 0.55); }
-.footer__istanbul a { text-decoration: none; color: var(--color-gold-soft); }
+.footer__local { margin: var(--space-sm) 0 0; font-size: 0.82rem; color: rgba(255, 253, 249, 0.55); }
+.footer__local a { text-decoration: none; color: var(--color-gold-soft); }
 .footer__legal {
   margin-top: var(--space-lg); display: flex; flex-wrap: wrap;
   gap: var(--space-sm); font-size: 0.8rem;

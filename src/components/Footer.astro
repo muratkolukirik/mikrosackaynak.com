@@ -1,5 +1,13 @@
 ---
-import { SITE, BRAND, CONTACT_GENERAL, CONTACT_FETHIYE, telUrl, whatsappUrl } from '../data/site';
+import {
+  SITE,
+  BRAND,
+  CONTACT_GENERAL,
+  CONTACT_FETHIYE,
+  GRAND_SLAM_OFFER,
+  telUrl,
+  whatsappUrl,
+} from '../data/site';
 import { guideLinks, localGuides, legalLinks } from '../data/navigation';
 ---
 
@@ -54,10 +62,14 @@ import { guideLinks, localGuides, legalLinks } from '../data/navigation';
           Saç yapınıza uygun yöntemi birlikte değerlendirmek için WhatsApp
           üzerinden iletişime geçebilirsiniz.
         </p>
-        <a href={whatsappUrl()} class="btn btn--whatsapp" rel="noopener noreferrer">
-          WhatsApp Danışmanlık
+        <a
+          href={whatsappUrl(GRAND_SLAM_OFFER.whatsappMessage)}
+          class="btn btn--whatsapp"
+          rel="noopener noreferrer"
+        >
+          {GRAND_SLAM_OFFER.ctaLabel}
         </a>
-        <p class="footer__istanbul">
+        <p class="footer__local">
           Fethiye danışmanlık:
           <a href={CONTACT_FETHIYE.pagePath}>rehber sayfası</a>
         </p>
