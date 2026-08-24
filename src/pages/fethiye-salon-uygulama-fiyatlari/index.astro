@@ -1,0 +1,232 @@
+---
+/**
+ * SACH_SALON_PRICES_2026_V1
+ * Customer-facing Fethiye salon prices — reads master JSON.
+ * Do not edit euro figures here; update salon-prices-2026.json (and the master repo copy).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PageHero from '../../components/PageHero.astro';
+import PremiumCTA from '../../components/PremiumCTA.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { guideLinks } from '../../data/navigation';
+import { CONTACT_FETHIYE } from '../../data/site';
+import prices from '../../data/salon-prices-2026.json';
+import {
+  breadcrumbSchema,
+  articleSchema,
+  type FAQEntry,
+} from '../../utils/schema';
+
+const path = '/fethiye-salon-uygulama-fiyatlari/';
+const title = '2026 Fethiye Salon Uygulama Fiyatları';
+const description =
+  'SACH & Vogue Hair 2026 Fethiye / Ölüdeniz salon uygulama fiyatları. KDV dahil paketler: Keratin €600, Mikro Keratin €650, Nanofilament® €950, Bant €600.';
+
+const breadcrumbs = [
+  { name: 'Ana Sayfa', path: '/' },
+  { name: 'Fethiye Salon Uygulama Fiyatları', path },
+];
+
+const faqs: FAQEntry[] = [
+  {
+    question: 'Fiyatlar KDV dahil mi?',
+    answer: 'Evet. Bu sayfadaki tüm salon uygulama fiyatları Türkiye KDV’si dahil (KDV Dahil) gösterilir.',
+  },
+  {
+    question: 'Hibrit Nanofilament® paket fiyatı neden yok?',
+    answer: prices.hybrid.pricingNote.tr,
+  },
+  {
+    question: 'Butterfly Weft / tres ücreti grama göre mi?',
+    answer: prices.weft.pricingUnitNote.tr,
+  },
+];
+
+const ext = prices.extensions;
+const schemas = [
+  breadcrumbSchema(breadcrumbs),
+  articleSchema({ title, description, path, dateModified: '2026-08-24' }),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Fethiye Saç Kaynak Uygulama Paketleri',
+    provider: { '@type': 'HairSalon', name: CONTACT_FETHIYE.brandName },
+    areaServed: 'Fethiye',
+    offers: {
+      '@type': 'AggregateOffer',
+      lowPrice: '600',
+      highPrice: '950',
+      priceCurrency: 'EUR',
+      offerCount: '4',
+      description: 'KDV dahil 100 g paket fiyatları',
+    },
+  },
+];
+---
+
+<BaseLayout {title} {description} {path} breadcrumbs={breadcrumbs} schemas={schemas}>
+  <Breadcrumb items={breadcrumbs} />
+  <PageHero
+    title="2026 Fethiye Salon Uygulama Fiyatları"
+    kicker={`SACH & Vogue Hair · ${prices.locationDisplay?.tr ?? 'Fethiye / Ölüdeniz'} · KDV Dahil`}
+    lead="Profesyonel salon uygulama paketleri. Aşağıdaki dört rakam nihai KDV dahil paket fiyatıdır — premium insan saçı, profesyonel uygulama, adaptasyon kesimi, doğal geçiş-blending, fön ve şekillendirme dahildir."
+  />
+
+  <article class="section">
+    <div class="container container--narrow prose">
+      <p class="short-answer">
+        <strong>KDV Dahil</strong> · Master: {prices.masterPriceVersion}
+      </p>
+
+      <h2>Saç Kaynak Paketleri</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Yöntem</th><th>Referans</th><th>Paket</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{ext.keratin.name.tr}</td>
+              <td>100 g / {ext.keratin.strands} adet</td>
+              <td>€{ext.keratin.packagePriceEur}</td>
+            </tr>
+            <tr>
+              <td>{ext.microKeratin.name.tr}</td>
+              <td>100 g / {ext.microKeratin.strands} adet</td>
+              <td>€{ext.microKeratin.packagePriceEur}</td>
+            </tr>
+            <tr>
+              <td>{ext.nanofilament.name.tr}</td>
+              <td>100 g / {ext.nanofilament.strands} adet</td>
+              <td>€{ext.nanofilament.packagePriceEur}</td>
+            </tr>
+            <tr>
+              <td>{ext.tapeIn.name.tr}</td>
+              <td>100 g / yakl. {ext.tapeIn.pieces} adet / {ext.tapeIn.pairs} çift</td>
+              <td>€{ext.tapeIn.packagePriceEur}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Pakete dahil</h3>
+      <ul>
+        {prices.packageIncludes.tr.map((item) => <li>{item}</li>)}
+      </ul>
+      <p>{prices.notes.tr}</p>
+
+      <h2>{prices.hybrid.title.tr}</h2>
+      <p>{prices.hybrid.intro.tr}</p>
+      {prices.hybrid.combinations.map((c) => (
+        <div>
+          <h3>{c.name.tr}</h3>
+          <p>{c.description.tr}</p>
+        </div>
+      ))}
+      <p><em>{prices.hybrid.pricingNote.tr}</em></p>
+
+      <h2>Söküm ve Yenileme / Refit</h2>
+      <h3>Keratin</h3>
+      <ul>
+        <li>Söküm: €{prices.removal.keratin.removalPerStrandEur.min.toString().replace('.', ',')}–€{prices.removal.keratin.removalPerStrandEur.max.toString().replace('.', ',')} / adet (100 adet: €{prices.removal.keratin.removalReference100Eur.min}–€{prices.removal.keratin.removalReference100Eur.max})</li>
+        <li>Yenileme / Refit: 100 adet = €{prices.removal.keratin.renewalRefit100Eur.min}–€{prices.removal.keratin.renewalRefit100Eur.max}</li>
+      </ul>
+      <h3>Mikro Keratin</h3>
+      <ul>
+        <li>Söküm: €{prices.removal.microKeratin.removalPerStrandEur.min.toString().replace('.', ',')}–€{prices.removal.microKeratin.removalPerStrandEur.max.toString().replace('.', ',')} / adet (166 adet: €{prices.removal.microKeratin.removalReference166Eur.min}–€{prices.removal.microKeratin.removalReference166Eur.max})</li>
+        <li>Yenileme / Refit: 166 adet = €{prices.removal.microKeratin.renewalRefit166Eur.min}–€{prices.removal.microKeratin.renewalRefit166Eur.max}</li>
+      </ul>
+      <h3>Nanofilament®</h3>
+      <ul>
+        <li>Söküm: €{prices.removal.nanofilament.removalPerStrandEur.min.toString().replace('.', ',')}–€{prices.removal.nanofilament.removalPerStrandEur.max.toString().replace('.', ',')} / adet (333 adet: €{prices.removal.nanofilament.removalReference333Eur.min}–€{prices.removal.nanofilament.removalReference333Eur.max})</li>
+        <li>Yenileme / Refit: 333 adet = €{prices.removal.nanofilament.renewalRefit333Eur.min}–€{prices.removal.nanofilament.renewalRefit333Eur.max}</li>
+      </ul>
+      <h3>Bant Kaynak</h3>
+      <ul>
+        <li>Söküm: €{prices.removal.tapeIn.removalPerPairEur.min}–€{prices.removal.tapeIn.removalPerPairEur.max} / çift (20 çift: €{prices.removal.tapeIn.removalReference20PairsEur.min}–€{prices.removal.tapeIn.removalReference20PairsEur.max})</li>
+        <li>Yenileme / Refit: €{prices.removal.tapeIn.renewalRefitPerPairEur.min}–€{prices.removal.tapeIn.renewalRefitPerPairEur.max} / çift</li>
+      </ul>
+      <p>{prices.removal.explanatory.tr}</p>
+
+      <h2>Butterfly Weft / Weft İşçilik</h2>
+      <p>{prices.weft.pricingUnitNote.tr}</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Sıra</th><th>Uygulama</th><th>Söküm</th><th>Yenileme</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>12 cm</td><td>€{prices.weft.rows['12cm'].applicationEur}</td><td>€{prices.weft.rows['12cm'].removalEur}</td><td>€{prices.weft.rows['12cm'].renewalRefitEur}</td></tr>
+            <tr><td>20 cm</td><td>€{prices.weft.rows['20cm'].applicationEur}</td><td>€{prices.weft.rows['20cm'].removalEur}</td><td>€{prices.weft.rows['20cm'].renewalRefitEur}</td></tr>
+            <tr><td>28 cm</td><td>€{prices.weft.rows['28cm'].applicationEur}</td><td>€{prices.weft.rows['28cm'].removalEur}</td><td>€{prices.weft.rows['28cm'].renewalRefitEur}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Standart 3 sıra (28+20+12 cm) işçilik: uygulama €{prices.weft.standard3RowReference.applicationTotalEur},
+        söküm €{prices.weft.standard3RowReference.removalTotalEur},
+        yenileme €{prices.weft.standard3RowReference.renewalRefitTotalEur}.
+        Bu tutarlar saç ürününü kapsamaz.
+      </p>
+
+      <h2>Minimum Hizmet Ücreti</h2>
+      <p>€{prices.minimumServiceChargeEur} KDV Dahil — küçük söküm, düzeltme, ayarlama veya bakım randevusu için minimum ücret.</p>
+
+      <h2>Profesyonel Saç Renk Hizmetleri</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Hizmet</th><th>Fiyat aralığı</th></tr>
+          </thead>
+          <tbody>
+            {prices.colourServices.services.map((s) => (
+              <tr>
+                <td>{s.name.tr}</td>
+                <td>€{s.priceEur.min}–€{s.priceEur.max}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>{prices.colourServices.note.tr}</p>
+
+      <p>
+        İngilizce kanonik liste:{' '}
+        <a href={prices.canonicalUrl} rel="noopener">sachvoguehair.com Fethiye salon prices</a>
+      </p>
+    </div>
+  </article>
+
+  <PremiumCTA
+    title="Fethiye randevu ve saç analizi"
+    text="Paket seçimi ve hibrit plan için fotoğrafla ön analiz sonrası net teklif paylaşılır."
+    message="Merhaba, 2026 Fethiye salon uygulama fiyatları hakkında bilgi almak istiyorum."
+  />
+  <RelatedLinks links={guideLinks} exclude={path} />
+</BaseLayout>
+
+<style>
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.25rem 0;
+  }
+  table {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 0.75rem 0.85rem;
+    border-bottom: 1px solid #d9d1c5;
+  }
+  th {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    color: #6d6a64;
+    background: #eae3d8;
+  }
+</style>
