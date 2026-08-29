@@ -1,6 +1,6 @@
 ---
 /**
- * SACH_SALON_PRICES_2026_V1
+ * SACH_SALON_PRICES_2026_V2
  * Customer-facing Fethiye salon prices — reads master JSON.
  * Do not edit euro figures here; update salon-prices-2026.json (and the master repo copy).
  */
@@ -38,28 +38,84 @@ const faqs: FAQEntry[] = [
     answer: prices.hybrid.pricingNote.tr,
   },
   {
-    question: 'Butterfly Weft / tres ücreti grama göre mi?',
-    answer: prices.weft.pricingUnitNote.tr,
+    question: 'Yalnızca işçilik fiyatına saç dahil mi?',
+    answer: prices.labourOnly.note.tr,
   },
 ];
 
 const ext = prices.extensions;
+const labour = prices.labourOnly.services;
+const rem = prices.removal;
+
+function labourPrice(s: (typeof labour)[number]): string {
+  const u = s.unit.tr;
+  if (typeof s.priceEur === 'number') {
+    const n = Number.isInteger(s.priceEur) ? String(s.priceEur) : String(s.priceEur).replace('.', ',');
+    return u === 'uygulama' ? `€${n}` : `€${n} / ${u}`;
+  }
+  const min = String(s.priceEur.min).replace('.', ',');
+  const max = String(s.priceEur.max).replace('.', ',');
+  return u === 'uygulama' ? `€${min}–€${max}` : `€${min}–€${max} / ${u}`;
+}
+
+function colourPrice(s: (typeof prices.colourServices.services)[number]): string {
+  if ('display' in s && s.display?.tr) return s.display.tr;
+  return `€${s.priceEur.min}–€${s.priceEur.max}`;
+}
+
 const schemas = [
   breadcrumbSchema(breadcrumbs),
-  articleSchema({ title, description, path, dateModified: '2026-08-24' }),
+  articleSchema({ title, description, path, dateModified: '2026-08-29' }),
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Fethiye Saç Kaynak Uygulama Paketleri',
+    name: 'Keratin Saç Kaynak Paketi',
     provider: { '@type': 'HairSalon', name: CONTACT_FETHIYE.brandName },
     areaServed: 'Fethiye',
     offers: {
-      '@type': 'AggregateOffer',
-      lowPrice: '600',
-      highPrice: '950',
+      '@type': 'Offer',
+      price: String(ext.keratin.packagePriceEur),
       priceCurrency: 'EUR',
-      offerCount: '4',
-      description: 'KDV dahil 100 g paket fiyatları',
+      description: 'KDV dahil 100 g paket',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Mikro Keratin Saç Kaynak Paketi',
+    provider: { '@type': 'HairSalon', name: CONTACT_FETHIYE.brandName },
+    areaServed: 'Fethiye',
+    offers: {
+      '@type': 'Offer',
+      price: String(ext.microKeratin.packagePriceEur),
+      priceCurrency: 'EUR',
+      description: 'KDV dahil 100 g paket',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Nanofilament® Saç Kaynak Paketi',
+    provider: { '@type': 'HairSalon', name: CONTACT_FETHIYE.brandName },
+    areaServed: 'Fethiye',
+    offers: {
+      '@type': 'Offer',
+      price: String(ext.nanofilament.packagePriceEur),
+      priceCurrency: 'EUR',
+      description: 'KDV dahil 100 g paket',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Bant Kaynak Paketi',
+    provider: { '@type': 'HairSalon', name: CONTACT_FETHIYE.brandName },
+    areaServed: 'Fethiye',
+    offers: {
+      '@type': 'Offer',
+      price: String(ext.tapeIn.packagePriceEur),
+      priceCurrency: 'EUR',
+      description: 'KDV dahil 100 g paket',
     },
   },
 ];
@@ -73,7 +129,7 @@ const schemas = [
     lead="Profesyonel salon uygulama paketleri. Aşağıdaki dört rakam nihai KDV dahil paket fiyatıdır — premium insan saçı, profesyonel uygulama, adaptasyon kesimi, doğal geçiş-blending, fön ve şekillendirme dahildir."
   />
 
-  <article class="section">
+  <article class="section" data-price-version={prices.masterPriceVersion}>
     <div class="container container--narrow prose">
       <p class="short-answer">
         <strong>KDV Dahil</strong> · Master: {prices.masterPriceVersion}
@@ -123,51 +179,66 @@ const schemas = [
           <p>{c.description.tr}</p>
         </div>
       ))}
-      <p><em>{prices.hybrid.pricingNote.tr}</em></p>
+      <p><strong>{prices.hybrid.pricingLabel.tr}.</strong> <em>{prices.hybrid.pricingNote.tr}</em></p>
 
-      <h2>Söküm ve Yenileme / Refit</h2>
-      <h3>Keratin</h3>
-      <ul>
-        <li>Söküm: €{prices.removal.keratin.removalPerStrandEur.min.toString().replace('.', ',')}–€{prices.removal.keratin.removalPerStrandEur.max.toString().replace('.', ',')} / adet (100 adet: €{prices.removal.keratin.removalReference100Eur.min}–€{prices.removal.keratin.removalReference100Eur.max})</li>
-        <li>Yenileme / Refit: 100 adet = €{prices.removal.keratin.renewalRefit100Eur.min}–€{prices.removal.keratin.renewalRefit100Eur.max}</li>
-      </ul>
-      <h3>Mikro Keratin</h3>
-      <ul>
-        <li>Söküm: €{prices.removal.microKeratin.removalPerStrandEur.min.toString().replace('.', ',')}–€{prices.removal.microKeratin.removalPerStrandEur.max.toString().replace('.', ',')} / adet (166 adet: €{prices.removal.microKeratin.removalReference166Eur.min}–€{prices.removal.microKeratin.removalReference166Eur.max})</li>
-        <li>Yenileme / Refit: 166 adet = €{prices.removal.microKeratin.renewalRefit166Eur.min}–€{prices.removal.microKeratin.renewalRefit166Eur.max}</li>
-      </ul>
-      <h3>Nanofilament®</h3>
-      <ul>
-        <li>Söküm: €{prices.removal.nanofilament.removalPerStrandEur.min.toString().replace('.', ',')}–€{prices.removal.nanofilament.removalPerStrandEur.max.toString().replace('.', ',')} / adet (333 adet: €{prices.removal.nanofilament.removalReference333Eur.min}–€{prices.removal.nanofilament.removalReference333Eur.max})</li>
-        <li>Yenileme / Refit: 333 adet = €{prices.removal.nanofilament.renewalRefit333Eur.min}–€{prices.removal.nanofilament.renewalRefit333Eur.max}</li>
-      </ul>
-      <h3>Bant Kaynak</h3>
-      <ul>
-        <li>Söküm: €{prices.removal.tapeIn.removalPerPairEur.min}–€{prices.removal.tapeIn.removalPerPairEur.max} / çift (20 çift: €{prices.removal.tapeIn.removalReference20PairsEur.min}–€{prices.removal.tapeIn.removalReference20PairsEur.max})</li>
-        <li>Yenileme / Refit: €{prices.removal.tapeIn.renewalRefitPerPairEur.min}–€{prices.removal.tapeIn.renewalRefitPerPairEur.max} / çift</li>
-      </ul>
-      <p>{prices.removal.explanatory.tr}</p>
-
-      <h2>Butterfly Weft / Weft İşçilik</h2>
-      <p>{prices.weft.pricingUnitNote.tr}</p>
+      <h2>{prices.labourOnly.title.tr}</h2>
+      <p>{prices.labourOnly.note.tr}</p>
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Sıra</th><th>Uygulama</th><th>Söküm</th><th>Yenileme</th></tr>
+            <tr><th>Hizmet</th><th>Ücret</th></tr>
           </thead>
           <tbody>
-            <tr><td>12 cm</td><td>€{prices.weft.rows['12cm'].applicationEur}</td><td>€{prices.weft.rows['12cm'].removalEur}</td><td>€{prices.weft.rows['12cm'].renewalRefitEur}</td></tr>
-            <tr><td>20 cm</td><td>€{prices.weft.rows['20cm'].applicationEur}</td><td>€{prices.weft.rows['20cm'].removalEur}</td><td>€{prices.weft.rows['20cm'].renewalRefitEur}</td></tr>
-            <tr><td>28 cm</td><td>€{prices.weft.rows['28cm'].applicationEur}</td><td>€{prices.weft.rows['28cm'].removalEur}</td><td>€{prices.weft.rows['28cm'].renewalRefitEur}</td></tr>
+            {labour.map((s) => (
+              <tr>
+                <td>{s.name.tr}</td>
+                <td>{labourPrice(s)}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-      <p>
-        Standart 3 sıra (28+20+12 cm) işçilik: uygulama €{prices.weft.standard3RowReference.applicationTotalEur},
-        söküm €{prices.weft.standard3RowReference.removalTotalEur},
-        yenileme €{prices.weft.standard3RowReference.renewalRefitTotalEur}.
-        Bu tutarlar saç ürününü kapsamaz.
-      </p>
+
+      <h2>{rem.title.tr}</h2>
+      <p>{rem.note.tr}</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Hizmet</th><th>Ücret</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Keratin / Mikro Keratin Söküm</td>
+              <td>€{rem.keratinMicro.removalPerStrandEur} / adet</td>
+            </tr>
+            <tr>
+              <td>Keratin Yenileme<br /><span class="muted">{rem.keratinMicro.renewalIncludes.tr}</span></td>
+              <td>€{rem.keratinMicro.renewalPerStrandEur} / adet</td>
+            </tr>
+            <tr>
+              <td>Keratin Yalnızca Yeniden Uçlama</td>
+              <td>€{String(rem.keratinMicro.reTippingOnlyEur.min).replace('.', ',')}–€{String(rem.keratinMicro.reTippingOnlyEur.max).replace('.', ',')} / adet</td>
+            </tr>
+            <tr>
+              <td>Bant Kaynak Söküm</td>
+              <td>€{rem.tapeIn.removalPerPairEur} / çift</td>
+            </tr>
+            <tr>
+              <td>Bant Kaynak Yenileme<br /><span class="muted">{rem.tapeIn.renewalIncludes.tr}</span></td>
+              <td>€{rem.tapeIn.renewalPerPairEur} / çift</td>
+            </tr>
+            <tr>
+              <td>Weft / Tres Söküm</td>
+              <td>€{rem.weft.removalEur.min}–€{rem.weft.removalEur.max}</td>
+            </tr>
+            <tr>
+              <td>Weft / Tres Yenileme</td>
+              <td>€{rem.weft.renewalEur.min}–€{rem.weft.renewalEur.max}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>{rem.explanatory.tr}</p>
 
       <h2>Minimum Hizmet Ücreti</h2>
       <p>€{prices.minimumServiceChargeEur} KDV Dahil — küçük söküm, düzeltme, ayarlama veya bakım randevusu için minimum ücret.</p>
@@ -182,7 +253,7 @@ const schemas = [
             {prices.colourServices.services.map((s) => (
               <tr>
                 <td>{s.name.tr}</td>
-                <td>€{s.priceEur.min}–€{s.priceEur.max}</td>
+                <td>{colourPrice(s)}</td>
               </tr>
             ))}
           </tbody>
@@ -221,6 +292,7 @@ const schemas = [
     text-align: left;
     padding: 0.75rem 0.85rem;
     border-bottom: 1px solid #d9d1c5;
+    vertical-align: top;
   }
   th {
     text-transform: uppercase;
@@ -228,5 +300,9 @@ const schemas = [
     font-size: 0.72rem;
     color: #6d6a64;
     background: #eae3d8;
+  }
+  .muted {
+    color: #6d6a64;
+    font-size: 0.92rem;
   }
 </style>

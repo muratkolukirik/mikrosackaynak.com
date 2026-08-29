@@ -1,5 +1,5 @@
 {
-  "masterPriceVersion": "SACH_SALON_PRICES_2026_V1",
+  "masterPriceVersion": "SACH_SALON_PRICES_2026_V2",
   "version": "2026",
   "currency": "EUR",
   "vatIncluded": true,
@@ -18,7 +18,14 @@
     "en": "All prices are VAT included. No additional VAT is added to the customer-facing prices shown. Final hair quantity, connection count and placement are confirmed following professional consultation and hair analysis.",
     "tr": "Tüm fiyatlara KDV dahildir. Müşteriye gösterilen fiyatların üzerine ayrıca KDV eklenmez. Nihai saç miktarı, bağlantı adedi ve yerleşim, profesyonel danışmanlık ve saç analizi sonrasında netleştirilir."
   },
-  "developerNote": "SACH_SALON_PRICES_2026_V1 — Customer-facing salon/application prices for Türkiye / Fethiye only. Do NOT edit locally without updating this master source. Do NOT conflate with wholesale/export/B2B/product ecommerce pricing.",
+  "developerNote": "SACH_SALON_PRICES_2026_V2 — Customer-facing salon/application prices for Türkiye / Fethiye only. Do NOT edit locally without updating this master source. Do NOT conflate with wholesale/export/B2B/product ecommerce/Academy/Couture pricing. Supersedes SACH_SALON_PRICES_2026_V1.",
+  "supersedes": [
+    "SACH_SALON_PRICES_2026_V1",
+    "generic 100g/150g/200g package bands (€600 / €850–€900 / €1,100–€1,200)",
+    "V1 per-strand removal €0.30–€0.75",
+    "V1 Tape-In removal €2–€3 / renewal €6–€8",
+    "V1 weft labour by row length (€12/20/28 cm)"
+  ],
   "extensions": {
     "keratin": {
       "id": "keratin",
@@ -26,7 +33,11 @@
       "weightGrams": 100,
       "strands": 100,
       "packagePriceEur": 600,
-      "finalPackage": true
+      "finalPackage": true,
+      "summary": {
+        "en": "Premium human hair + professional application included.",
+        "tr": "Premium insan saçı + profesyonel uygulama dahildir."
+      }
     },
     "microKeratin": {
       "id": "micro-keratin",
@@ -34,7 +45,11 @@
       "weightGrams": 100,
       "strands": 166,
       "packagePriceEur": 650,
-      "finalPackage": true
+      "finalPackage": true,
+      "summary": {
+        "en": "Premium human hair + professional application included.",
+        "tr": "Premium insan saçı + profesyonel uygulama dahildir."
+      }
     },
     "nanofilament": {
       "id": "nanofilament",
@@ -42,7 +57,11 @@
       "weightGrams": 100,
       "strands": 333,
       "packagePriceEur": 950,
-      "finalPackage": true
+      "finalPackage": true,
+      "summary": {
+        "en": "Premium human hair + professional application included.",
+        "tr": "Premium insan saçı + profesyonel uygulama dahildir."
+      }
     },
     "tapeIn": {
       "id": "tape-in",
@@ -51,7 +70,11 @@
       "pieces": 40,
       "pairs": 20,
       "packagePriceEur": 600,
-      "finalPackage": true
+      "finalPackage": true,
+      "summary": {
+        "en": "Premium human hair + professional application included.",
+        "tr": "Premium insan saçı + profesyonel uygulama dahildir."
+      }
     }
   },
   "packageIncludes": {
@@ -78,8 +101,8 @@
       "tr": "Nanofilament® Hibrit Uygulama"
     },
     "intro": {
-      "en": "A full 100 g Nanofilament® application is not necessary for every client. Nanofilament® can be strategically used in areas where maximum discretion and precision are required, while the remaining length and volume can be completed with another extension method suitable for the client's natural hair.",
-      "tr": "Her müşteri için tam 100 g Nanofilament® uygulaması gerekli değildir. Nanofilament®, maksimum gizlilik ve hassasiyet gereken bölgelerde stratejik olarak kullanılabilir; kalan uzunluk ve hacim, müşterinin doğal saçına uygun başka bir kaynak yöntemiyle tamamlanabilir."
+      "en": "Nanofilament® can be strategically combined with Micro Keratin, Keratin, Tape-In or other technically suitable volume methods. Nanofilament® is used in precision-sensitive / highly visible areas, while the secondary method provides additional volume and/or length.",
+      "tr": "Nanofilament®; Mikro Keratin, Keratin, Bant Kaynak veya teknik olarak uygun diğer hacim yöntemleriyle stratejik olarak kombine edilebilir. Nanofilament® hassas / yüksek görünürlük bölgelerinde kullanılır; ikincil yöntem ek hacim ve/veya uzunluk sağlar."
     },
     "combinations": [
       {
@@ -89,8 +112,8 @@
           "tr": "Nanofilament® + Mikro Keratin"
         },
         "description": {
-          "en": "Nanofilament® in visible and precision-sensitive areas; Micro Keratin in suitable areas for additional volume.",
-          "tr": "Görünür ve hassas bölgelerde Nanofilament®; ek hacim için uygun alanlarda Mikro Keratin."
+          "en": "Nanofilament® in precision-sensitive and highly visible areas; Micro Keratin for additional volume where suitable.",
+          "tr": "Hassas ve yüksek görünürlük bölgelerinde Nanofilament®; uygun alanlarda ek hacim için Mikro Keratin."
         }
       },
       {
@@ -116,67 +139,118 @@
         }
       },
       {
-        "id": "full-nano",
+        "id": "nano-other",
         "name": {
-          "en": "Full Nanofilament®",
-          "tr": "Tam Nanofilament®"
+          "en": "Nanofilament® + other suitable volume methods",
+          "tr": "Nanofilament® + diğer uygun hacim yöntemleri"
         },
         "description": {
-          "en": "Complete Nanofilament® application when professional hair analysis indicates that it is the most appropriate method.",
-          "tr": "Profesyonel saç analizi en uygun yöntem olduğunu gösterdiğinde tam Nanofilament® uygulaması."
+          "en": "Combined with other technically suitable volume methods when professional hair analysis supports it.",
+          "tr": "Profesyonel saç analizi desteklediğinde diğer teknik olarak uygun hacim yöntemleriyle kombine edilir."
         }
       }
     ],
+    "pricingLabel": {
+      "en": "Bespoke / after consultation",
+      "tr": "Kişiye özel / danışmanlık sonrası"
+    },
     "pricingNote": {
-      "en": "Hybrid pricing is bespoke. The final quotation depends on Nanofilament® strand count, the secondary method, total hair quantity, length, natural hair density, placement and desired result.",
-      "tr": "Hibrit fiyatlandırma kişiye özeldir. Nihai teklif; Nanofilament® adet sayısı, ikincil yöntem, toplam saç miktarı, uzunluk, doğal saç yoğunluğu, yerleşim ve hedeflenen sonuca göre belirlenir."
+      "en": "Hybrid pricing is bespoke. The quotation depends on Nanofilament® strand count, secondary method, total hair quantity, hair length, the client's natural hair density, placement and desired result.",
+      "tr": "Hibrit fiyatlandırma kişiye özeldir. Teklif; Nanofilament® adet sayısı, ikincil yöntem, toplam saç miktarı, saç uzunluğu, müşterinin doğal saç yoğunluğu, yerleşim ve hedeflenen sonuca göre belirlenir."
     },
     "fixedPackagePrice": null
   },
+  "labourOnly": {
+    "title": {
+      "en": "Application — Labour Only",
+      "tr": "Uygulama — Yalnızca İşçilik"
+    },
+    "hairIncluded": false,
+    "note": {
+      "en": "Hair is NOT included in labour-only prices. All rates VAT included.",
+      "tr": "Yalnızca işçilik fiyatlarına saç ürünü dahil değildir. Tüm fiyatlar KDV Dahil."
+    },
+    "services": [
+      {
+        "id": "keratin-micro-application",
+        "name": {
+          "en": "Keratin / Micro Keratin Extension Application",
+          "tr": "Keratin / Mikro Keratin Uygulama"
+        },
+        "priceEur": 2,
+        "unit": { "en": "strand", "tr": "adet" }
+      },
+      {
+        "id": "short-hair-transformation",
+        "name": {
+          "en": "Short Hair Transformation Application",
+          "tr": "Kısa Saç Dönüşüm Uygulaması"
+        },
+        "priceEur": 2.5,
+        "unit": { "en": "strand", "tr": "adet" }
+      },
+      {
+        "id": "extra-dense-difficult",
+        "name": {
+          "en": "Extra Dense Hair / Difficult Blending Work",
+          "tr": "Ekstra Yoğun Saç / Zor Blending İşleri"
+        },
+        "priceEur": { "min": 2.5, "max": 3 },
+        "unit": { "en": "strand", "tr": "adet" }
+      },
+      {
+        "id": "tape-in-application",
+        "name": {
+          "en": "Tape-In Hair Extension Application",
+          "tr": "Bant Kaynak Uygulama"
+        },
+        "priceEur": 5,
+        "unit": { "en": "pair", "tr": "çift" }
+      },
+      {
+        "id": "weft-application",
+        "name": {
+          "en": "Weft / Tres Hair Extension Application",
+          "tr": "Weft / Tres Saç Kaynak Uygulama"
+        },
+        "priceEur": { "min": 100, "max": 180 },
+        "unit": { "en": "application", "tr": "uygulama" }
+      }
+    ]
+  },
   "removal": {
-    "keratin": {
-      "removalPerStrandEur": { "min": 0.5, "max": 0.75 },
-      "removalReference100Eur": { "min": 50, "max": 75 },
-      "renewalRefit100Eur": { "min": 100, "max": 150 }
+    "title": {
+      "en": "Removal & Renewal",
+      "tr": "Söküm ve Yenileme"
     },
-    "microKeratin": {
-      "removalPerStrandEur": { "min": 0.4, "max": 0.6 },
-      "removalReference166Eur": { "min": 66, "max": 100 },
-      "renewalRefit166Eur": { "min": 130, "max": 200 }
+    "note": {
+      "en": "All prices VAT included.",
+      "tr": "Tüm fiyatlar KDV Dahil."
     },
-    "nanofilament": {
-      "removalPerStrandEur": { "min": 0.3, "max": 0.45 },
-      "removalReference333Eur": { "min": 100, "max": 150 },
-      "renewalRefit333Eur": { "min": 200, "max": 300 }
+    "keratinMicro": {
+      "removalPerStrandEur": 1,
+      "renewalPerStrandEur": 3,
+      "renewalIncludes": {
+        "en": "Removal + re-tip + re-application",
+        "tr": "Söküm + yeniden uçlama + yeniden uygulama"
+      },
+      "reTippingOnlyEur": { "min": 1, "max": 1.5 }
     },
     "tapeIn": {
-      "removalPerPairEur": { "min": 2, "max": 3 },
-      "removalReference20PairsEur": { "min": 40, "max": 60 },
-      "renewalRefitPerPairEur": { "min": 6, "max": 8 }
+      "removalPerPairEur": 3,
+      "renewalPerPairEur": 7,
+      "renewalIncludes": {
+        "en": "Removal + cleaning + new tape + re-application",
+        "tr": "Söküm + temizlik + yeni bant + yeniden uygulama"
+      }
+    },
+    "weft": {
+      "removalEur": { "min": 60, "max": 100 },
+      "renewalEur": { "min": 140, "max": 250 }
     },
     "explanatory": {
-      "en": "Keratin-family renewal may include removal, preparation / re-tipping and professional reapplication. Tape-In refit includes removal, cleaning/preparation, replacement tape and reapplication.",
-      "tr": "Keratin ailesi yenileme; söküm, hazırlık / yeniden uçlama ve profesyonel yeniden uygulamayı içerebilir. Bant kaynak yenileme; söküm, temizlik/hazırlık, yeni bant ve yeniden uygulamayı içerir."
-    }
-  },
-  "weft": {
-    "pricingUnit": "rowLength",
-    "pricingUnitNote": {
-      "en": "Butterfly Weft / Weft labour is calculated by row length rather than grams. Different row lengths require different levels of technical work, providing a more accurate and transparent pricing structure.",
-      "tr": "Butterfly Weft / Weft işçilik ücreti gram yerine sıra uzunluğuna göre hesaplanır. Farklı sıra uzunlukları farklı teknik emek gerektirir; bu da daha doğru ve şeffaf bir fiyat yapısı sağlar."
-    },
-    "hairPricedSeparately": true,
-    "rows": {
-      "12cm": { "applicationEur": 25, "removalEur": 10, "renewalRefitEur": 30 },
-      "20cm": { "applicationEur": 35, "removalEur": 15, "renewalRefitEur": 45 },
-      "28cm": { "applicationEur": 45, "removalEur": 20, "renewalRefitEur": 60 }
-    },
-    "standard3RowReference": {
-      "composition": ["28cm", "20cm", "12cm"],
-      "applicationTotalEur": 105,
-      "removalTotalEur": 45,
-      "renewalRefitTotalEur": 135,
-      "includesHair": false
+      "en": "Keratin renewal includes removal, re-tipping and professional re-application. Tape-In renewal includes removal, cleaning, replacement tape and re-application.",
+      "tr": "Keratin yenileme; söküm, yeniden uçlama ve profesyonel yeniden uygulamayı içerir. Bant kaynak yenileme; söküm, temizlik, yeni bant ve yeniden uygulamayı içerir."
     }
   },
   "minimumServiceChargeEur": 50,
@@ -205,7 +279,13 @@
       { "id": "toner-gloss", "name": { "en": "Toner / Gloss / Colour Refresh", "tr": "Toner / Gloss / Renk Tazeleme" }, "priceEur": { "min": 75, "max": 150 } },
       { "id": "root-bleach-toner", "name": { "en": "Root Bleach + Toner", "tr": "Dip Açma + Toner" }, "priceEur": { "min": 180, "max": 300 } },
       { "id": "colour-matching-extensions", "name": { "en": "Colour Matching for Hair Extensions", "tr": "Saç Kaynak İçin Renk Eşleştirme" }, "priceEur": { "min": 100, "max": 250 } },
-      { "id": "colour-correction", "name": { "en": "Colour Correction", "tr": "Renk Düzeltme" }, "priceEur": { "min": 250, "max": 500 } },
+      {
+        "id": "colour-correction",
+        "name": { "en": "Colour Correction", "tr": "Renk Düzeltme" },
+        "priceEur": { "min": 250, "max": 500 },
+        "openEnded": true,
+        "display": { "en": "€250–€500+", "tr": "€250–€500+" }
+      },
       { "id": "ombre", "name": { "en": "Ombré", "tr": "Ombré" }, "priceEur": { "min": 250, "max": 500 } },
       { "id": "balayage", "name": { "en": "Balayage", "tr": "Balayage" }, "priceEur": { "min": 300, "max": 600 } },
       { "id": "highlights", "name": { "en": "Highlights / Babylights", "tr": "Röfle / Babylights" }, "priceEur": { "min": 250, "max": 500 } },
