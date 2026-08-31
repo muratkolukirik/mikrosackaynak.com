@@ -1,8 +1,9 @@
 ---
 /**
- * SACH_SALON_PRICES_2026_V2
+ * SACH_SALON_PRICES_2026_V3
  * Customer-facing Fethiye salon prices — reads master JSON.
  * Do not edit euro figures here; update salon-prices-2026.json (and the master repo copy).
+ * Do NOT render extensions.tresButterflyWeft.internal in public templates.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
@@ -21,7 +22,7 @@ import {
 const path = '/fethiye-salon-uygulama-fiyatlari/';
 const title = '2026 Fethiye Salon Uygulama Fiyatları';
 const description =
-  'SACH & Vogue Hair 2026 Fethiye / Ölüdeniz salon uygulama fiyatları. KDV dahil paketler: Keratin €600, Mikro Keratin €650, Nanofilament® €950, Bant €600.';
+  "SACH & Vogue Hair 2026 Fethiye / Ölüdeniz salon uygulama fiyatları. KDV dahil: Keratin €600, Mikro Keratin €650, Nanofilament® €950, Bant €600, Tres & Butterfly Weft 500 €'dan başlayan paket.";
 
 const breadcrumbs = [
   { name: 'Ana Sayfa', path: '/' },
@@ -40,6 +41,11 @@ const faqs: FAQEntry[] = [
   {
     question: 'Yalnızca işçilik fiyatına saç dahil mi?',
     answer: prices.labourOnly.note.tr,
+  },
+  {
+    question: "Tres & Butterfly Weft 500 € sabit 100 g fiyatı mı?",
+    answer:
+      'Hayır. 500 €, 100 grama kadar ilk uygulama için minimum başlangıç salon paketidir; evrensel sabit 100 g ürün fiyatı değildir. 100 gramın üzerindeki ilave saç, seçilen uzunluk ve gerçek gramaja göre hesaplanır.',
   },
 ];
 
@@ -65,7 +71,7 @@ function colourPrice(s: (typeof prices.colourServices.services)[number]): string
 
 const schemas = [
   breadcrumbSchema(breadcrumbs),
-  articleSchema({ title, description, path, dateModified: '2026-08-29' }),
+  articleSchema({ title, description, path, dateModified: '2026-08-31' }),
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -118,6 +124,27 @@ const schemas = [
       description: 'KDV dahil 100 g paket',
     },
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Tres & Butterfly Weft Saç Kaynak Paketi',
+    provider: { '@type': 'HairSalon', name: CONTACT_FETHIYE.brandName },
+    areaServed: 'Fethiye',
+    description: ext.tresButterflyWeft.summary.tr,
+    offers: {
+      '@type': 'Offer',
+      price: String(ext.tresButterflyWeft.startingPriceEur),
+      priceCurrency: 'EUR',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: String(ext.tresButterflyWeft.startingPriceEur),
+        priceCurrency: 'EUR',
+        minPrice: String(ext.tresButterflyWeft.startingPriceEur),
+        valueAddedTaxIncluded: true,
+        description: 'Başlangıç / minimum salon paketi (500 €\'dan). Evrensel sabit 100 g ürün fiyatı değildir.',
+      },
+    },
+  },
 ];
 ---
 
@@ -126,7 +153,7 @@ const schemas = [
   <PageHero
     title="2026 Fethiye Salon Uygulama Fiyatları"
     kicker={`SACH & Vogue Hair · ${prices.locationDisplay?.tr ?? 'Fethiye / Ölüdeniz'} · KDV Dahil`}
-    lead="Profesyonel salon uygulama paketleri. Aşağıdaki dört rakam nihai KDV dahil paket fiyatıdır — premium insan saçı, profesyonel uygulama, adaptasyon kesimi, doğal geçiş-blending, fön ve şekillendirme dahildir."
+    lead="Profesyonel salon uygulama paketleri. Keratin, Mikro Keratin, Nanofilament® ve Bant paketleri nihai KDV dahil 100 g toplamıdır. Tres & Butterfly Weft 500 €'dan başlayan (100 grama kadar) başlangıç salon paketidir."
   />
 
   <article class="section" data-price-version={prices.masterPriceVersion}>
@@ -162,6 +189,11 @@ const schemas = [
               <td>100 g / yakl. {ext.tapeIn.pieces} adet / {ext.tapeIn.pairs} çift</td>
               <td>€{ext.tapeIn.packagePriceEur}</td>
             </tr>
+            <tr>
+              <td>{ext.tresButterflyWeft.name.tr}</td>
+              <td>{ext.tresButterflyWeft.publicReference.tr}</td>
+              <td>{ext.tresButterflyWeft.publicDisplay.tr}</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -170,6 +202,13 @@ const schemas = [
         {prices.packageIncludes.tr.map((item) => <li>{item}</li>)}
       </ul>
       <p>{prices.notes.tr}</p>
+
+      <h2 id="tres-butterfly-weft">{ext.tresButterflyWeft.publicCopy.tr.title}</h2>
+      <p class="price-start">{ext.tresButterflyWeft.publicDisplay.tr}</p>
+      <p><strong>KDV Dahil</strong> · {ext.tresButterflyWeft.publicReference.tr}</p>
+      <p>{ext.tresButterflyWeft.publicCopy.tr.lead}</p>
+      {ext.tresButterflyWeft.publicCopy.tr.body.map((para) => <p>{para}</p>)}
+      <p class="muted">{ext.tresButterflyWeft.summary.tr}</p>
 
       <h2>{prices.hybrid.title.tr}</h2>
       <p>{prices.hybrid.intro.tr}</p>
@@ -183,6 +222,7 @@ const schemas = [
 
       <h2>{prices.labourOnly.title.tr}</h2>
       <p>{prices.labourOnly.note.tr}</p>
+      <p class="muted">{prices.labourOnly.weftPackageDistinction.tr}</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -304,5 +344,10 @@ const schemas = [
   .muted {
     color: #6d6a64;
     font-size: 0.92rem;
+  }
+  .price-start {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin: 0.35rem 0;
   }
 </style>

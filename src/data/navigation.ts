@@ -35,7 +35,7 @@ export const guideLinks: NavItem[] = [
   {
     label: '2026 Fethiye Salon Fiyatları',
     href: '/fethiye-salon-uygulama-fiyatlari/',
-    description: 'KDV dahil resmi salon uygulama tarifeleri — SACH_SALON_PRICES_2026_V2',
+    description: 'KDV dahil resmi salon uygulama tarifeleri — SACH_SALON_PRICES_2026_V3',
   },
   {
     label: 'Kısa Saça Mikro Kaynak',

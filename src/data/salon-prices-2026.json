@@ -1,5 +1,5 @@
 {
-  "masterPriceVersion": "SACH_SALON_PRICES_2026_V2",
+  "masterPriceVersion": "SACH_SALON_PRICES_2026_V3",
   "version": "2026",
   "currency": "EUR",
   "vatIncluded": true,
@@ -18,9 +18,10 @@
     "en": "All prices are VAT included. No additional VAT is added to the customer-facing prices shown. Final hair quantity, connection count and placement are confirmed following professional consultation and hair analysis.",
     "tr": "Tüm fiyatlara KDV dahildir. Müşteriye gösterilen fiyatların üzerine ayrıca KDV eklenmez. Nihai saç miktarı, bağlantı adedi ve yerleşim, profesyonel danışmanlık ve saç analizi sonrasında netleştirilir."
   },
-  "developerNote": "SACH_SALON_PRICES_2026_V2 — Customer-facing salon/application prices for Türkiye / Fethiye only. Do NOT edit locally without updating this master source. Do NOT conflate with wholesale/export/B2B/product ecommerce/Academy/Couture pricing. Supersedes SACH_SALON_PRICES_2026_V1.",
+  "developerNote": "SACH_SALON_PRICES_2026_V3 — Customer-facing salon/application prices for Türkiye / Fethiye only. Do NOT edit locally without updating this master source. Do NOT conflate with wholesale/export/B2B/product ecommerce/Academy/Couture pricing. Supersedes SACH_SALON_PRICES_2026_V2. Tres/Butterfly Weft public price is a starting/minimum package (from €500, up to 100 g); internal butterfly panel rate must NOT be rendered in public templates.",
   "supersedes": [
     "SACH_SALON_PRICES_2026_V1",
+    "SACH_SALON_PRICES_2026_V2",
     "generic 100g/150g/200g package bands (€600 / €850–€900 / €1,100–€1,200)",
     "V1 per-strand removal €0.30–€0.75",
     "V1 Tape-In removal €2–€3 / renewal €6–€8",
@@ -29,7 +30,10 @@
   "extensions": {
     "keratin": {
       "id": "keratin",
-      "name": { "en": "Keratin Extensions", "tr": "Keratin Saç Kaynak" },
+      "name": {
+        "en": "Keratin Extensions",
+        "tr": "Keratin Saç Kaynak"
+      },
       "weightGrams": 100,
       "strands": 100,
       "packagePriceEur": 600,
@@ -41,7 +45,10 @@
     },
     "microKeratin": {
       "id": "micro-keratin",
-      "name": { "en": "Micro Keratin Extensions", "tr": "Mikro Keratin Saç Kaynak" },
+      "name": {
+        "en": "Micro Keratin Extensions",
+        "tr": "Mikro Keratin Saç Kaynak"
+      },
       "weightGrams": 100,
       "strands": 166,
       "packagePriceEur": 650,
@@ -53,7 +60,10 @@
     },
     "nanofilament": {
       "id": "nanofilament",
-      "name": { "en": "Nanofilament® Extensions", "tr": "Nanofilament® Saç Kaynak" },
+      "name": {
+        "en": "Nanofilament® Extensions",
+        "tr": "Nanofilament® Saç Kaynak"
+      },
       "weightGrams": 100,
       "strands": 333,
       "packagePriceEur": 950,
@@ -65,7 +75,10 @@
     },
     "tapeIn": {
       "id": "tape-in",
-      "name": { "en": "Tape-In Extensions", "tr": "Bant Kaynak" },
+      "name": {
+        "en": "Tape-In Extensions",
+        "tr": "Bant Kaynak"
+      },
       "weightGrams": 100,
       "pieces": 40,
       "pairs": 20,
@@ -74,6 +87,93 @@
       "summary": {
         "en": "Premium human hair + professional application included.",
         "tr": "Premium insan saçı + profesyonel uygulama dahildir."
+      }
+    },
+    "tresButterflyWeft": {
+      "id": "tres-butterfly-weft",
+      "name": {
+        "en": "Tres & Butterfly Weft Extensions",
+        "tr": "Tres & Butterfly Weft Saç Kaynak"
+      },
+      "priceType": "startingMinimumPackage",
+      "startingPriceEur": 500,
+      "vatIncluded": true,
+      "finalPackage": false,
+      "initialPackageMaxGrams": 100,
+      "publicDisplay": {
+        "en": "From €500",
+        "tr": "500 €'dan başlayan fiyatlarla"
+      },
+      "publicReference": {
+        "en": "Initial application package — up to 100 g",
+        "tr": "İlk uygulama paketi — 100 grama kadar"
+      },
+      "summary": {
+        "en": "Minimum initial salon application package for first applications requiring up to 100 g, subject to consultation and hair analysis. Not a universal fixed 100 g product price.",
+        "tr": "Danışmanlık ve saç analizine bağlı olarak 100 grama kadar saç gerektiren ilk uygulamalar için minimum başlangıç salon paketidir. Evrensel sabit 100 g ürün fiyatı değildir."
+      },
+      "includes": {
+        "en": [
+          "Premium human hair",
+          "Professional consultation",
+          "Colour matching",
+          "Personalised placement planning",
+          "Tres or Butterfly Weft application",
+          "Adaptation haircut",
+          "Blending",
+          "Blow-dry",
+          "Styling"
+        ],
+        "tr": [
+          "Premium insan saçı",
+          "Profesyonel danışmanlık",
+          "Renk eşleştirme",
+          "Kişiye özel yerleşim planı",
+          "Tres veya Butterfly Weft uygulama",
+          "Adaptasyon kesimi",
+          "Doğal harmanlama",
+          "Fön",
+          "Şekillendirme"
+        ]
+      },
+      "additionalHair": {
+        "en": "For applications requiring more than 100 g, additional hair is calculated according to the selected length and the actual amount required.",
+        "tr": "100 gramdan daha fazla saç gereken uygulamalarda ilave saç, seçilen uzunluğa ve gerçekten ihtiyaç duyulan gramaja göre hesaplanır."
+      },
+      "extraLong": {
+        "en": "Extra-long lengths are quoted individually.",
+        "tr": "Ekstra uzun saçlar ayrıca fiyatlandırılır."
+      },
+      "customColours": {
+        "en": "Custom colours and special-production requirements are quoted individually.",
+        "tr": "Özel renkler ve özel üretim talepleri ayrıca fiyatlandırılır."
+      },
+      "publicCopy": {
+        "en": {
+          "title": "Tres & Butterfly Weft Extensions",
+          "lead": "Our professional Tres and Butterfly Weft application packages start from €500, VAT included.",
+          "body": [
+            "The initial application package is designed for clients requiring up to 100 g of hair and includes professional consultation, colour matching, personalised placement, application, adaptation cut, blending, blow-dry and styling.",
+            "For applications requiring more than 100 g, additional hair is calculated according to the selected length and the actual amount required.",
+            "Your final quotation is confirmed after hair analysis, allowing us to use only the amount of hair genuinely required for a natural, balanced result.",
+            "Extra-long lengths, custom colours and special-production requirements are quoted individually."
+          ]
+        },
+        "tr": {
+          "title": "Tres & Butterfly Weft Saç Kaynak",
+          "lead": "Profesyonel Tres ve Butterfly Weft saç kaynak uygulamalarımız KDV dahil 500 €'dan başlamaktadır.",
+          "body": [
+            "İlk uygulama paketi, 100 grama kadar saç gerektiren uygulamalar için tasarlanmıştır ve profesyonel danışmanlık, renk eşleştirme, kişiye özel yerleşim, uygulama, adaptasyon kesimi, doğal harmanlama, fön ve şekillendirme hizmetlerini kapsar.",
+            "100 gramdan daha fazla saç gereken uygulamalarda ilave saç, seçilen uzunluğa ve gerçekten ihtiyaç duyulan gramaja göre hesaplanır.",
+            "Nihai fiyat, saç analizi sonrasında kesinleştirilir. Böylece doğal ve dengeli bir sonuç için yalnızca gerçekten ihtiyaç duyulan miktarda saç kullanılır.",
+            "Ekstra uzun saçlar, özel renkler ve özel üretim talepleri ayrıca fiyatlandırılır."
+          ]
+        }
+      },
+      "internal": {
+        "publicExposure": false,
+        "butterflyPanelRateEurPer100g": 50,
+        "note": "INTERNAL ONLY — proportional Butterfly Weft panel/manufacturing preparation above the initial package. Do NOT render in public templates. VAT applies to the complete taxable amount per the approved pricing engine, not only to this component."
       }
     }
   },
@@ -178,7 +278,10 @@
           "tr": "Keratin / Mikro Keratin Uygulama"
         },
         "priceEur": 2,
-        "unit": { "en": "strand", "tr": "adet" }
+        "unit": {
+          "en": "strand",
+          "tr": "adet"
+        }
       },
       {
         "id": "short-hair-transformation",
@@ -187,7 +290,10 @@
           "tr": "Kısa Saç Dönüşüm Uygulaması"
         },
         "priceEur": 2.5,
-        "unit": { "en": "strand", "tr": "adet" }
+        "unit": {
+          "en": "strand",
+          "tr": "adet"
+        }
       },
       {
         "id": "extra-dense-difficult",
@@ -195,8 +301,14 @@
           "en": "Extra Dense Hair / Difficult Blending Work",
           "tr": "Ekstra Yoğun Saç / Zor Blending İşleri"
         },
-        "priceEur": { "min": 2.5, "max": 3 },
-        "unit": { "en": "strand", "tr": "adet" }
+        "priceEur": {
+          "min": 2.5,
+          "max": 3
+        },
+        "unit": {
+          "en": "strand",
+          "tr": "adet"
+        }
       },
       {
         "id": "tape-in-application",
@@ -205,7 +317,10 @@
           "tr": "Bant Kaynak Uygulama"
         },
         "priceEur": 5,
-        "unit": { "en": "pair", "tr": "çift" }
+        "unit": {
+          "en": "pair",
+          "tr": "çift"
+        }
       },
       {
         "id": "weft-application",
@@ -213,10 +328,20 @@
           "en": "Weft / Tres Hair Extension Application",
           "tr": "Weft / Tres Saç Kaynak Uygulama"
         },
-        "priceEur": { "min": 100, "max": 180 },
-        "unit": { "en": "application", "tr": "uygulama" }
+        "priceEur": {
+          "min": 100,
+          "max": 180
+        },
+        "unit": {
+          "en": "application",
+          "tr": "uygulama"
+        }
       }
-    ]
+    ],
+    "weftPackageDistinction": {
+      "en": "Weft / Tres labour-only (€100–€180) applies when hair is not included. The Tres & Butterfly Weft starting salon package (from €500, up to 100 g) is a different service that includes hair and first application.",
+      "tr": "Weft / Tres yalnızca işçilik (€100–€180), saç dahil değilken geçerlidir. Tres & Butterfly Weft başlangıç salon paketi (500 €'dan, 100 grama kadar) saç ve ilk uygulamayı kapsayan farklı bir hizmettir."
+    }
   },
   "removal": {
     "title": {
@@ -234,7 +359,10 @@
         "en": "Removal + re-tip + re-application",
         "tr": "Söküm + yeniden uçlama + yeniden uygulama"
       },
-      "reTippingOnlyEur": { "min": 1, "max": 1.5 }
+      "reTippingOnlyEur": {
+        "min": 1,
+        "max": 1.5
+      }
     },
     "tapeIn": {
       "removalPerPairEur": 3,
@@ -245,8 +373,14 @@
       }
     },
     "weft": {
-      "removalEur": { "min": 60, "max": 100 },
-      "renewalEur": { "min": 140, "max": 250 }
+      "removalEur": {
+        "min": 60,
+        "max": 100
+      },
+      "renewalEur": {
+        "min": 140,
+        "max": 250
+      }
     },
     "explanatory": {
       "en": "Keratin renewal includes removal, re-tipping and professional re-application. Tape-In renewal includes removal, cleaning, replacement tape and re-application.",
@@ -274,24 +408,143 @@
       "tr": "Renk hizmeti fiyatları saç uzunluğu, yoğunluk, mevcut durum, önceki kimyasal işlemler, ürün miktarı ve teknik karmaşıklığa göre değişebilir. Nihai fiyat profesyonel saç analizi sonrası netleştirilir."
     },
     "services": [
-      { "id": "root-colour", "name": { "en": "Root Colour", "tr": "Dip Boya" }, "priceEur": { "min": 100, "max": 150 } },
-      { "id": "full-colour", "name": { "en": "Full Hair Colour", "tr": "Tüm Saç Boyama" }, "priceEur": { "min": 150, "max": 250 } },
-      { "id": "toner-gloss", "name": { "en": "Toner / Gloss / Colour Refresh", "tr": "Toner / Gloss / Renk Tazeleme" }, "priceEur": { "min": 75, "max": 150 } },
-      { "id": "root-bleach-toner", "name": { "en": "Root Bleach + Toner", "tr": "Dip Açma + Toner" }, "priceEur": { "min": 180, "max": 300 } },
-      { "id": "colour-matching-extensions", "name": { "en": "Colour Matching for Hair Extensions", "tr": "Saç Kaynak İçin Renk Eşleştirme" }, "priceEur": { "min": 100, "max": 250 } },
+      {
+        "id": "root-colour",
+        "name": {
+          "en": "Root Colour",
+          "tr": "Dip Boya"
+        },
+        "priceEur": {
+          "min": 100,
+          "max": 150
+        }
+      },
+      {
+        "id": "full-colour",
+        "name": {
+          "en": "Full Hair Colour",
+          "tr": "Tüm Saç Boyama"
+        },
+        "priceEur": {
+          "min": 150,
+          "max": 250
+        }
+      },
+      {
+        "id": "toner-gloss",
+        "name": {
+          "en": "Toner / Gloss / Colour Refresh",
+          "tr": "Toner / Gloss / Renk Tazeleme"
+        },
+        "priceEur": {
+          "min": 75,
+          "max": 150
+        }
+      },
+      {
+        "id": "root-bleach-toner",
+        "name": {
+          "en": "Root Bleach + Toner",
+          "tr": "Dip Açma + Toner"
+        },
+        "priceEur": {
+          "min": 180,
+          "max": 300
+        }
+      },
+      {
+        "id": "colour-matching-extensions",
+        "name": {
+          "en": "Colour Matching for Hair Extensions",
+          "tr": "Saç Kaynak İçin Renk Eşleştirme"
+        },
+        "priceEur": {
+          "min": 100,
+          "max": 250
+        }
+      },
       {
         "id": "colour-correction",
-        "name": { "en": "Colour Correction", "tr": "Renk Düzeltme" },
-        "priceEur": { "min": 250, "max": 500 },
+        "name": {
+          "en": "Colour Correction",
+          "tr": "Renk Düzeltme"
+        },
+        "priceEur": {
+          "min": 250,
+          "max": 500
+        },
         "openEnded": true,
-        "display": { "en": "€250–€500+", "tr": "€250–€500+" }
+        "display": {
+          "en": "€250–€500+",
+          "tr": "€250–€500+"
+        }
       },
-      { "id": "ombre", "name": { "en": "Ombré", "tr": "Ombré" }, "priceEur": { "min": 250, "max": 500 } },
-      { "id": "balayage", "name": { "en": "Balayage", "tr": "Balayage" }, "priceEur": { "min": 300, "max": 600 } },
-      { "id": "highlights", "name": { "en": "Highlights / Babylights", "tr": "Röfle / Babylights" }, "priceEur": { "min": 250, "max": 500 } },
-      { "id": "face-frame", "name": { "en": "Face Frame / Front Lightening", "tr": "Face Frame / Ön Bölge Açma" }, "priceEur": { "min": 150, "max": 300 } },
-      { "id": "full-bleach", "name": { "en": "Full Head Bleaching", "tr": "Tüm Saç Açma" }, "priceEur": { "min": 350, "max": 700 } },
-      { "id": "full-bleach-colour-toner", "name": { "en": "Full Bleach + Colour + Toner", "tr": "Tüm Saç Açma + Boya + Toner" }, "priceEur": { "min": 450, "max": 850 } }
+      {
+        "id": "ombre",
+        "name": {
+          "en": "Ombré",
+          "tr": "Ombré"
+        },
+        "priceEur": {
+          "min": 250,
+          "max": 500
+        }
+      },
+      {
+        "id": "balayage",
+        "name": {
+          "en": "Balayage",
+          "tr": "Balayage"
+        },
+        "priceEur": {
+          "min": 300,
+          "max": 600
+        }
+      },
+      {
+        "id": "highlights",
+        "name": {
+          "en": "Highlights / Babylights",
+          "tr": "Röfle / Babylights"
+        },
+        "priceEur": {
+          "min": 250,
+          "max": 500
+        }
+      },
+      {
+        "id": "face-frame",
+        "name": {
+          "en": "Face Frame / Front Lightening",
+          "tr": "Face Frame / Ön Bölge Açma"
+        },
+        "priceEur": {
+          "min": 150,
+          "max": 300
+        }
+      },
+      {
+        "id": "full-bleach",
+        "name": {
+          "en": "Full Head Bleaching",
+          "tr": "Tüm Saç Açma"
+        },
+        "priceEur": {
+          "min": 350,
+          "max": 700
+        }
+      },
+      {
+        "id": "full-bleach-colour-toner",
+        "name": {
+          "en": "Full Bleach + Colour + Toner",
+          "tr": "Tüm Saç Açma + Boya + Toner"
+        },
+        "priceEur": {
+          "min": 450,
+          "max": 850
+        }
+      }
     ]
   },
   "cta": {
